@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives — Re-Archive: 건물 아카이브</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      padding: 90px 40px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin: 0 0 18px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: #444;
+      max-width: 680px;
+    }
+
+    .section {
+      padding: 40px 40px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    /* 필터/태그 영역 */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filter-chip {
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      padding: 6px 14px;
+      font-size: 12px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-chip.active,
+    .filter-chip:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    /* 프로젝트 그리드 */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .archive-card {
+      border-radius: 16px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      background: #fafafa;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .archive-card.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .archive-image-layer {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .archive-image-layer img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .archive-image-layer img.before {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .archive-image-layer img.after {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    /* hover 시 이전→이후 전환 */
+    .archive-card:hover .archive-image-layer img.before {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .archive-card:hover .archive-image-layer img.after {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    .archive-meta {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .archive-meta-left {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #777;
+    }
+
+    .archive-meta-right {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .archive-body {
+      padding: 16px 16px 18px;
+    }
+
+    .archive-title {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .archive-desc {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .archive-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .archive-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      color: #666;
+    }
+
+    /* 요약 텍스트 / 설명 블록 */
+    .summary-text {
+      font-size: 14px;
+      color: #555;
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background: #fafafa;
+      border-top: 1px solid #e5e5e5;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+      .hero {
+        padding: 70px 20px 30px;
+      }
+      .section {
+        padding: 30px 20px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="logo">RE-ARCHIVE</div>
+    <nav>
+      <a href="../index.html">홈</a>
+      <a href="archives.html">아카이브</a>
+      <a href="stories.html">스토리</a>
+      <a href="labs.html">실험실</a>
+      <a href="about.html">소개</a>
+    </nav>
+  </header>
+
+  <!-- 히어로: Archives 소개 -->
+  <section class="hero">
+    <h1 class="hero-title">Archives — 카페화된 건축들의 기록</h1>
+    <p class="hero-subtitle">
+      교회, 공장, 체육관, 대공간이 어떻게 카페와 문화공간으로 재사용되고 있는지
+      한 곳에 모아 보는 아카이브입니다.
+    </p>
+    <p class="hero-text">
+      각 카드는 하나의 건물에 대한 <strong>“이전(before)”과 “이후(after)”</strong>를 담고 있습니다.
+      단순한 비포·애프터 사진이 아니라, 어떤 시대적 이유와 운영상의 결정들이
+      건축의 사용을 바꾸었는지 간단한 메모와 함께 기록합니다.
+      Labs가 대안 시나리오를 실험하는 공간이라면, Archives는 현재 도시에서 일어나고 있는
+      변화를 담담히 쌓아두는 레이어입니다.
+    </p>
+  </section>
+
+  <!-- 아카이브 리스트 -->
+  <section class="section">
+    <h2>기록된 건물들</h2>
+
+    <p class="summary-text">
+      처음에는 소수의 대표적인 사례부터 시작하지만,
+      시간이 지나면서 다양한 지역과 규모의 프로젝트가 추가될 예정입니다.
+      용도, 규모, 전환 유형별로 필터링하는 기능도 차차 확장해 나갈 계획입니다.
+    </p>
+
+    <!-- 필터 (UI만 제공, 나중에 JS로 기능 확장 가능) -->
+    <div class="filters">
+      <button class="filter-chip active">전체</button>
+      <button class="filter-chip">교회</button>
+      <button class="filter-chip">공장</button>
+      <button class="filter-chip">체육관</button>
+      <button class="filter-chip">기타 대공간</button>
+      <button class="filter-chip">카페</button>
+      <button class="filter-chip">문화공간</button>
+      <button class="filter-chip">공유오피스</button>
+    </div>
+
+    <div class="archive-grid">
+
+      <!-- 카드 1: 교회 → 카페 -->
+      <article class="archive-card js-observe">
+        <div class="archive-image-layer">
+          <img class="before"
+               src="https://images.unsplash.com/photo-1533105048469-3c0b9248f197?auto=format&fit=crop&w=1200&q=80"
+               alt="이전 교회 내부">
+          <img class="after"
+               src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1200&q=80"
+               alt="카페로 전환된 공간">
+        </div>
+        <div class="archive-meta">
+          <div class="archive-meta-left">CHURCH → CAFE</div>
+          <div class="archive-meta-right">1987 / 2022</div>
+        </div>
+        <div class="archive-body">
+          <h3 class="archive-title">구 ○○교회, 단층 나브 카페로</h3>
+          <p class="archive-desc">
+            높은 박공 지붕과 나브의 리듬을 유지한 채, 좌석과 조명을 교체하여
+            카페로 전환된 사례. 종교적 기호는 제거되었지만, 공간의 긴장감은
+            비교적 잘 보존된 편에 속합니다.
+          </p>
+          <div class="archive-tags">
+            <span class="archive-tag">대형교회</span>
+            <span class="archive-tag">나브 보존</span>
+            <span class="archive-tag">카페 전환</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 카드 2: 공장 → 복합문화공간 -->
+      <article class="archive-card js-observe">
+        <div class="archive-image-layer">
+          <img class="before"
+               src="https://images.unsplash.com/photo-1502563658407-0963fba1c64a?auto=format&fit=crop&w=1200&q=80"
+               alt="이전 공장 내부">
+          <img class="after"
+               src="https://images.unsplash.com/photo-1500534314211-0a24cd03f2c0?auto=format&fit=crop&w=1200&q=80"
+               alt="복합문화공간으로 전환된 모습">
+        </div>
+        <div class="archive-meta">
+          <div class="archive-meta-left">FACTORY → CULTURE</div>
+          <div class="archive-meta-right">1974 / 2018</div>
+        </div>
+        <div class="archive-body">
+          <h3 class="archive-title">○○ 방직공장, 문화창고로</h3>
+          <p class="archive-desc">
+            긴 스팬의 골조와 램프를 유지하면서, 전시·공연·카페가 혼합된
+            복합문화공간으로 재사용된 사례. 구조를 남기는 대신,
+            프로그램은 비교적 안전한 선택에 머물러 있습니다.
+          </p>
+          <div class="archive-tags">
+            <span class="archive-tag">산업유산</span>
+            <span class="archive-tag">복합문화공간</span>
+            <span class="archive-tag">램프 보존</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 카드 3: 체육관 → 공연장 -->
+      <article class="archive-card js-observe">
+        <div class="archive-image-layer">
+          <img class="before"
+               src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&fit=crop&w=1200&q=80"
+               alt="체육관 이전 모습">
+          <img class="after"
+               src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+               alt="공연장으로 전환된 모습">
+        </div>
+        <div class="archive-meta">
+          <div class="archive-meta-left">GYM → HALL</div>
+          <div class="archive-meta-right">1991 / 2020</div>
+        </div>
+        <div class="archive-body">
+          <h3 class="archive-title">구 ○○체육관, 블랙박스 홀로</h3>
+          <p class="archive-desc">
+            기존 코트의 평면을 따라 관람석과 무대를 구성한 블랙박스형 공연장.
+            체육 시설로서의 흔적은 약해졌지만, 대공간의 스케일은 공연에 적합하게
+            조정되었습니다.
+          </p>
+          <div class="archive-tags">
+            <span class="archive-tag">체육관</span>
+            <span class="archive-tag">공연장</span>
+            <span class="archive-tag">블랙박스</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 카드 4: 기타 대공간 → 공유오피스 -->
+      <article class="archive-card js-observe">
+        <div class="archive-image-layer">
+          <img class="before"
+               src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80"
+               alt="이전 대공간 모습">
+          <img class="after"
+               src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80"
+               alt="공유오피스로 전환된 모습">
+        </div>
+        <div class="archive-meta">
+          <div class="archive-meta-left">HALL → OFFICE</div>
+          <div class="archive-meta-right">1983 / 2019</div>
+        </div>
+        <div class="archive-body">
+          <h3 class="archive-title">○○ 집회장, 공유오피스로</h3>
+          <p class="archive-desc">
+            높은 층고를 슬라브로 나누기보다는, 메자닌과 브리지를 활용해
+            다양한 업무 공간을 입체적으로 배치한 사례. 카페와 오피스가 결합된
+            전형적인 리노베이션 유형으로 볼 수 있습니다.
+          </p>
+          <div class="archive-tags">
+            <span class="archive-tag">대공간</span>
+            <span class="archive-tag">공유오피스</span>
+            <span class="archive-tag">메자닌</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 풋터 -->
+  <footer>
+    © 2025 RE-ARCHIVE — Archives / Re:Layer
+  </footer>
+
+  <!-- 스크롤 인터랙션: IntersectionObserver로 카드 등장 -->
+  <script>
+    (function() {
+      var observed = document.querySelectorAll('.js-observe');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15
+        });
+
+        observed.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // 구형 브라우저용: 그냥 모두 보이게
+        observed.forEach(function(el) {
+          el.classList.add('is-visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
