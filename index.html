@@ -139,15 +139,21 @@
 <body>
 
   <!-- 헤더 -->
-  <header>
-    <div class="logo">RE-ARCHIVE</div>
-    <nav>
-      <a href="goodcafe/pages/archive.html">아카이브</a>
-      <a href="goodcafe/pages/stories.html">스토리</a>
-      <a href="goodcafe/pages/lab.html">실험실</a>
-      <a href="goodcafe/pages/about.html">소개</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">
+    <a href="{{ '/' | relative_url }}" style="text-decoration:none; color:inherit;">
+      RE-ARCHIVE
+    </a>
+  </div>
+  <nav>
+    <a href="{{ '/' | relative_url }}">홈</a>
+    <a href="{{ '/pages/archives.html' | relative_url }}">Archives</a>
+    <a href="{{ '/pages/stories.html'  | relative_url }}">Stories</a>
+    <a href="{{ '/pages/labs.html'     | relative_url }}">Labs</a>
+    <a href="{{ '/pages/about.html'    | relative_url }}">About</a>
+  </nav>
+</header>
+
 
   <!-- 히어로 영역 -->
   <section class="hero">
