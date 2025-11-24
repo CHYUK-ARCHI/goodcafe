@@ -1,0 +1,12 @@
+goodcafe/
+  _config.yml
+  _layouts/
+    default.html
+  _includes/
+    header.html
+    footer.html
+  index.md
+  archives.md
+  labs.md
+  stories.md
+  about.md
