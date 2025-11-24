@@ -39,13 +39,13 @@
     }
 
     .hero {
-      padding: 120px 40px;
+      padding: 120px 40px 80px;
       max-width: 900px;
       margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: 48px;
+      font-size: 42px;
       margin: 0 0 20px;
       letter-spacing: -1px;
       line-height: 1.2;
@@ -54,11 +54,29 @@
     .hero p {
       font-size: 18px;
       color: #555;
-      max-width: 600px;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero .hero-button {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid #111;
+      font-size: 14px;
+      text-decoration: none;
+      color: #111;
+      background: #fff;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero .hero-button:hover {
+      background: #111;
+      color: #fff;
     }
 
     .section {
-      padding: 80px 40px;
+      padding: 60px 40px 80px;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -124,20 +142,22 @@
   <header>
     <div class="logo">RE-ARCHIVE</div>
     <nav>
-      <a href="archive.html">아카이브</a>
-      <a href="stories.html">스토리</a>
-      <a href="lab.html">실험실</a>
-      <a href="about.html">소개</a>
+      <a href="/pages/archive.html">아카이브</a>
+      <a href="/pages/stories.html">스토리</a>
+      <a href="/pages/lab.html">실험실</a>
+      <a href="/pages/about.html">소개</a>
     </nav>
   </header>
 
   <!-- 히어로 영역 -->
   <section class="hero">
-    <h1>버려진 근현대 건축들에게<br>다른 미래를 제안합니다.</h1>
+    <h1>버려진 근현대 건축들의<br>다른 사용법을 기록합니다.</h1>
     <p>
-      교회, 체육관, 공장, 대공간이 카페와 문화공간으로만 소비되는 도시의 현실에서,
-      우리는 그 가능성을 다시 읽고 더 넓은 재사용의 방향을 찾고자 합니다.
+      교회, 체육관, 공장, 대공간이 카페와 문화공간으로만 소모되는 흐름 속에서,
+      Re-Archive는 한 번 더 질문합니다. 이 건축은 원래 무엇을 위해 지어졌고,
+      앞으로 어떻게 다시 쓰일 수 있을까.
     </p>
+    <a class="hero-button" href="/pages/about.html">Re:Layer와 프로젝트 더 알아보기 →</a>
   </section>
 
   <!-- 최신 아카이브 프리뷰 -->
@@ -156,7 +176,7 @@
       <div class="card">
         <img src="https://images.unsplash.com/photo-1579547621706-1a9c79d5d8af" alt="건물 이미지">
         <div class="card-content">
-          <h3>○○공장 리노베이션</h3>
+          <h3>○○공장 전환 사례</h3>
           <p>공장 → 복합문화공간 / 1974년 건립</p>
         </div>
       </div>
@@ -164,8 +184,8 @@
       <div class="card">
         <img src="https://images.unsplash.com/photo-1600585153439-98c79c471cbd" alt="건물 이미지">
         <div class="card-content">
-          <h3>폐체육관 활용안 연구</h3>
-          <p>체육관 → 공유작업공간 시나리오</p>
+          <h3>폐체육관 활용 시나리오</h3>
+          <p>체육관 → 공유작업공간, 커뮤니티 프로그램</p>
         </div>
       </div>
 
@@ -180,14 +200,14 @@
       <div class="card">
         <div class="card-content">
           <h3>왜 오래된 교회는 카페가 되는가?</h3>
-          <p>건축적·사회적 배경을 분석한 에세이</p>
+          <p>도시와 종교 공간의 변화를 건축적 관점에서 읽어낸 에세이.</p>
         </div>
       </div>
 
       <div class="card">
         <div class="card-content">
           <h3>산업유산의 재활용과 도시적 가능성</h3>
-          <p>공장의 구조가 왜 문화공간에 적합한가</p>
+          <p>공장의 구조가 왜 문화·작업 공간에 적합한지에 대한 분석.</p>
         </div>
       </div>
 
