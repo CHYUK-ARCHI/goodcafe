@@ -1,14 +1,14 @@
 <header>
   <div class="logo">
-    <a href="/goodcafe/" style="text-decoration:none; color:inherit;">
+    <a href="{{ '/' | relative_url }}" style="text-decoration:none; color:inherit;">
       RE-ARCHIVE
     </a>
   </div>
   <nav>
-    <a href="/goodcafe/">홈</a>
-    <a href="/goodcafe/pages/archives.html">Archives</a>
-    <a href="/goodcafe/pages/stories.html">Stories</a>
-    <a href="/goodcafe/pages/labs.html">Labs</a>
-    <a href="/goodcafe/pages/about.html">About</a>
+    <a href="{{ '/' | relative_url }}">홈</a>
+    <a href="{{ '/pages/archives.html' | relative_url }}">Archives</a>
+    <a href="{{ '/pages/stories.html'  | relative_url }}">Stories</a>
+    <a href="{{ '/pages/labs.html'     | relative_url }}">Labs</a>
+    <a href="{{ '/pages/about.html'    | relative_url }}">About</a>
   </nav>
 </header>
