@@ -1,225 +1,74 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Re-Archive: 오래된 건축의 다른 미래</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background: #ffffff;
-      color: #111111;
-      line-height: 1.6;
-    }
+---
+layout: default
+title: "Home"
+permalink: /
+---
 
-    header {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5e5e5;
-    }
+<section class="hero">
+  <h1 class="hero-title">버려진 근현대 건축들의<br>다른 사용법을 기록합니다.</h1>
+  <p class="hero-subtitle">
+    교회, 체육관, 공장, 대공간이 카페와 문화공간으로만 소모되는 흐름 속에서,
+    Re-Archive는 한 번 더 질문합니다.
+  </p>
+  <p class="hero-text">
+    이 건축은 원래 무엇을 위해 지어졌고, 앞으로 어떻게 다시 쓰일 수 있을까.
+    이 사이트는 카페화된 건축을 기록하고, 그 너머의 대안을 실험하는 개인 아카이브이자
+    작은 연구 플랫폼입니다.
+  </p>
+  <a class="hero-button" href="{{ '/about/' | relative_url }}">
+    Re:Layer와 프로젝트 더 알아보기 →
+  </a>
+</section>
 
-    header .logo {
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: -0.5px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      color: #000;
-    }
-
-    .hero {
-      padding: 120px 40px 80px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      margin: 0 0 20px;
-      letter-spacing: -1px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #555;
-      max-width: 620px;
-      margin-bottom: 28px;
-    }
-
-    .hero .hero-button {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid #111;
-      font-size: 14px;
-      text-decoration: none;
-      color: #111;
-      background: #fff;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .hero .hero-button:hover {
-      background: #111;
-      color: #fff;
-    }
-
-    .section {
-      padding: 60px 40px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section h2 {
-      font-size: 26px;
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 28px;
-    }
-
-    .card {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #fafafa;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 16px;
-    }
-
-    .card-content h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
-    }
-
-    .card-content p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
-    }
-
-    footer {
-      padding: 40px;
-      text-align: center;
-      background: #fafafa;
-      border-top: 1px solid #e5e5e5;
-      font-size: 14px;
-      color: #777;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- 헤더 -->
-  <header>
-    <div class="logo">RE-ARCHIVE</div>
-    <nav>
-      <a href="/goodcafe/pages/archives.html">Archives</a>
-      <a href="/goodcafe/pages/stories.html">Stories</a>
-      <a href="/goodcafe/pages/labs.html">Labs</a>
-      <a href="/goodcafe/pages/about.html">About</a>
-    </nav>
-  </header>
-
-  <!-- 히어로 영역 -->
-  <section class="hero">
-    <h1>버려진 근현대 건축들의<br>다른 사용법을 기록합니다.</h1>
-    <p>
-      교회, 체육관, 공장, 대공간이 카페와 문화공간으로만 소모되는 흐름 속에서,
-      Re-Archive는 한 번 더 질문합니다. 이 건축은 원래 무엇을 위해 지어졌고,
-      앞으로 어떻게 다시 쓰일 수 있을까.
-    </p>
-    <a class="hero-button" href="/goodcafe/pages/about.html">
-      Re:Layer와 프로젝트 더 알아보기 →
-    </a>
-  </section>
-
-  <!-- 최신 아카이브 프리뷰 -->
-  <section class="section">
-    <h2>최근 기록한 건물들</h2>
-    <div class="cards">
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="건물 이미지">
-        <div class="card-content">
-          <h3>구 ○○교회 리노베이션</h3>
-          <p>예배당 → 카페 / 1987년 건립</p>
-        </div>
+<section class="section">
+  <h2>최근 기록한 건물들</h2>
+  <div class="cards">
+    <article class="card js-observe">
+      <div class="image-layer">
+        <img class="before"
+             src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+             alt="교회 리노베이션">
+        <img class="after"
+             src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1200&q=80"
+             alt="카페로 전환된 교회">
       </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1579547621706-1a9c79d5d8af" alt="건물 이미지">
-        <div class="card-content">
-          <h3>○○공장 전환 사례</h3>
-          <p>공장 → 복합문화공간 / 1974년 건립</p>
-        </div>
+      <div class="card-content">
+        <h3>구 ○○교회 리노베이션</h3>
+        <p>예배당 → 카페 / 1987년 건립, 2022년 전환</p>
       </div>
+    </article>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600585153439-98c79c471cbd" alt="건물 이미지">
-        <div class="card-content">
-          <h3>폐체육관 활용 시나리오</h3>
-          <p>체육관 → 공유작업공간, 커뮤니티 프로그램</p>
-        </div>
+    <article class="card js-observe">
+      <div class="image-layer">
+        <img class="before"
+             src="https://images.unsplash.com/photo-1502563658407-0963fba1c64a?auto=format&fit=crop&w=1200&q=80"
+             alt="공장">
+        <img class="after"
+             src="https://images.unsplash.com/photo-1500534314211-0a24cd03f2c0?auto=format&fit=crop&w=1200&q=80"
+             alt="문화공간">
       </div>
-
-    </div>
-  </section>
-
-  <!-- 스토리 프리뷰 -->
-  <section class="section">
-    <h2>스토리</h2>
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-content">
-          <h3>왜 오래된 교회는 카페가 되는가?</h3>
-          <p>도시와 종교 공간의 변화를 건축적 관점에서 읽어낸 에세이.</p>
-        </div>
+      <div class="card-content">
+        <h3>○○공장 복합문화공간</h3>
+        <p>산업유산 → 전시·공연·카페가 결합된 문화창고</p>
       </div>
+    </article>
+  </div>
+</section>
 
-      <div class="card">
-        <div class="card-content">
-          <h3>산업유산의 재활용과 도시적 가능성</h3>
-          <p>공장의 구조가 왜 문화·작업 공간에 적합한지에 대한 분석.</p>
-        </div>
+<section class="section">
+  <h2>스토리</h2>
+  <div class="cards">
+    <article class="card js-observe">
+      <div class="card-content">
+        <h3>왜 오래된 교회는 카페가 되는가?</h3>
+        <p>도시와 종교 공간의 변화를 건축적 관점에서 읽어낸 짧은 에세이.</p>
       </div>
-
-    </div>
-  </section>
-
-  <!-- 풋터 -->
-  <footer>
-    © 2025 RE-ARCHIVE — 기록, 비평, 대안 실험실
-  </footer>
-
-</body>
-</html>
+    </article>
+    <article class="card js-observe">
+      <div class="card-content">
+        <h3>산업유산의 카페화와 그 이후</h3>
+        <p>공장의 구조가 소비공간에 흡수되는 방식과 한계를 검토합니다.</p>
+      </div>
+    </article>
+  </div>
+</section>
