@@ -1,14 +1,6 @@
 title: "RE-ARCHIVE"
 description: "카페화된 근현대 건축을 기록하고, 다른 사용법을 실험하는 아카이브"
 url: "https://chyuk-archi.github.io"
-baseurl: "/goodcafe"   # 프로젝트 레포 이름
-theme: nil
+baseurl: "/goodcafe"   # 레포 이름
 
-markdown: kramdown
-kramdown:
-  input: GFM
-
-exclude:
-  - README.md
-  - node_modules
-  - vendor
+theme: null   # ★ GitHub 기본 테마 끔 (중요)
