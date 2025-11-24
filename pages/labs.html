@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Labs — Re-Archive: 새로운 대안 실험실</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      padding: 90px 40px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin: 0 0 18px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: #444;
+      max-width: 680px;
+    }
+
+    .section {
+      padding: 40px 40px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    /* 필터/태그 영역 */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filter-chip {
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      padding: 6px 14px;
+      font-size: 12px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-chip.active,
+    .filter-chip:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    /* 프로젝트 그리드 */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      background: #fafafa;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .project-card.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-image-layer {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .project-image-layer img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .project-image-layer img.sketch {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .project-image-layer img.render {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    /* hover 시 스케치에서 3D로 레이어 전환 */
+    .project-card:hover .project-image-layer img.sketch {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .project-card:hover .project-image-layer img.render {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    .project-meta {
+      padding: 16px 16px 14px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-meta-left {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #777;
+    }
+
+    .project-meta-right {
+      font-size: 11px;
+      color: #999;
+    }
+
+    .project-body {
+      padding: 16px 16px 18px;
+    }
+
+    .project-title {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      color: #666;
+    }
+
+    /* 프로세스 섹션 */
+    .process-wrapper {
+      position: relative;
+      padding-left: 16px;
+      margin-top: 10px;
+    }
+
+    .process-line {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #111, #ccc);
+      opacity: 0.3;
+    }
+
+    .process-step {
+      position: relative;
+      margin-bottom: 26px;
+      padding-left: 18px;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .process-step.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .process-bullet {
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #111;
+    }
+
+    .process-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .process-step-text {
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background: #fafafa;
+      border-top: 1px solid #e5e5e5;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+      .hero {
+        padding: 70px 20px 30px;
+      }
+      .section {
+        padding: 30px 20px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="logo">RE-ARCHIVE</div>
+    <nav>
+      <a href="../index.html">홈</a>
+      <a href="archive.html">아카이브</a>
+      <a href="stories.html">스토리</a>
+      <a href="labs.html">실험실</a>
+      <a href="about.html">소개</a>
+    </nav>
+  </header>
+
+  <!-- 히어로: Labs 소개 -->
+  <section class="hero">
+    <h1 class="hero-title">Labs — 스케치와 기억이 겹치는 실험실</h1>
+    <p class="hero-subtitle">
+      기존 프로젝트의 스케치와 3D 기억을 다시 겹쳐 보면서,
+      카페 이후의 다른 대안 프로그램을 탐색하는 공간입니다.
+    </p>
+    <p class="hero-text">
+      이 페이지에 정리된 프로젝트들은 완성된 건축보다는
+      <strong>“다른 사용법으로 전환될 수 있는 시나리오”</strong>에 가까운 실험들입니다.
+      각 카드에는 초기 스케치와 3D 볼륨, 그리고 그 사이에서 파생된 새로운 프로그램의 레이어가 담겨 있습니다.
+      아래로 스크롤하면서, 스케치가 3D로, 3D가 다시 다른 공간으로 번역되는 과정을 따라가 보세요.
+    </p>
+  </section>
+
+  <!-- 프로젝트 리스트 -->
+  <section class="section">
+    <h2>실험 중인 프로젝트들</h2>
+
+    <!-- 필터 (현재는 UI만, 나중에 JS로 기능 확장 가능) -->
+    <div class="filters">
+      <button class="filter-chip active">전체</button>
+      <button class="filter-chip">교회 → 커뮤니티</button>
+      <button class="filter-chip">공장 → 제작·실험</button>
+      <button class="filter-chip">체육관 → 공유공간</button>
+      <button class="filter-chip">하이브리드 프로그램</button>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- 프로젝트 카드 1 -->
+      <article class="project-card js-observe">
+        <div class="project-image-layer">
+          <!-- 스케치 이미지 -->
+          <img class="sketch"
+               src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1200&q=80"
+               alt="교회 리노베이션 스케치">
+          <!-- 3D / 렌더 이미지 -->
+          <img class="render"
+               src="https://images.unsplash.com/photo-1505842679540-5b2d363f3f22?auto=format&fit=crop&w=1200&q=80"
+               alt="교회 리노베이션 3D 뷰">
+        </div>
+        <div class="project-meta">
+          <div class="project-meta-left">CHURCH TO COMMUNITY</div>
+          <div class="project-meta-right">Layered reuse scenario</div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Weekday Nave — 평일에 열리는 나브</h3>
+          <p class="project-desc">
+            일요일마다 가득 차던 예배당이 주중에는 비어 있는 상황에서,
+            기존 나브(nave)를 저녁 학교·커뮤니티 다이닝·공유 스튜디오로 겹쳐 쓰는 시나리오.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">대형교회</span>
+            <span cl
 
