@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}
+  </title>
+  <meta name="description" content="{{ site.description | escape }}" />
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    main {
+      min-height: 70vh;
+    }
+
+    .hero {
+      padding: 90px 40px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin: 0 0 18px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: #444;
+      max-width: 680px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid #111;
+      font-size: 14px;
+      text-decoration: none;
+      color: #111;
+      background: #fff;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-button:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .section {
+      padding: 40px 40px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .summary-text {
+      font-size: 14px;
+      color: #555;
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    .cards,
+    .archive-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card,
+    .archive-card,
+    .project-card {
+      border-radius: 16px;
+      border: 1px solid #e5e5e5;
+      overflow: hidden;
+      background: #fafafa;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .card.is-visible,
+    .archive-card.is-visible,
+    .project-card.is-visible,
+    .process-step.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .card-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .image-layer,
+    .archive-image-layer,
+    .project-image-layer {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .image-layer img,
+    .archive-image-layer img,
+    .project-image-layer img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .before,
+    .sketch {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .after,
+    .render {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .archive-card:hover .before,
+    .project-card:hover .sketch {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+
+    .archive-card:hover .after,
+    .project-card:hover .render {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    .meta {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .meta-left {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #777;
+    }
+
+    .meta-right {
+      color: #999;
+    }
+
+    .tags,
+    .archive-tags,
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag,
+    .archive-tag,
+    .project-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      color: #666;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filter-chip {
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      padding: 6px 14px;
+      font-size: 12px;
+      background: #fafafa;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .filter-chip.active,
+    .filter-chip:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    /* 프로세스 라인 공통 */
+    .process-wrapper {
+      position: relative;
+      padding-left: 16px;
+      margin-top: 10px;
+    }
+
+    .process-line {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #111, #ccc);
+      opacity: 0.3;
+    }
+
+    .process-step {
+      position: relative;
+      margin-bottom: 26px;
+      padding-left: 18px;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .process-bullet {
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #111;
+    }
+
+    .process-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .process-step-text {
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background: #fafafa;
+      border-top: 1px solid #e5e5e5;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+      .hero {
+        padding: 70px 20px 30px;
+      }
+      .section {
+        padding: 30px 20px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include header.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <script>
+    (function() {
+      var observed = document.querySelectorAll('.js-observe');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15
+        });
+
+        observed.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        observed.forEach(function(el) {
+          el.classList.add('is-visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
