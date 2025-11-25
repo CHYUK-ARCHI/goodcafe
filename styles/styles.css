@@ -1,3 +1,27 @@
+
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('fonts/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('fonts/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('fonts/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+}
+
 /* PROJECTS PAGE */
 .projects-intro {
   padding: 60px 40px 30px;
