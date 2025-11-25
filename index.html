@@ -15,6 +15,7 @@
 
     html, body {
       height: 100%;
+      scroll-behavior: smooth; /* 추가: 메뉴 클릭 시 부드럽게 스크롤 */
     }
 
     body {
@@ -203,6 +204,43 @@
       color: #444;
       max-width: 680px;
     }
+    /* ===== ABOUT 섹션 ===== */
+.section {
+  padding: 120px 40px 80px;
+  background: #fff;
+  color: #111;
+}
+
+.section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.about {
+  background: #f7f7f7;
+}
+
+.about-header {
+  margin-bottom: 32px;
+}
+
+.hero-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 720px;
+}
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #333;
+  max-width: 760px;
+}
+
 
     /* ===== 반응형: 모바일 최적화 ===== */
     @media (max-width: 768px) {
@@ -291,7 +329,7 @@
     <div class="scroll-indicator">Scroll</div>
   </main>
 
-  <!-- ===== 아래 섹션 예시 ===== -->
+  <!-- ===== Project 섹션 ===== -->
   <section class="intro" id="projects">
     <div class="intro-inner">
       <h2>Selected Projects</h2>
@@ -300,6 +338,55 @@
         상단 히어로는 한 장의 인트로 페이지처럼 쓰고, 아래쪽에서 프로젝트 상세 페이지로 링크를 보내는 구조를 만들면
         JKMM, artefactorylab 느낌으로 자연스럽게 이어집니다.
       </p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT 섹션 ===== -->
+  <section class="section about" id="about">
+    <div class="section-inner">
+      <div class="about-header">
+        <h1 class="hero-title">Re:Layer</h1>
+        <p class="hero-subtitle">
+          기존 건축의 층위를 다시 읽고, 다른 사용법을 상상하는 설계자.
+        </p>
+        <p class="hero-description">
+          이 페이지는 Re-Archive 프로젝트를 운영하는 <strong>“Re:Layer”</strong>의
+          간단한 소개와 프로젝트 전반을 연결하는 시공간입니다. 특정 개인의 이력이나 신상 정보보다,
+          오래된 건축을 어떻게 바라보고 싶은지에 대한 생각에 초점을 맞추고 있습니다.
+        </p>
+      </div>
+
+      <!-- 소개 텍스트 -->
+      <h2>새로운 결절점의 생성</h2>
+      <div class="intro-text">
+        <p>
+          건축은 한 번 완성된 오브제가 아니라, 시간이 지나면서 사람들의 사용 방식과 도시의
+          변화가 계속해서 덧입혀지는 <strong>층위(layer)의 집합</strong>에 가깝다고 생각합니다.
+          설계 당시의 의도만으로는 설명할 수 없는, 이후의 사용과 방치, 리노베이션과 망각이
+          모두 함께 기록된 구조물이기 때문입니다.
+        </p>
+        <p>
+          특히 근현대의 교회, 체육관, 공장, 대공간처럼 특정 시대의 욕망과 기술이 집약된 건물들이
+          시간이 지나면서 카페나 전시 공간으로만 소비되는 흐름에 질문을 던지고 싶습니다.
+          “이 건축에는 정말 이 용도밖에 들어갈 수 없는가?”라는 단순한 의심에서 Re-Archive는
+          출발했습니다.
+        </p>
+        <p>
+          화려한 새 껍데기를 씌우는 리노베이션보다,
+          <strong>기존 구조와 기억을 최대한 존중하면서 다른 프로그램을 삽입하는 방식</strong>에
+          관심이 있습니다. 도시의 공백처럼 보이는 장소들을, 또 다른 소비 아이콘이 아닌
+          생활과 학습, 돌봄, 실험이 이루어지는 공적 자원으로 다시 연결하는 가능성을 찾고자 합니다.
+        </p>
+        <p>
+          이 프로젝트에서 건축은 단순히 ‘잘 버는 공간’이 아니라, 특정 시대의 제도와 기술, 신념과
+          실패가 겹쳐진 기록 장치입니다. Re:Layer라는 이름은 그 층위를 한 겹씩 다시 읽고,
+          다른 시간의 상상 속 사용자를 위한 새로운 층을 조심스럽게 더한다는 의미를 담고 있습니다.
+        </p>
+        <p>
+          아래 링크들은 이런 관점으로 진행하는 기록과 시도들입니다. 상상뿐만 아니라,
+          도시와 건축을 둘러싼 질문들을 모아 놓은 아카이브로 읽어주시면 좋겠습니다.
+        </p>
+      </div>
     </div>
   </section>
 
