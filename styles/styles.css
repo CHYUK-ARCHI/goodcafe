@@ -1,1 +1,70 @@
+/* PROJECTS PAGE */
+.projects-intro {
+  padding: 60px 40px 30px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.projects-list {
+  padding: 0 40px 60px;
+}
+
+.projects-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* 각 프로젝트 아이템 */
+.project-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* 썸네일 */
+.project-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 텍스트 영역 */
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.project-name {
+  font-weight: 500;
+}
+
+.project-location {
+  color: #777;
+}
+
+.project-see-more {
+  margin-left: auto;
+  font-size: 12px;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  color: #999;
+}
 
