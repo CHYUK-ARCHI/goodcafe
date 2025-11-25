@@ -153,3 +153,143 @@
   color: #999;
 }
 
+/* ===== HEADER 공통 ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+.logo a {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: #111;
+}
+
+.main-nav a {
+  margin-left: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #555;
+}
+
+.main-nav a:hover {
+  color: #000;
+}
+
+.main-nav a.is-active {
+  font-weight: 600;
+  color: #000;
+}
+
+/* ===== WHAT IF PAGE ===== */
+
+.whatif {
+  padding: 40px 0 60px;
+}
+
+/* Intro */
+.whatif-intro {
+  padding: 40px 40px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.whatif-intro .hero-title {
+  font-size: clamp(32px, 6vw, 48px);
+  margin: 0 0 12px;
+}
+
+.whatif-intro .hero-subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+/* Filter */
+.whatif-filter {
+  padding: 0 40px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.filter-button.is-active {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+
+/* Grid */
+.whatif-grid {
+  padding: 0 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.whatif-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.whatif-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.whatif-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.whatif-meta {
+  padding: 12px 14px 16px;
+}
+
+.whatif-title {
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.whatif-subtitle {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 6px;
+}
+
+.whatif-tagline {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
