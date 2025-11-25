@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Re-Archive</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <a href="index.html">Re-Archive</a>
+  </div>
+  <nav class="main-nav">
+    <a href="archives.html">Archives</a>
+    <a href="stories.html">Stories</a>
+    <a href="what-if.html">What if</a>
+    <a href="projects.html" class="is-active">Projects</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<main class="projects-page">
+  <!-- 상단 인트로 -->
+  <section class="section projects-intro">
+    <div class="section-inner">
+      <h1 class="hero-title">Projects</h1>
+      <p class="hero-subtitle">
+        기록된 건축과 가상의 건축을 함께 아우르는 프로젝트 이미지 아카이브.
+      </p>
+      <p class="hero-description">
+        공모안, 실행안, 그리고 <strong>“What if”</strong> 시나리오까지,
+        프로젝트 단위의 이미지를 모아 한 화면에서 탐색할 수 있는 페이지입니다.
+        각 이미지를 누르면 프로젝트별 상세 아카이브로 이동합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 프로젝트 리스트 (ELEMENT / Images 같은 구조) -->
+  <section class="section projects-list">
+    <div class="section-inner">
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <a href="project-ku-dormitory.html"
+           class="project-item"
+           id="project-ku">
+          <div class="project-thumb">
+            <img src="images/project-ku-thumb.jpg"
+                 alt="KU Foreign Student Dormitory" loading="lazy" />
+          </div>
+          <div class="project-meta">
+            <span class="project-name">KU Foreign Student Dormitory</span>
+            <span class="project-location">Seoul, KR</span>
+            <span class="project-see-more">see more</span>
+          </div>
+        </a>
+
+        <!-- Project 2 -->
+        <a href="project-yibd-a2.html"
+           class="project-item"
+           id="project-yibd">
+          <div class="project-thumb">
+            <img src="images/project-yibd-thumb.jpg"
+                 alt="Yongsan IBD A2 Tower" loading="lazy" />
+          </div>
+          <div class="project-meta">
+            <span class="project-name">Yongsan IBD A2 Tower</span>
+            <span class="project-location">Seoul, KR</span>
+            <span class="project-see-more">see more</span>
+          </div>
+        </a>
+
+        <!-- Project 3 -->
+        <a href="project-city-edge-museum.html"
+           class="project-item"
+           id="project-museum">
+          <div class="project-thumb">
+            <img src="images/project-museum-thumb.jpg"
+                 alt="City Edge Museum" loading="lazy" />
+          </div>
+          <div class="project-meta">
+            <span class="project-name">City Edge Museum</span>
+            <span class="project-location">Gwangju, KR</span>
+            <span class="project-see-more">see more</span>
+          </div>
+        </a>
+
+        <!-- 필요하면 계속 추가 -->
+        <!-- Project 4, 5, 6... -->
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© Re-Archive</p>
+</footer>
+
+</body>
+</html>
