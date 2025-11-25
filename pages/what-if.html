@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What if — Re-Archive</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo"><a href="index.html">Re-Archive</a></div>
+  <nav class="main-nav">
+    <a href="archives.html">Archives</a>
+    <a href="stories.html">Stories</a>
+    <a href="what-if.html" class="is-active">What if</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<main class="whatif">
+  <!-- Intro -->
+  <section class="whatif-intro">
+    <h1>What if</h1>
+    <p>
+      기록에 남지 못한 공모안, 2등으로 머물렀던 제안이 실제 도시 위에 지어졌다면?
+      <br />
+      잃어버린 프로젝트를 가상의 시간선 위에 다시 세우고, 그 도시의 또 다른 단면을 탐색합니다.
+    </p>
+  </section>
+
+  <!-- Filter -->
+  <section class="whatif-filter" aria-label="프로젝트 필터">
+    <button class="filter-button is-active" data-filter="all">All</button>
+    <button class="filter-button" data-filter="second-prize">2nd Prize</button>
+    <button class="filter-button" data-filter="cancelled">Cancelled Competition</button>
+    <button class="filter-button" data-filter="lost">Unbuilt</button>
+    <!-- 필요하면 연도, 도시, 타입 필터 추가 -->
+  </section>
+
+  <!-- Project List / Grid -->
+  <section class="whatif-grid" aria-label="What if 프로젝트 목록">
+
+    <!-- 프로젝트 카드 1 -->
+    <a href="what-if-ku-dormitory.html"
+       class="whatif-card"
+       data-category="second-prize">
+      <div class="whatif-thumb">
+        <img src="images/whatif-ku-dorm-01.jpg"
+             alt="만약 고려대학교 외국인 기숙사가 2023년에 완공되었다면" loading="lazy" />
+      </div>
+      <div class="whatif-meta">
+        <h2 class="whatif-title">What if: KU Foreign Student Dormitory</h2>
+        <p class="whatif-subtitle">
+          2019 국제현상설계 · 2등안 · 서울, 대한민국
+        </p>
+        <p class="whatif-tagline">
+          가정된 완공 연도: 2023 · Campus Edge Urban Stitch
+        </p>
+      </div>
+    </a>
+
+    <!-- 프로젝트 카드 2 -->
+    <a href="what-if-yibd-a2-tower.html"
+       class="whatif-card"
+       data-category="cancelled">
+      <div class="whatif-thumb">
+        <img src="images/whatif-yibd-a2-01.jpg"
+             alt="용산 국제업무지구 A2 타워가 통합 개발 시나리오로 지어졌다면" loading="lazy" />
+      </div>
+      <div class="whatif-meta">
+        <h2 class="whatif-title">What if: YIBD A2 Integrated Tower</h2>
+        <p class="whatif-subtitle">
+          2012 도시복합개발안 · 사업 중단 · 서울, 대한민국
+        </p>
+        <p class="whatif-tagline">
+          가정된 완공 연도: 2020 · Vertical Green Spine
+        </p>
+      </div>
+    </a>
+
+    <!-- 이후 프로젝트 카드 계속 추가 -->
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© Re-Archive</p>
+</footer>
+
+<script src="whatif.js"></script>
+</body>
+</html>
