@@ -139,6 +139,51 @@ document.addEventListener("DOMContentLoaded", () => {
     heroMedia.addEventListener("focusout", resumeSliderIfInView);
   }
 
+  // === Bulletin Board 상호작용 ===
+  const bulletinSection = document.querySelector(".bulletin");
+  if (bulletinSection) {
+    const filterButtons = Array.from(
+      bulletinSection.querySelectorAll(".bulletin-filter")
+    );
+    const bulletinCards = Array.from(
+      bulletinSection.querySelectorAll(".bulletin-card")
+    );
+
+    const setFilter = (filter) => {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.filter === filter;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+
+      bulletinCards.forEach((card) => {
+        const category = card.dataset.category;
+        const shouldShow = filter === "all" || category === filter;
+        card.classList.toggle("is-hidden", !shouldShow);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setFilter(button.dataset.filter);
+      });
+    });
+
+    bulletinCards.forEach((card) => {
+      const toggleButton = card.querySelector(".bulletin-toggle");
+      const detail = card.querySelector(".bulletin-body");
+      if (!toggleButton || !detail) return;
+
+      toggleButton.addEventListener("click", () => {
+        const isOpen = card.classList.toggle("is-open");
+        toggleButton.setAttribute("aria-expanded", String(isOpen));
+        toggleButton.textContent = isOpen ? "Collapse" : "Details";
+      });
+    });
+
+    setFilter("all");
+  }
+
   // 초기 1장 세팅 (IntersectionObserver가 늦게 도는 경우 대비)
   if (useImageSlider && projectImages.length) {
     showSlide(currentIndex);

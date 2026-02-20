@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Bulletin Editor — Re-Archive</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-brand">
+      <a href="../index.html">Re-Archive</a>
+      <span>Admin Console</span>
+    </div>
+    <nav class="admin-nav" aria-label="관리자 메뉴">
+      <a href="admin-bulletin.html">Bulletin</a>
+      <a class="is-active" href="admin-bulletin-edit.html">Create</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+    <button class="admin-cta" type="button">로그아웃</button>
+  </header>
+
+  <main class="admin-layout">
+    <section class="admin-panel admin-editor" aria-label="게시글 편집">
+      <div class="admin-table-header">
+        <h3>게시글 작성</h3>
+        <div class="admin-table-actions">
+          <button class="admin-button" type="button">미리보기</button>
+          <button class="admin-button" type="button">임시 저장</button>
+          <button class="admin-button primary" type="button">발행</button>
+        </div>
+      </div>
+
+      <form class="admin-form">
+        <div class="admin-field">
+          <label for="title">제목</label>
+          <input id="title" type="text" placeholder="게시글 제목을 입력하세요" />
+        </div>
+
+        <div class="admin-field-group">
+          <div class="admin-field">
+            <label for="category">카테고리</label>
+            <select id="category">
+              <option>공지</option>
+              <option>이벤트</option>
+              <option>리서치</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="author">작성자</label>
+            <input id="author" type="text" placeholder="예: Re:Layer" />
+          </div>
+          <div class="admin-field">
+            <label for="publish-date">게시일</label>
+            <input id="publish-date" type="date" />
+          </div>
+        </div>
+
+        <div class="admin-field">
+          <label for="summary">요약</label>
+          <textarea id="summary" rows="3" placeholder="카드에 보일 요약 문구"></textarea>
+        </div>
+
+        <div class="admin-field">
+          <label for="content">본문</label>
+          <textarea id="content" rows="8" placeholder="게시글 내용을 입력하세요"></textarea>
+        </div>
+
+        <div class="admin-field-group">
+          <div class="admin-field">
+            <label for="thumbnail">썸네일 업로드</label>
+            <input id="thumbnail" type="file" />
+          </div>
+          <div class="admin-field">
+            <label for="status">상태</label>
+            <select id="status">
+              <option>초안</option>
+              <option>발행</option>
+              <option>예약</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="priority">노출 우선순위</label>
+            <select id="priority">
+              <option>보통</option>
+              <option>상</option>
+              <option>최상</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-toggle">
+          <input id="pin" type="checkbox" />
+          <label for="pin">상단 고정</label>
+        </div>
+
+        <div class="admin-actions">
+          <a class="admin-button" href="admin-bulletin.html">목록으로</a>
+          <button class="admin-button" type="button">초안 저장</button>
+          <button class="admin-button primary" type="button">발행</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
