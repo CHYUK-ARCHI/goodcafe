@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = src;
   }
 
+  function isHeroInView() {
+    if (!heroSection) return false;
+    const rect = heroSection.getBoundingClientRect();
+    return rect.bottom >= 0 && rect.top <= window.innerHeight * 0.75;
+  }
+
+  function getEffectiveInterval() {
+    return prefersReducedMotion && slideInterval < 8000
+      ? slideInterval * 2
+      : slideInterval;
+  }
+
   function showSlide(index) {
     if (!heroMedia || !projectImages.length) return;
 
@@ -46,28 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startSlider() {
-    if (!useImageSlider) return;
-    if (intervalId || prefersReducedMotion && !projectImages.length) return;
-    if (!projectImages.length) return;
+    if (!useImageSlider || intervalId || !projectImages.length) return;
 
     // 첫 슬라이드 표시
     showSlide(currentIndex);
 
-    const interval =
-      prefersReducedMotion && slideInterval < 8000
-        ? slideInterval * 2
-        : slideInterval;
-
     intervalId = setInterval(() => {
       currentIndex = (currentIndex + 1) % projectImages.length;
       showSlide(currentIndex);
-    }, interval);
+    }, getEffectiveInterval());
   }
 
   function stopSlider() {
     if (intervalId) {
       clearInterval(intervalId);
       intervalId = null;
+    }
+  }
+
+  function resumeSliderIfInView() {
+    if (useImageSlider && isHeroInView()) {
+      startSlider();
     }
   }
 
@@ -115,40 +126,62 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.hidden) {
       stopSlider();
     } else {
-      if (useImageSlider && heroSection) {
-        // 화면에 hero가 보이는 상태에서만 다시 시작
-        const rect = heroSection.getBoundingClientRect();
-        const inView =
-          rect.bottom >= 0 && rect.top <= window.innerHeight * 0.75;
-        if (inView) {
-          startSlider();
-        }
-      }
+      resumeSliderIfInView();
     }
   });
 
   // === hover/focus 시 일시정지 ===
   if (heroMedia) {
     heroMedia.addEventListener("mouseenter", stopSlider);
-    heroMedia.addEventListener("mouseleave", () => {
-      // 다시 화면에 보이는 상태라면 재시작
-      if (useImageSlider && heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        const inView =
-          rect.bottom >= 0 && rect.top <= window.innerHeight * 0.75;
-        if (inView) startSlider();
-      }
-    });
+    heroMedia.addEventListener("mouseleave", resumeSliderIfInView);
 
     heroMedia.addEventListener("focusin", stopSlider);
-    heroMedia.addEventListener("focusout", () => {
-      if (useImageSlider && heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        const inView =
-          rect.bottom >= 0 && rect.top <= window.innerHeight * 0.75;
-        if (inView) startSlider();
-      }
+    heroMedia.addEventListener("focusout", resumeSliderIfInView);
+  }
+
+  // === Bulletin Board 상호작용 ===
+  const bulletinSection = document.querySelector(".bulletin");
+  if (bulletinSection) {
+    const filterButtons = Array.from(
+      bulletinSection.querySelectorAll(".bulletin-filter")
+    );
+    const bulletinCards = Array.from(
+      bulletinSection.querySelectorAll(".bulletin-card")
+    );
+
+    const setFilter = (filter) => {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.filter === filter;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+
+      bulletinCards.forEach((card) => {
+        const category = card.dataset.category;
+        const shouldShow = filter === "all" || category === filter;
+        card.classList.toggle("is-hidden", !shouldShow);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setFilter(button.dataset.filter);
+      });
     });
+
+    bulletinCards.forEach((card) => {
+      const toggleButton = card.querySelector(".bulletin-toggle");
+      const detail = card.querySelector(".bulletin-body");
+      if (!toggleButton || !detail) return;
+
+      toggleButton.addEventListener("click", () => {
+        const isOpen = card.classList.toggle("is-open");
+        toggleButton.setAttribute("aria-expanded", String(isOpen));
+        toggleButton.textContent = isOpen ? "Collapse" : "Details";
+      });
+    });
+
+    setFilter("all");
   }
 
   // 초기 1장 세팅 (IntersectionObserver가 늦게 도는 경우 대비)

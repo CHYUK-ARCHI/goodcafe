@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Bulletin Board — Re-Archive</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-brand">
+      <a href="../index.html">Re-Archive</a>
+      <span>Admin Console</span>
+    </div>
+    <nav class="admin-nav" aria-label="관리자 메뉴">
+      <a class="is-active" href="admin-bulletin.html">Bulletin</a>
+      <a href="admin-bulletin-edit.html">Create</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+    <button class="admin-cta" type="button">로그아웃</button>
+  </header>
+
+  <main class="admin-layout">
+    <section class="admin-panel admin-summary" aria-label="게시판 요약">
+      <div>
+        <p class="admin-label">게시글 수</p>
+        <h2>128</h2>
+        <p class="admin-subtext">지난 30일 +12</p>
+      </div>
+      <div>
+        <p class="admin-label">검수 대기</p>
+        <h2>9</h2>
+        <p class="admin-subtext">오늘 접수 3건</p>
+      </div>
+      <div>
+        <p class="admin-label">예약 게시</p>
+        <h2>4</h2>
+        <p class="admin-subtext">이번 주</p>
+      </div>
+      <div>
+        <p class="admin-label">신고</p>
+        <h2>1</h2>
+        <p class="admin-subtext">처리 필요</p>
+      </div>
+    </section>
+
+    <section class="admin-panel admin-filters" aria-label="게시판 필터">
+      <div class="admin-search">
+        <label for="search">검색</label>
+        <input id="search" type="search" placeholder="제목, 작성자, 태그" />
+      </div>
+      <div class="admin-filter-group">
+        <label for="category">카테고리</label>
+        <select id="category">
+          <option>전체</option>
+          <option>공지</option>
+          <option>이벤트</option>
+          <option>리서치</option>
+        </select>
+      </div>
+      <div class="admin-filter-group">
+        <label for="status">상태</label>
+        <select id="status">
+          <option>전체</option>
+          <option>발행</option>
+          <option>초안</option>
+          <option>예약</option>
+        </select>
+      </div>
+      <div class="admin-filter-group">
+        <label for="date">기간</label>
+        <input id="date" type="date" />
+      </div>
+      <div class="admin-actions">
+        <a class="admin-button primary" href="admin-bulletin-edit.html">+ 새 게시글</a>
+        <button class="admin-button" type="button">필터 초기화</button>
+      </div>
+    </section>
+
+    <section class="admin-panel" aria-label="게시판 목록">
+      <div class="admin-table-header">
+        <h3>게시글 목록</h3>
+        <div class="admin-table-actions">
+          <button class="admin-button" type="button">선택 삭제</button>
+          <button class="admin-button" type="button">일괄 발행</button>
+        </div>
+      </div>
+      <div class="admin-table">
+        <div class="admin-row admin-row-head">
+          <span>선택</span>
+          <span>제목</span>
+          <span>카테고리</span>
+          <span>작성자</span>
+          <span>상태</span>
+          <span>게시일</span>
+          <span>관리</span>
+        </div>
+        <div class="admin-row">
+          <input type="checkbox" aria-label="선택" />
+          <div>
+            <strong>Archive V3 Open Call</strong>
+            <p class="admin-subtext">리서치 스케치 8월 모집</p>
+          </div>
+          <span class="admin-pill">공지</span>
+          <span>Re:Layer</span>
+          <span class="admin-status published">발행</span>
+          <span>2024-08-24</span>
+          <div class="admin-row-actions">
+            <a href="admin-bulletin-edit.html" class="admin-link">편집</a>
+            <button type="button" class="admin-link">미리보기</button>
+          </div>
+        </div>
+        <div class="admin-row">
+          <input type="checkbox" aria-label="선택" />
+          <div>
+            <strong>Open Archive Night</strong>
+            <p class="admin-subtext">야간 투어 안내</p>
+          </div>
+          <span class="admin-pill">이벤트</span>
+          <span>Seoul Desk</span>
+          <span class="admin-status scheduled">예약</span>
+          <span>2024-09-02</span>
+          <div class="admin-row-actions">
+            <a href="admin-bulletin-edit.html" class="admin-link">편집</a>
+            <button type="button" class="admin-link">예약 해제</button>
+          </div>
+        </div>
+        <div class="admin-row">
+          <input type="checkbox" aria-label="선택" />
+          <div>
+            <strong>Adaptive Reuse Report</strong>
+            <p class="admin-subtext">12개 도시 리포트 공개</p>
+          </div>
+          <span class="admin-pill">리서치</span>
+          <span>Data Lab</span>
+          <span class="admin-status draft">초안</span>
+          <span>2024-09-10</span>
+          <div class="admin-row-actions">
+            <a href="admin-bulletin-edit.html" class="admin-link">편집</a>
+            <button type="button" class="admin-link">발행</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

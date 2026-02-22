@@ -162,10 +162,121 @@
       font-size: 18px; text-transform: uppercase; letter-spacing: 0.16em;
       margin-bottom: 12px;
     }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid #111;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      transition: all 0.2s ease;
+    }
+    .hero-cta:hover {
+      background: #111;
+      color: #fff;
+    }
 
     /* ===== Contact ===== */
     #contact h2 { font-size: 18px; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 16px; }
     #contact p { font-size: 14px; line-height: 1.8; color: #444; max-width: 480px; }
+
+    /* ===== Bulletin ===== */
+    .bulletin { background: #fff; }
+    .bulletin-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .bulletin-filters {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 12px;
+    }
+    .bulletin-filter {
+      border: 1px solid #e2e2e2;
+      background: #fff;
+      color: #222;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .bulletin-filter.is-active,
+    .bulletin-filter:hover {
+      border-color: #111;
+      background: #111;
+      color: #fff;
+    }
+    .bulletin-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .bulletin-card {
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafafa;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .bulletin-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .bulletin-card.is-hidden { display: none; }
+    .bulletin-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #777;
+    }
+    .bulletin-tag {
+      border: 1px solid #ddd;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      color: #333;
+    }
+    .bulletin-title {
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .bulletin-preview {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #444;
+    }
+    .bulletin-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #555;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .bulletin-card.is-open .bulletin-body {
+      max-height: 220px;
+    }
+    .bulletin-toggle {
+      align-self: flex-start;
+      border: 1px solid #111;
+      background: transparent;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+    .bulletin-actions {
+      margin-top: 28px;
+    }
 
     /* ===== 반응형 ===== */
     @media (max-width: 768px) {
@@ -175,6 +286,7 @@
       .hero-subtitle { font-size: 14px; }
       .section { padding: 96px 20px 60px; }
       .intro-text { font-size: 13px; }
+      .bulletin-card { padding: 16px; }
     }
     @media (max-width: 480px) {
       .hero-title { letter-spacing: 0.08em; }
@@ -319,6 +431,78 @@
   </div>
 </section>
   
+  <!-- ===== BULLETIN BOARD ===== -->
+  <section class="section bulletin" id="bulletin">
+    <div class="section-inner">
+      <div class="bulletin-header">
+        <h2 class="hero-title">Bulletin Board</h2>
+        <p class="hero-subtitle">
+          업데이트, 공지, 이벤트 소식을 카드 형태로 빠르게 확인하세요.
+        </p>
+        <div class="bulletin-filters" role="tablist" aria-label="게시판 필터">
+          <button class="bulletin-filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="bulletin-filter" type="button" data-filter="공지" role="tab" aria-selected="false">Notice</button>
+          <button class="bulletin-filter" type="button" data-filter="이벤트" role="tab" aria-selected="false">Event</button>
+          <button class="bulletin-filter" type="button" data-filter="리서치" role="tab" aria-selected="false">Research</button>
+        </div>
+      </div>
+
+      <div class="bulletin-grid">
+        <article class="bulletin-card" data-category="공지">
+          <div class="bulletin-card-top">
+            <span class="bulletin-tag">Notice</span>
+            <span>2024.08.24</span>
+          </div>
+          <h3 class="bulletin-title">Archive V3 Open Call</h3>
+          <p class="bulletin-preview">
+            새로운 도심 레이어를 기록할 작업을 모집합니다.
+          </p>
+          <div class="bulletin-body" id="bulletin-body-1">
+            리서치 로그, 사진, 스케치까지 포함된 통합 제출 포맷을 준비해주세요. 선정된 프로젝트는
+            9월 온라인 전시에 소개됩니다.
+          </div>
+          <button class="bulletin-toggle" type="button" aria-expanded="false" aria-controls="bulletin-body-1">Details</button>
+        </article>
+
+        <article class="bulletin-card" data-category="이벤트">
+          <div class="bulletin-card-top">
+            <span class="bulletin-tag">Event</span>
+            <span>2024.09.02</span>
+          </div>
+          <h3 class="bulletin-title">Open Archive Night</h3>
+          <p class="bulletin-preview">
+            큐레이터와 함께하는 야간 투어가 진행됩니다.
+          </p>
+          <div class="bulletin-body" id="bulletin-body-2">
+            서울, 부산, 광주 세 도시의 리뉴얼 사례를 함께 읽습니다. 현장 Q&A 세션과
+            간단한 워크북이 제공됩니다.
+          </div>
+          <button class="bulletin-toggle" type="button" aria-expanded="false" aria-controls="bulletin-body-2">Details</button>
+        </article>
+
+        <article class="bulletin-card" data-category="리서치">
+          <div class="bulletin-card-top">
+            <span class="bulletin-tag">Research</span>
+            <span>2024.09.10</span>
+          </div>
+          <h3 class="bulletin-title">Adaptive Reuse Report</h3>
+          <p class="bulletin-preview">
+            12개 도시의 재활용 프로젝트 인사이트를 정리했습니다.
+          </p>
+          <div class="bulletin-body" id="bulletin-body-3">
+            프로그램 전환, 커뮤니티 운영, 공공 파트너십에 관한 핵심 지표와
+            사례 데이터를 제공하며, 프로젝트 신청 시 참고 자료로 활용 가능합니다.
+          </div>
+          <button class="bulletin-toggle" type="button" aria-expanded="false" aria-controls="bulletin-body-3">Details</button>
+        </article>
+      </div>
+
+      <div class="bulletin-actions">
+        <a href="pages/admin-bulletin.html" class="hero-cta">관리자 페이지로 이동 →</a>
+      </div>
+    </div>
+  </section>
+
   
   <!-- ===== ABOUT ===== -->
   <section class="section about" id="about">
