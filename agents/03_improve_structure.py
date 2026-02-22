@@ -80,12 +80,13 @@ STRUCTURE_PLAN = {
         ],
         "pages/projects.html": [
             ("../main.js", "../js/main.js"),
-            ("../images/", "../assets/images/"),
+            ('href="styles.css"', 'href="../styles/styles.css"'),
+            ('"images/', '"../assets/images/'),
         ],
         "pages/what-if.html": [
             ("../main.js", "../js/main.js"),
-            ("../images/", "../assets/images/"),
-            ("whatif.js", "../js/whatif.js"),
+            ('"images/', '"../assets/images/'),
+            ('"whatif.js"', '"../js/whatif.js"'),
         ],
         "partials/header.html": [
             ("../main.js", "../js/main.js"),
@@ -233,7 +234,8 @@ def update_html_paths(root: Path, updates: dict, dry_run: bool) -> list[dict]:
         changes = []
 
         for old, new in replacements:
-            if old in content:
+            # 이미 새 경로가 포함된 경우 중복 치환 방지
+            if old in content and new not in content:
                 content = content.replace(old, new)
                 changes.append((old, new))
 

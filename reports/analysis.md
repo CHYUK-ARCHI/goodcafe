@@ -1,6 +1,6 @@
 # Re-Archive 레포지토리 분석 리포트
 
-> 생성일시: 2026-02-21 12:59:15  
+> 생성일시: 2026-02-22 04:55:09  
 > 분석 에이전트: `agents/01_analyze.py`
 
 ---
@@ -9,10 +9,10 @@
 
 | 항목 | 값 |
 |------|-----|
-| 총 파일 수 | 19개 |
-| 총 코드 라인 | 4,486줄 |
-| 총 크기 | 2705.6 KB |
-| 발견된 이슈 | 🔴 HIGH 26 / 🟡 MEDIUM 1 / 🟢 LOW 0 |
+| 총 파일 수 | 41개 |
+| 총 코드 라인 | 6,317줄 |
+| 총 크기 | 5312.1 KB |
+| 발견된 이슈 | 🔴 HIGH 26 / 🟡 MEDIUM 0 / 🟢 LOW 0 |
 
 ---
 
@@ -20,6 +20,7 @@
 
 ```
 goodcafe/
+├── CHANGELOG.md
 ├── README.md
 ├── index.html
 ├── main.js
@@ -31,17 +32,43 @@ goodcafe/
     ├── 05_publish.py
     ├── README.md
     └── run_all.sh
+├── assets/
+    ├── .gitkeep
+    ├── .gitkeep
+    ├── project-01.jpg
+    ├── project-02.jpg
+    ├── project-03.jpg
+    ├── project-04.jpg
+    └── .gitkeep
+├── css/
+    └── utils.css
+├── docs/
+    ├── .gitkeep
+    ├── agents.md
+    └── skills.md
 ├── images/
     ├── project-01.jpg
     ├── project-02.jpg
     ├── project-03.jpg
     └── project-04.jpg
+├── js/
+    ├── contact.js
+    ├── lightbox.js
+    ├── main.js
+    ├── nav.js
+    └── whatif.js
 ├── pages/
     ├── projects.html
     └── what-if.html
 ├── partials/
     ├── footer.html
     └── header.html
+├── reports/
+    ├── analysis.md
+    ├── check.md
+    ├── skills.md
+    ├── structure.md
+    └── summary.md
 └── styles/
     └── styles.css
 ```
@@ -52,11 +79,12 @@ goodcafe/
 
 | 카테고리 | 파일 수 | 총 라인 | 총 크기 |
 |---------|--------|--------|--------|
-| CSS | 1 | 295 | 7.2 KB |
+| CSS | 2 | 540 | 14.3 KB |
 | HTML | 5 | 634 | 22.5 KB |
-| Image | 4 | 0 | 2551.1 KB |
-| JavaScript | 1 | 158 | 4.5 KB |
-| Markdown | 2 | 47 | 1.3 KB |
+| Image | 8 | 0 | 5102.3 KB |
+| JavaScript | 6 | 624 | 19.7 KB |
+| Markdown | 10 | 1,167 | 34.4 KB |
+| Other | 4 | 0 | 0 B |
 | Python | 5 | 3,290 | 116.0 KB |
 | Shell | 1 | 62 | 3.0 KB |
 
@@ -65,8 +93,8 @@ goodcafe/
 ## HTML 참조 분석
 
 ### Scripts (2개)
-- `main.js` ← `index.html`
-- `whatif.js` ← `pages/what-if.html`
+- `js/main.js` ← `index.html`
+- `../js/whatif.js` ← `pages/what-if.html`
 
 ### Styles (4개)
 - `styles.css` ← `pages/projects.html`
@@ -75,9 +103,9 @@ goodcafe/
 - `styles.css` ← `partials/header.html`
 
 ### Images (8개)
-- `images/project-ku-thumb.jpg` ← `index.html`
-- `images/project-yibd-thumb.jpg` ← `index.html`
-- `images/project-museum-thumb.jpg` ← `index.html`
+- `assets/images/project-ku-thumb.jpg` ← `index.html`
+- `assets/images/project-yibd-thumb.jpg` ← `index.html`
+- `assets/images/project-museum-thumb.jpg` ← `index.html`
 - `images/project-ku-thumb.jpg` ← `pages/projects.html`
 - `images/project-yibd-thumb.jpg` ← `pages/projects.html`
 - `images/project-museum-thumb.jpg` ← `pages/projects.html`
@@ -103,9 +131,13 @@ goodcafe/
 
 ### 발견된 현대적 패턴
 
-- ✅ `IntersectionObserver` in `main.js`
-- ✅ `ReducedMotion` in `main.js`
-- ✅ `DOMContentLoaded` in `main.js`
+- ✅ `DOMContentLoaded` in `js/contact.js`
+- ✅ `DOMContentLoaded` in `js/lightbox.js`
+- ✅ `IntersectionObserver` in `js/main.js`
+- ✅ `ReducedMotion` in `js/main.js`
+- ✅ `DOMContentLoaded` in `js/main.js`
+- ✅ `DOMContentLoaded` in `js/nav.js`
+- ✅ `DOMContentLoaded` in `js/whatif.js`
 
 ---
 
@@ -113,6 +145,9 @@ goodcafe/
 
 ### 발견된 현대적 CSS 기능
 
+- ✅ `clamp(` in `css/utils.css`
+- ✅ `var(--` in `css/utils.css`
+- ✅ `grid-template` in `css/utils.css`
 - ✅ `clamp(` in `styles/styles.css`
 - ✅ `grid-template` in `styles/styles.css`
 
@@ -122,14 +157,14 @@ goodcafe/
 
 ### 🔴 HIGH (26개)
 
-- **[missing_file]** 참조된 파일이 존재하지 않음: `whatif.js` (in `pages/what-if.html`)
+- **[missing_file]** 참조된 파일이 존재하지 않음: `../js/whatif.js` (in `pages/what-if.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `styles.css` (in `pages/projects.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `styles.css` (in `pages/what-if.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `styles.css` (in `partials/footer.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `styles.css` (in `partials/header.html`)
-- **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-ku-thumb.jpg` (in `index.html`)
-- **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-yibd-thumb.jpg` (in `index.html`)
-- **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-museum-thumb.jpg` (in `index.html`)
+- **[missing_file]** 참조된 파일이 존재하지 않음: `assets/images/project-ku-thumb.jpg` (in `index.html`)
+- **[missing_file]** 참조된 파일이 존재하지 않음: `assets/images/project-yibd-thumb.jpg` (in `index.html`)
+- **[missing_file]** 참조된 파일이 존재하지 않음: `assets/images/project-museum-thumb.jpg` (in `index.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-ku-thumb.jpg` (in `pages/projects.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-yibd-thumb.jpg` (in `pages/projects.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `images/project-museum-thumb.jpg` (in `pages/projects.html`)
@@ -148,10 +183,6 @@ goodcafe/
 - **[missing_file]** 참조된 파일이 존재하지 않음: `about.html` (in `pages/what-if.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `what-if-ku-dormitory.html` (in `pages/what-if.html`)
 - **[missing_file]** 참조된 파일이 존재하지 않음: `what-if-yibd-a2-tower.html` (in `pages/what-if.html`)
-
-### 🟡 MEDIUM (1개)
-
-- **[structure]** JS 파일(1개)이 루트에 위치 - `js/` 디렉토리로 이동 권장
 
 ---
 

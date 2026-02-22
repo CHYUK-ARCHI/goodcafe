@@ -1,6 +1,6 @@
 # 폴더 구조 개선 리포트
 
-> 생성일시: 2026-02-21 12:59:26  
+> 생성일시: 2026-02-22 04:55:17  
 > 모드: ✅ 적용됨  
 > 에이전트: `agents/03_improve_structure.py`
 
@@ -10,10 +10,8 @@
 
 | 상태 | 건수 |
 |------|------|
-| 📋 copied | 4 |
-| ✅ created | 4 |
-| ⏭ exists | 3 |
-| 📦 moved | 1 |
+| ? dst_exists | 1 |
+| ⏭ exists | 11 |
 | — no_change | 2 |
 | ✏️ updated | 2 |
 
@@ -25,22 +23,22 @@
 
 - ⏭ `js/`
 - ⏭ `css/`
-- ✅ `assets/`
-- ✅ `assets/images/`
-- ✅ `assets/media/`
-- ✅ `docs/`
+- ⏭ `assets/`
+- ⏭ `assets/images/`
+- ⏭ `assets/media/`
+- ⏭ `docs/`
 - ⏭ `reports/`
 
 ### 파일 이동
 
-- 📦 `main.js` → `js/main.js` _메인 JS를 js/ 디렉토리로 이동_
+- ? `main.js` → `js/main.js` _메인 JS를 js/ 디렉토리로 이동_
 
 ### 이미지 동기화
 
-- 📋 `images/project-01.jpg` → `assets/images/project-01.jpg`
-- 📋 `images/project-02.jpg` → `assets/images/project-02.jpg`
-- 📋 `images/project-03.jpg` → `assets/images/project-03.jpg`
-- 📋 `images/project-04.jpg` → `assets/images/project-04.jpg`
+- ⏭ `images/project-01.jpg` → `assets/images/project-01.jpg`
+- ⏭ `images/project-02.jpg` → `assets/images/project-02.jpg`
+- ⏭ `images/project-03.jpg` → `assets/images/project-03.jpg`
+- ⏭ `images/project-04.jpg` → `assets/images/project-04.jpg`
 
 ### HTML 경로 업데이트
 
@@ -79,7 +77,9 @@ goodcafe/
 ├── css/
 │   └── utils.css
 ├── docs/
-│   └── .gitkeep
+│   ├── .gitkeep
+│   ├── agents.md
+│   └── skills.md
 ├── images/
 │   ├── project-01.jpg
 │   ├── project-02.jpg
@@ -99,10 +99,14 @@ goodcafe/
 │   └── header.html
 ├── reports/
 │   ├── analysis.md
-│   └── skills.md
+│   ├── check.md
+│   ├── skills.md
+│   ├── structure.md
+│   └── summary.md
 ├── styles/
 │   └── styles.css
 ├── .gitignore
+├── CHANGELOG.md
 ├── README.md
 ├── index.html
 └── main.js

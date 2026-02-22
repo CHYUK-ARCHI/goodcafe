@@ -1,8 +1,8 @@
 # Re-Archive 통합 요약 리포트
 
-> 생성일시: 2026-02-21 12:59:40
+> 생성일시: 2026-02-22 04:59:50
 > 브랜치: `claude/repository-analysis-agents-hyvM7`
-> 커밋: `c20ba8c`
+> 커밋: `203b288`
 
 ---
 
@@ -14,32 +14,32 @@
 | `agents/02_find_skills.py` | `reports/skills.md` | ✅ 완료 |
 | `agents/03_improve_structure.py` | `reports/structure.md` | ✅ 완료 |
 | `agents/04_check.py` | `reports/check.md` | ✅ 완료 |
-| `agents/05_publish.py` | `reports/summary.md` | ⏳ 대기 |
+| `agents/05_publish.py` | `reports/summary.md` | ✅ 완료 |
 
 ---
 
 ## 프로젝트 현황
 
-- **총 파일**: 38개
-- **총 코드 라인**: 5,791줄
-- **총 크기**: 5298.8 KB
+- **총 파일**: 57개
+- **총 코드 라인**: 6,421줄
+- **총 크기**: 5319.6 KB
 
 ### 파일 분류
 
 - **CSS**: 2개
-- **HTML**: 5개
-- **Image**: 8개
+- **HTML**: 10개
+- **Image**: 16개
 - **JavaScript**: 6개
-- **Markdown**: 6개
-- **Other**: 5개
+- **Markdown**: 11개
+- **Other**: 6개
 - **Python**: 5개
 - **Shell**: 1개
 
 ### 검증 이슈 요약
 
-- 🔴 HIGH: 37개
+- 🔴 HIGH: 10개
 - 🟡 MEDIUM: 6개
-- 🟢 LOW: 8개
+- 🟢 LOW: 18개
 
 ---
 

@@ -43,30 +43,48 @@ goodcafe/
 │   │   ├── project-01.jpg
 │   │   ├── project-02.jpg
 │   │   ├── project-03.jpg
-│   │   └── project-04.jpg
+│   │   ├── project-04.jpg
+│   │   ├── project-ku-thumb.jpg
+│   │   ├── project-museum-thumb.jpg
+│   │   └── project-yibd-thumb.jpg
 │   └── media/
 ├── css/
 │   └── utils.css
 ├── docs/
+│   ├── agents.md
+│   └── skills.md
 ├── images/
 │   ├── project-01.jpg
 │   ├── project-02.jpg
 │   ├── project-03.jpg
-│   └── project-04.jpg
+│   ├── project-04.jpg
+│   ├── project-ku-thumb.jpg
+│   ├── project-museum-thumb.jpg
+│   ├── project-yibd-thumb.jpg
+│   ├── whatif-ku-dorm-01.jpg
+│   └── whatif-yibd-a2-01.jpg
 ├── js/
 │   ├── contact.js
 │   ├── lightbox.js
 │   ├── main.js
 │   ├── nav.js
 │   └── whatif.js
+├── media/
+│   └── README.md
 ├── pages/
+│   ├── project-city-edge-museum.html
+│   ├── project-ku-dormitory.html
+│   ├── project-yibd-a2.html
 │   ├── projects.html
+│   ├── what-if-ku-dormitory.html
+│   ├── what-if-yibd-a2-tower.html
 │   └── what-if.html
 ├── partials/
 │   ├── footer.html
 │   └── header.html
 ├── styles/
 │   └── styles.css
+├── CHANGELOG.md
 ├── README.md
 ├── index.html
 └── main.js
@@ -132,13 +150,13 @@ open http://localhost:8080
 
 | 항목 | 값 |
 |------|-----|
-| 총 파일 | 38개 |
-| HTML | 5개 |
+| 총 파일 | 57개 |
+| HTML | 10개 |
 | JavaScript | 6개 |
 | CSS | 2개 |
-| 이미지 | 8개 |
-| 총 코드 라인 | 5,791줄 |
-| 총 크기 | 5298.8 KB |
+| 이미지 | 16개 |
+| 총 코드 라인 | 6,421줄 |
+| 총 크기 | 5319.6 KB |
 
 ---
 
@@ -164,4 +182,4 @@ open http://localhost:8080
 
 ---
 
-_Last updated: 2026-02-21 by `agents/05_publish.py`_
+_Last updated: 2026-02-22 by `agents/05_publish.py`_
