@@ -40,6 +40,16 @@
 .hero__manifest { display: flex; flex-direction: column; gap: 32px; margin-top: 28vh; }
 .manifest { font-size: clamp(30px, 8.4vw, 100px); }
 
+/* ---- 01 Problem ---- */
+.prob__count { display: none; }
+.prob__list { display: flex; flex-direction: column; gap: 14vh; }
+.prob__item { display: flex; flex-direction: column; gap: 14px; }
+.prob__label { color: var(--graphite); }
+.prob__text { font-size: clamp(36px, 9.6vw, 120px); line-height: 0.95; }
+.prob__ko { font-size: 13px; line-height: 1.6; color: var(--charcoal); }
+.prob__goal { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--blue); }
+.prob__goal .eyebrow { margin-right: 8px; }
+
 /* ---- 01 From AI to AX ---- */
 .chain { display: grid; gap: 4px; }
 .chain__row { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 8px 0; box-shadow: 0 -1px 0 var(--hairline); }
@@ -59,7 +69,16 @@
 /* ---- 03 Workflow ---- */
 .wf__item { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 10px 0; box-shadow: 0 -1px 0 var(--hairline); position: relative; }
 .wf__tick { display: none; }
-.wf__stage { display: none; }
+.wf__list { display: none; }
+.wf__stage { display: grid; gap: 9vh; }
+.wf__title { display: flex; flex-direction: column; gap: 10px; }
+.wf__title .display { font-size: clamp(44px, 12vw, 80px); }
+.wf__en { max-width: 52ch; }
+.wf__fix { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.wf__fix .eyebrow { margin-right: 4px; }
+.wf__chip { font-size: 11px; padding: 4px 8px; }
+.wf__ko { font-size: 13px; line-height: 1.6; color: var(--charcoal); }
+.wf__kos { display: none; }
 .cli { padding: 0; overflow: hidden; }
 .cli__bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; box-shadow: 0 1px 0 var(--hairline); }
 .cli__dots { display: flex; gap: 6px; }
@@ -215,6 +234,14 @@
   .hero__manifest { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; pointer-events: none; }
   .hero__manifest > .manifest { grid-area: 1 / 1; text-align: center; font-size: clamp(40px, 5.4vw, 96px); }
 
+  /* 01 Problem — 큰 문장 하나씩 */
+  .prob { display: grid; align-items: center; padding-left: calc(var(--pad) + 4vw); }
+  .prob__list { display: grid; gap: 0; }
+  .prob__list > .prob__item { grid-area: 1 / 1; gap: 2.4vh; }
+  .prob__text { font-size: clamp(56px, 7vw, 132px); }
+  .prob__ko { position: absolute; right: var(--pad); bottom: 7vh; max-width: 30ch; text-align: right; font-size: 14px; }
+  .prob__count { display: block; position: absolute; right: var(--pad); top: calc(var(--nav-h) + 16px); font-size: 12px; }
+
   /* 01 From AI to AX — 좌: 체인 / 우: 레이어 */
   .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4vw; }
   .split__left { display: grid; align-items: center; }
@@ -239,7 +266,13 @@
   .wf__item:first-child .wf__tick { transform: scaleX(1); }
   .wf__tick { display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--obsidian); transform-origin: 0 50%; transform: scaleX(0); }
   .wf__stage { display: grid; }
+  .wf__list { display: block; }
+  .wf__stage { gap: 0; }
   .wf__stage > .wf__title { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 12px; }
+  .wf__en { font-size: 15px; max-width: 46ch; }
+  .wf__ko--inline { display: none; }
+  .wf__kos { display: grid; position: absolute; right: var(--pad); bottom: 6vh; width: min(30vw, 400px); }
+  .wf__kos > .wf__ko { grid-area: 1 / 1; text-align: right; font-size: 13px; }
   .wf__title .display { font-size: clamp(56px, 6.6vw, 116px); }
   .wf__q { color: var(--charcoal); }
 

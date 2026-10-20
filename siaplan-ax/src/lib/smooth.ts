@@ -6,6 +6,18 @@ import { nextSnap } from "./stepper";
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
 
+let active: Lenis | null = null;
+
+/** 장면 바 등에서 쓰는 공용 이동. 데스크톱(Lenis)은 부드럽게, 그 외는 브라우저 기본 smooth. */
+export function scrollToY(y: number, duration = 1.4) {
+  if (active) {
+    active.scrollTo(y, { duration, easing: easeOutQuart, lock: true, force: true });
+  } else {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" });
+  }
+}
+
 /**
  * 데스크톱 + 모션 허용일 때:
  * - Lenis 로 부드러운 스크롤을 하되, 휠은 직접 받아 한 번에 한 단계(step)씩 이동한다.
@@ -19,6 +31,7 @@ export function initSmoothScroll(): () => void {
   if (!window.matchMedia(DESKTOP_MOTION).matches) return () => {};
 
   const lenis = new Lenis({ lerp: 0.1, smoothWheel: false });
+  active = lenis;
   lenis.on("scroll", ScrollTrigger.update);
   const tick = (time: number) => lenis.raf(time * 1000);
   gsap.ticker.add(tick);
@@ -120,5 +133,6 @@ export function initSmoothScroll(): () => void {
     document.removeEventListener("click", onClick);
     gsap.ticker.remove(tick);
     lenis.destroy();
+    active = null;
   };
 }

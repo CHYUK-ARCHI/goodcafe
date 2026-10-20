@@ -39,7 +39,7 @@ export function ApplyScene() {
   return (
     <section ref={ref} id="apply" className="scene" style={{ ["--len" as string]: 1.4 }} data-haze="0.65" data-tone="0" data-label="Apply">
       <div className="stage apply">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_12 Apply</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_13 Apply</p>
 
         <p className="poster-sm apply__corner" data-reveal>SIAPLAN<br />AI/AX TEAM TF<br />APPLY</p>
 
