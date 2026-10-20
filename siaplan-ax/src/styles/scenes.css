@@ -73,15 +73,47 @@
 .orch__newtag { width: 100%; margin-bottom: 8px; }
 .orch__sub { margin-top: 16px; max-width: 44ch; }
 
-/* ---- 05 Build ---- */
-.build__row { display: grid; grid-template-columns: 40px 1fr 24px; align-items: baseline; padding: 8px 0; box-shadow: 0 -1px 0 var(--hairline); }
-.build__word { font-size: clamp(28px, 8vw, 56px); }
-.build__arrow { opacity: 0; }
-.build__side { display: grid; gap: 16px; }
-.build__axo { max-width: 420px; }
-.build__card { display: none; }
-.build__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.build__tags .chip { font-size: 11px; padding: 4px 8px; }
+/* ---- 06 Platform ---- */
+.plat__lede { margin-bottom: 24px; color: var(--charcoal); }
+.plat__lede b { color: var(--obsidian); font-weight: 500; }
+.plat__row { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 8px 0; box-shadow: 0 -1px 0 var(--hairline); }
+.plat__word { font-size: clamp(30px, 8vw, 56px); }
+.plat__sub { grid-column: 2; }
+.plat__side { display: grid; gap: 16px; }
+.plat__stack { position: relative; max-width: 420px; }
+.plat__pms { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.plat__pmsline { display: none; }
+.plat__card { display: none; }
+.plat__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.plat__tags .chip { font-size: 11px; padding: 4px 8px; }
+
+/* ---- 07 Tools by phase ---- */
+.ph__lede { color: var(--charcoal); max-width: 32ch; }
+.ph__lede b { color: var(--obsidian); font-weight: 500; }
+.ph__grid { display: grid; gap: 16px; }
+.ph__col { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.ph__title { margin-bottom: 8px; }
+.ph__label { margin-top: 8px; }
+.ph__tools { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--stone); line-height: 1.7; }
+.ph__ai { font-size: 13px; color: var(--charcoal); line-height: 1.6; }
+.ph__goal { align-self: flex-start; margin-top: 12px; }
+.ph__link { display: none; }
+.ph__pms { position: relative; overflow: hidden; display: grid; gap: 8px; }
+.ph__pmstag { color: var(--white); }
+.ph__pmsflow { display: none; }
+.ph__pmstext { font-size: 15px; line-height: 1.6; }
+.ph__arrow { color: var(--smoke); margin: 0 6px; }
+.ph__pmsnote { display: block; margin-top: 6px; font-size: 13px; color: var(--smoke); }
+
+/* ---- 08 Goals ---- */
+.goal__row { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 10px 0; box-shadow: 0 -1px 0 var(--hairline); position: relative; }
+.goal__name { font-size: 18px; letter-spacing: -0.02em; }
+.goal__tick { display: none; }
+.goal__stage { display: none; }
+.goal__cards { display: grid; gap: 16px; }
+.goal__title { margin: 6px 0 10px; }
+.goal__howlabel { margin-top: 14px; }
+.goal__how { margin-top: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; line-height: 1.8; color: var(--charcoal); }
 
 /* ---- 06 Showreel ---- */
 .reel__win { padding: 0; overflow: hidden; width: 100%; }
@@ -96,10 +128,25 @@
 .rm__card { display: flex; flex-direction: column; gap: 8px; }
 .rm__n { display: flex; justify-content: space-between; color: inherit; }
 .rm__here { color: inherit; }
-.rm__keys { font-family: var(--mono); font-size: 12px; letter-spacing: 0.071em; text-transform: uppercase; color: var(--stone); line-height: 1.7; }
-.card--inverted .rm__keys { color: var(--smoke); }
+.rm__tasks { font-size: 13px; line-height: 1.55; color: var(--charcoal); display: grid; gap: 4px; }
+.rm__tasks li::before { content: "□ "; font-family: var(--mono); color: var(--smoke); }
+.card--inverted .rm__tasks { color: #d6d6d6; }
+.rm__goals { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: auto; padding-top: 10px; }
+.rm__goal { font-family: var(--mono); font-size: 11px; letter-spacing: 0.071em; text-transform: uppercase; color: var(--green); }
+.card--inverted .rm__goal { color: #7fd18f; }
 
-/* ---- 08 Final ---- */
+/* ---- 10 Join ---- */
+.join__top { display: grid; gap: 16px; }
+.join__sub { max-width: 46ch; }
+.join__grid { display: grid; gap: 16px; }
+.join__card { display: flex; flex-direction: column; gap: 10px; padding: 20px; }
+.join__n { display: flex; justify-content: space-between; color: inherit; }
+.join__soon { color: var(--green); }
+.join__title { font-size: clamp(32px, 3.4vw, 52px); }
+.card--inverted .join__desc { color: #d6d6d6; }
+.join__cta { margin-top: 8px; }
+
+/* ---- 11 Final ---- */
 .final__lines { display: flex; flex-direction: column; gap: 32px; }
 .final__end { margin-top: 64px; }
 .final__ax { font-weight: 300; }
@@ -160,6 +207,8 @@
   .wf { display: grid; grid-template-columns: minmax(200px, 19vw) 1fr minmax(320px, 30vw); gap: 3vw; align-items: center; }
   .wf__list { align-self: center; }
   .wf__item { color: var(--ash); }
+  .wf__item:first-child { color: var(--obsidian); }
+  .wf__item:first-child .wf__tick { transform: scaleX(1); }
   .wf__tick { display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--obsidian); transform-origin: 0 50%; transform: scaleX(0); }
   .wf__stage { display: grid; }
   .wf__stage > .wf__title { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 12px; }
@@ -173,15 +222,46 @@
   .orch__headbox { position: absolute; left: var(--pad); bottom: 8vh; }
   .orch__head { font-size: clamp(40px, 5vw, 88px); }
 
-  /* 05 Build — 좌: 리스트 / 우: 판 + 카드 */
-  .build { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4vw; align-items: center; }
-  .build__row { color: var(--ash); }
-  .build__word { font-size: clamp(28px, 3.6vw, 60px); }
-  .build__side { justify-items: center; }
-  .build__axo { width: min(36vw, 50vh); max-width: none; }
-  .build__card { display: grid; width: min(100%, 440px); min-height: 132px; }
-  .build__card > .build__desc { grid-area: 1 / 1; }
-  .build__one { max-width: 440px; }
+  /* 06 Platform — 좌: 리스트 / 우: 레이어 스택 + 카드 */
+  .plat { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: center; }
+  .plat__row { color: var(--ash); }
+  .plat__row:first-child { color: var(--obsidian); }
+  .plat__word { font-size: clamp(32px, 4vw, 64px); }
+  .plat__side { justify-items: center; }
+  .plat__stack { width: min(34vw, 54vh); max-width: none; }
+  .plat__pms { position: absolute; right: -3vw; top: 12%; margin: 0; }
+  .plat__pmsline { display: block; width: 48px; height: 1px; background: var(--obsidian); transform-origin: 0 50%; }
+  .plat__card { display: grid; width: min(100%, 460px); min-height: 150px; }
+  .plat__card > .plat__desc { grid-area: 1 / 1; }
+
+  /* 07 Tools by phase */
+  .ph { display: flex; flex-direction: column; justify-content: center; gap: 2.4vh; }
+  .ph__lede { max-width: none; }
+  .ph__grid { grid-template-columns: repeat(4, 1fr); }
+  .ph__col { padding: 18px; }
+  .ph__link { display: block; position: absolute; left: 50%; bottom: -17px; width: 1px; height: 16px; background: var(--obsidian); transform-origin: 50% 0; }
+  .ph__pms { grid-template-columns: auto 1fr; align-items: center; column-gap: 20px; padding: 16px 20px; }
+  .ph__pmsflow { display: block; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--spectrum); transform-origin: 0 50%; }
+
+  /* 08 Goals — 리스트 · 숫자 · 카드 */
+  .goal { display: grid; grid-template-columns: minmax(220px, 21vw) 1fr minmax(320px, 30vw); gap: 3vw; align-items: center; }
+  .goal__row { color: var(--ash); }
+  .goal__row:first-child { color: var(--obsidian); }
+  .goal__row:first-child .goal__tick { transform: scaleX(1); }
+  .goal__tick { display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--obsidian); transform-origin: 0 50%; transform: scaleX(0); }
+  .goal__stage { display: grid; justify-items: center; }
+  .goal__stage > .goal__big { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; }
+  .goal__num { font-size: clamp(160px, 24vw, 380px); font-weight: 450; letter-spacing: -0.07em; line-height: 0.9; }
+  .goal__unit { margin-top: 8px; font-size: 13px; }
+  .goal__cards { display: grid; gap: 0; }
+  .goal__cards > .goal__info { grid-area: 1 / 1; }
+
+  /* 10 Join */
+  .join { display: flex; flex-direction: column; justify-content: center; gap: 4vh; }
+  .join__top { grid-template-columns: 1fr 1fr; align-items: end; }
+  .join__grid { grid-template-columns: repeat(3, 1fr); }
+  .join__card { min-height: 26vh; padding: 24px; }
+  .join__desc { margin-top: auto; }
 
   /* 06 Showreel */
   .reel__win { width: min(80vw, calc(66vh * 16 / 9)); }
@@ -195,7 +275,9 @@
   .rm__rail { position: absolute; left: 0; right: 0; top: 50%; height: 1px; margin-top: 0; background: var(--obsidian); transform-origin: 0 50%; }
   .rm__node { position: relative; z-index: 1; width: 10px; height: 10px; border-radius: 2px; background: var(--paper); box-shadow: 0 0 0 1px var(--obsidian); }
   .rm__grid { grid-template-columns: repeat(3, 1fr); }
-  .rm__card { min-height: 21vh; padding: 20px; }
+  .rm { gap: 3.4vh; }
+  .rm__card { min-height: 0; padding: 16px 18px; gap: 6px; }
+  .rm__tasks { font-size: 12.5px; gap: 2px; }
 
   /* 08 Final */
   .final__lines { display: grid; gap: 0; }

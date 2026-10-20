@@ -17,17 +17,20 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 
 ## 구성
 
-| 장면 | 파일 | 모션 |
+| 장면 | 파일 | 내용 · 모션 |
 |---|---|---|
-| 00 Declaration | `scenes/HeroScene.tsx` | × 글리프가 + 십자선으로 회전·확장, 선언문 마스크 |
-| 01 From AI to AX | `scenes/FromAIToAX.tsx` | 액소노메트릭 판 4장이 쌓였다가 하나로 조립 |
-| 02 Break the work | `scenes/BreakTheWork.tsx` | 단어가 Task 노드로 흩어지고 선이 그려짐 |
-| 03 The new workflow | `scenes/WorkflowScene.tsx` | 6단계 리스트 · 타이틀 · CLI 패널 동기화 |
+| 00 Declaration | `scenes/HeroScene.tsx` | × 글리프가 + 십자선으로 회전·확장, 선언문 |
+| 01 From AI to AX | `scenes/FromAIToAX.tsx` | 액소노메트릭 판 4장이 쌓였다가 하나로 조립 → AX |
+| 02 Break the work | `scenes/BreakTheWork.tsx` | 단어가 Task 노드로 흩어지고 AI 경로가 그려짐 |
+| 03 The new workflow | `scenes/WorkflowScene.tsx` | 6단계 리스트 · 타이틀 · workflow.log 동기화 |
 | 04 Human × Agent × Tool | `scenes/OrchestratorScene.tsx` | 선형 구조 해체 → 네트워크 재구성 |
-| 05 What we build | `scenes/BuildScene.tsx` | 항목별로 평면 셀이 점등 |
-| 06 Showreel | `scenes/ShowreelScene.tsx` | 스크롤로 영상 프레임 스크러빙 |
-| 07 Roadmap | `scenes/RoadmapScene.tsx` | 6개월 레일 + 카드 |
-| 08 SIAPLAN AI/AX | `scenes/FinalScene.tsx` | 마지막 문장 · 워드마크 · spectrum hairline |
+| 05 Showreel | `scenes/ShowreelScene.tsx` | 스크롤로 영상 프레임 스크러빙 |
+| 06 Platform | `scenes/PlatformScene.tsx` | SID-DB · SIA AI · SIA Studio 레이어 + PMS 연동 |
+| 07 Tools by phase × PMS | `scenes/PhaseToolsScene.tsx` | 단계별(현상·SD·DD·CD) 툴 + SIA AI 지원, PMS 바 |
+| 08 Goals | `scenes/GoalsScene.tsx` | 10일 현상설계 · 3일 규모검토/법규 · 동영상 workflow · Add-on · SID-DB |
+| 09 Roadmap | `scenes/RoadmapScene.tsx` | 6개월 월별 중간 작업과 연결된 목표 |
+| 10 Join the team | `scenes/JoinScene.tsx` | 특전: AI 교육 · AI 계정 · 인센티브(예정) |
+| 11 SIAPLAN AI/AX | `scenes/FinalScene.tsx` | 마지막 문장 · 워드마크 · spectrum hairline |
 
 - 모든 장면은 `lib/motion.ts` 의 `useScrollScene` 으로 만든 scrub 타임라인 하나 (스크롤 위치 ↔ 진행도 1:1).
 - 장면 DOM 기본값은 "완성된 상태". 데스크톱+모션 허용일 때만 sticky 스테이지와 초기 상태를 적용하므로, 모바일·`prefers-reduced-motion` 에서는 정적 세로 레이아웃이 그대로 보인다.
