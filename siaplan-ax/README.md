@@ -20,9 +20,10 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 | 장면 | 파일 | 내용 · 모션 |
 |---|---|---|
 | 00 Declaration | `scenes/HeroScene.tsx` | × 글리프가 + 십자선으로 회전·확장, 선언문 |
+| 01 Problem | `scenes/ProblemScene.tsx` | 문제의식 4가지(자료 찾기 · 법규검토 체계 · 비효율·공유 부재 · 소통 라인 부재)를 큰 영어 문장으로 하나씩, 오른쪽 아래 작은 한글 번역 (`lib/problems.ts`) |
 | 01 From AI to AX | `scenes/FromAIToAX.tsx` | 액소노메트릭 판 4장이 쌓였다가 하나로 조립 → AX |
 | 02 Break the work | `scenes/BreakTheWork.tsx` | 단어가 Task 노드로 흩어지고 AI 경로가 그려짐 |
-| 03 The new workflow | `scenes/WorkflowScene.tsx` | 6단계 리스트 · 타이틀 · workflow.log 동기화 |
+| 03 The new workflow | `scenes/WorkflowScene.tsx` | Define→Iterate 각 단계가 P01–P04 를 어떻게 푸는지 + 오른쪽 아래 한글 번역 + workflow.log |
 | 04 Human × Agent × Tool | `scenes/OrchestratorScene.tsx` | 선형 구조 해체 → 네트워크 재구성 |
 | 05 Showreel | `scenes/ShowreelScene.tsx` | 스크롤로 영상 프레임 스크러빙 |
 | 06 Platform | `scenes/PlatformScene.tsx` | SID-DB · SIA AI · SIA Studio 레이어 + PMS 연동 |
@@ -34,6 +35,8 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 | 12 Apply | `scenes/ApplyScene.tsx` | 지원 포스터: career@siaplan.com · 마감 2026.10.31(토) 23:59 KST · D-day 자동 계산 · 하단 작은 글씨로 "건축가의 spirit" 문장과 Michael Graves(NYT, 2012) 발췌 |
 
 - 모든 장면은 `lib/motion.ts` 의 `useScrollScene` 으로 만든 scrub 타임라인 하나 (스크롤 위치 ↔ 진행도 1:1).
+- **장면 바** (`SceneRail.tsx`): 왼쪽에 장면마다 짧은 가로 바. 마우스를 대면 독처럼 확대되고 가장 가까운 장면 이름이 보이며, 클릭하면 그 장면의 첫 멈춤 지점으로 이동.
+  터치는 누른 채 위아래로 끌면 확대·이름이 따라오고, 손을 떼면 이동.
 - **스텝 스크롤** (`lib/smooth.ts`, `lib/stepper.ts`): 데스크톱에서는 휠 · ↓↑ · PageDown/Up · Space · 스와이프 한 번에 다음 "멈춤 지점"까지 이동하고 멈춘다.
   멈춤 지점은 각 장면에서 `steps(tl, [시간…])` 으로 붙인 라벨이다 (구도가 완성되는 시점). 트랙패드 관성 이벤트는 같은 제스처로 보고 무시한다.
   쇼릴은 스크러빙 대신 장면에 도착하면 자동 재생된다. 모바일·reduced-motion 은 기본 스크롤.

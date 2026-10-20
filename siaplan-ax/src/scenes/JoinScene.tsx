@@ -39,7 +39,7 @@ export function JoinScene() {
   return (
     <section ref={ref} className="scene" style={{ ["--len" as string]: 3.5 }} data-haze="0.42" data-tone="0.25" data-label="Join the team">
       <div className="stage join">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_10 Join the team</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_11 Join the team</p>
         <div className="join__top" data-reveal>
           <h2 className="heading-lg join__head">
             <Mask>Join the</Mask>
