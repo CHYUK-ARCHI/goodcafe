@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Axo, type AxoMark } from "../lib/Axo";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // 아래(데이터)에서 위(작업 공간)로 쌓이는 SIAPLAN AI/AX 플랫폼, 그리고 PMS 연동
 const LAYERS = [
@@ -66,6 +66,7 @@ export function PlatformScene() {
       .fromTo(el.querySelector("[data-pmsline]"), { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, (LAYERS.length - 1) * STEP + 0.5)
       .to(rows, { color: "#171717", duration: 0.4 }, end)
       .to({}, { duration: 1 }, end + 0.4);
+    steps(tl, [0, 1.8, 3.2, 6.6]);
   });
 
   return (

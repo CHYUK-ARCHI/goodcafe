@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // 설계 단계별로 지금 쓰는 툴과, 그 위에 얹는 SIA AI 지원, 그리고 단계별 목표
 const PHASES = [
@@ -47,6 +47,7 @@ export function PhaseToolsScene() {
       .fromTo(el.querySelector("[data-pmsbar]"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.3)
       .fromTo(el.querySelector("[data-pmsflow]"), { scaleX: 0 }, { scaleX: 1, duration: 1, ease: "power2.inOut" }, 4.7)
       .to({}, { duration: 1.2 }, 5.7);
+    steps(tl, [3.9, 6.9]);
   });
 
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Mask } from "../lib/Mask";
 import { POSTER_LINES, POSTER_TAGLINE, SPIRIT } from "../lib/posterCopy";
-import { useScrollScene } from "../lib/motion";
+import { steps, useScrollScene } from "../lib/motion";
 
 export const APPLY_EMAIL = "career@siaplan.com";
 export const APPLY_MAILTO = `mailto:${APPLY_EMAIL}?subject=${encodeURIComponent("[SIAPLAN AI/AX] 팀 지원")}`;
@@ -33,6 +33,7 @@ export function ApplyScene() {
     // 아주 약한 패럴랙스만: 큰 타이틀이 조금 올라가고 정보 블록이 따라온다
     tl.fromTo(el.querySelector(".apply__center"), { y: 0 }, { y: -24, duration: 1 }, 0)
       .fromTo(el.querySelector(".apply__info"), { y: 0 }, { y: -12, duration: 1 }, 0);
+    steps(tl, [0]);
   });
 
   return (

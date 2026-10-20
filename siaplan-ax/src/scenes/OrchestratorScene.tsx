@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { NetLines, type NetLine } from "../lib/NetLines";
 import { Pin } from "../lib/Pin";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // 네트워크 박스(%) 좌표
 const ARCH = { x: 10, y: 50 };
@@ -39,6 +39,7 @@ export function OrchestratorScene() {
       .fromTo(all(el, ".orch__head .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 0.9, stagger: 0.15, ease: "power3.out" }, 6)
       .fromTo(el.querySelector("[data-sub]"), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 6.8)
       .to({}, { duration: 1.6 }, 7.4);
+    steps(tl, [0, 2.4, 5.6, 9.0]);
   });
 
   return (

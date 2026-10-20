@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { POSTER_TAGLINE } from "../lib/posterCopy";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 export function FinalScene() {
   const ref = useRef<HTMLElement>(null);
@@ -15,6 +15,7 @@ export function FinalScene() {
       .fromTo(el.querySelector("[data-spec]"), { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 6.6)
       .fromTo(all(el, "[data-end]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, 7.4)
       .to({}, { duration: 1.2 }, 8.4);
+    steps(tl, [1.6, 4.0, 9.6]);
   });
 
   return (

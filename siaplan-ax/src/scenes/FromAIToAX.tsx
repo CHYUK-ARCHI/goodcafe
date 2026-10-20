@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Axo } from "../lib/Axo";
 import { Mask } from "../lib/Mask";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 const STEPS = [
   { t: "AI", d: "하나의 도구" },
@@ -43,6 +43,7 @@ export function FromAIToAX() {
       .fromTo(all(el, "[data-key]"), { yPercent: 130 }, { yPercent: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" }, 6.6)
       .fromTo(el.querySelector("[data-note]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7 }, 7.3)
       .to({}, { duration: 1.2 }, 8);
+    steps(tl, [1.3, 2.4, 3.5, 4.6, 9.2]);
   });
 
   return (

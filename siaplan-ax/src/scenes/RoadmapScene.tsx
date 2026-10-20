@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // 6개월 로드맵 — 목표(Goals)를 향해 매달 해야 할 중간 작업
 const MONTHS = [
@@ -51,6 +51,7 @@ export function RoadmapScene() {
         .fromTo(cards[i].querySelectorAll(".rm__tasks li"), { opacity: 0, x: -6 }, { opacity: 1, x: 0, duration: 0.25, stagger: 0.08 }, at + 0.25);
     });
     tl.to({}, { duration: 1.2 }, n + 0.3);
+    steps(tl, [3.3, 7.5]);
   });
 
   return (
