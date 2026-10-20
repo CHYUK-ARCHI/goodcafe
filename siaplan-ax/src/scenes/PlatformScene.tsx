@@ -31,7 +31,7 @@ const LAYERS = [
 ];
 const MARKS: AxoMark[][] = [
   [[0, 0, "ash"], [1, 0, "ash"], [0, 1, "ash"], [4, 4, "ash"], [5, 4, "ash"], [4, 5, "ash"], [2, 3, "ash"]],
-  [[2, 2], [3, 2], [2, 3], [3, 3, "green"]],
+  [[2, 2], [3, 2], [2, 3], [3, 3, "accent"]],
   [[1, 1], [2, 1], [3, 1], [4, 1], [1, 2], [4, 2], [1, 3], [4, 3], [1, 4], [2, 4], [3, 4], [4, 4]]
 ];
 const STEP = 1.4;
@@ -69,9 +69,9 @@ export function PlatformScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-label="SIA Studio · SIA AI">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-haze="0.3" data-label="SIA Studio · SIA AI">
       <div className="stage plat">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>06 — The platform we build</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_06 The platform we build</p>
 
         <div className="plat__left" data-reveal>
           <h2 className="heading plat__lede">

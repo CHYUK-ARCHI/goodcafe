@@ -18,7 +18,7 @@
 }
 
 :root {
-  --paper: #fafafa;
+  --paper: #eceef1; /* 포스터의 쿨 그레이 캔버스 */
   --white: #ffffff;
   --hairline: #ebebeb;
   --ash: #c9c9c9;
@@ -28,8 +28,10 @@
   --charcoal: #4d4d4d;
   --obsidian: #171717;
   --carbon: #000000;
-  --green: #297a3a;
-  --spectrum: linear-gradient(90deg, #00ff95 0%, #ffd000 25%, #ff1744 50%, #9500ff 75%, #00e5ff 100%);
+  /* 포스터(poster_final_V02)의 일렉트릭 블루 — 유일한 유채색 */
+  --blue: #2f7fe6;
+  --blue-soft: #9cc2f1;
+  --spectrum: linear-gradient(90deg, var(--blue) 0%, var(--blue-soft) 55%, rgba(47, 127, 230, 0) 100%);
 
   /* 한글은 Geist 에 없으므로 Pretendard 로 떨어진다 */
   --sans: "Geist", "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -93,8 +95,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .eyebrow--muted { color: var(--graphite); }
 .ash { color: var(--ash); }
-.ok { color: var(--green); }
+.ok { color: var(--blue); }
 .glyph { color: var(--carbon); }
+
+/* 포스터 타입: 아주 굵고 자간이 촘촘한 블랙 */
+.poster { font-weight: 800; letter-spacing: -0.065em; line-height: 0.88; color: var(--obsidian); }
+.poster-sm { font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; }
+.poster .mask { padding-bottom: 0.16em; margin-bottom: -0.16em; }
+.tagline { font-weight: 700; font-size: 12px; letter-spacing: -0.04em; line-height: 1.12; }
+.underscore { display: grid; gap: 4px; font-size: clamp(16px, 1.5vw, 22px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.35; }
+.underscore li::before { content: "_"; }
+
+/* 헤이즈 — 포스터의 번진 블루 */
+.haze { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 1; }
+.haze__blob {
+  position: absolute; width: 78vmax; height: 62vmax; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(47, 127, 230, 0.92) 0%, rgba(47, 127, 230, 0.62) 34%, rgba(120, 170, 235, 0.28) 64%, rgba(236, 238, 241, 0) 100%);
+  will-change: transform;
+}
+.haze__blob--a { left: -36vmax; top: -30vmax; }
+.haze__blob--b { right: -38vmax; bottom: -32vmax; }
+main { position: relative; z-index: 1; }
 
 /* 줄 마스크 */
 .mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
@@ -147,7 +168,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--pad);
-  background: rgba(250, 250, 250, 0.72);
+  background: rgba(236, 238, 241, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }

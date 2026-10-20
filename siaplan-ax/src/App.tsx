@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Chrome } from "./Chrome";
+import { Haze } from "./lib/Haze";
 import { initSmoothScroll } from "./lib/smooth";
 import { HeroScene } from "./scenes/HeroScene";
 import { FromAIToAX } from "./scenes/FromAIToAX";
@@ -30,6 +31,7 @@ export default function App() {
 
   return (
     <>
+      <Haze />
       <Chrome />
       <main>
         <HeroScene />

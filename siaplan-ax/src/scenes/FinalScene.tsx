@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
+import { POSTER_TAGLINE } from "../lib/posterCopy";
 import { all, useScrollScene } from "../lib/motion";
 
 export function FinalScene() {
@@ -17,14 +18,14 @@ export function FinalScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-label="SIAPLAN AI/AX">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="1" data-label="SIAPLAN AI/AX">
       <div className="stage stage--center final">
         <div className="final__lines" data-reveal>
-          <h2 className="heading-lg final__a">
+          <h2 className="poster final__a">
             <Mask><span className="ash">AI doesn’t</span></Mask>
             <Mask><span className="ash">design for us.</span></Mask>
           </h2>
-          <h2 className="heading-lg final__b">
+          <h2 className="poster final__b">
             <Mask>It changes</Mask>
             <Mask>how we design.</Mask>
           </h2>
@@ -32,10 +33,13 @@ export function FinalScene() {
 
         <div className="final__end" data-reveal>
           <div className="final__brand">
-            <Mask className="display">SIAPLAN</Mask>
-            <Mask className="display final__ax"><span className="glyph">×</span> AI / AX</Mask>
+            <Mask className="poster final__word">SIAPLAN</Mask>
+            <Mask className="poster final__word final__ax"><span className="glyph">×</span> AI/AX TF</Mask>
           </div>
           <span className="spectrum final__spectrum" data-spec />
+          <p className="tagline final__tag" data-end>
+            {POSTER_TAGLINE.map((t) => <span key={t}>{t}<br /></span>)}
+          </p>
           <p className="eyebrow final__foot" data-end>Start small. One task. One workflow. One system.</p>
           <div className="final__ctas" data-end>
             <a className="btn btn--fill" href="#apply">지원하기 ↓</a>

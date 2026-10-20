@@ -7,7 +7,7 @@ const CW = 20; // 셀 반폭(px, viewBox 단위)
 const CH = 11.55; // 셀 반높이 = CW·tan30°
 const T = 5; // 판 두께
 
-type Tone = "ink" | "green" | "ash";
+type Tone = "ink" | "accent" | "ash";
 export type AxoMark = [i: number, j: number, tone?: Tone];
 
 type AxoProps = {
@@ -21,7 +21,7 @@ type AxoProps = {
 
 const p = (i: number, j: number) => [(i - j) * CW, (i + j) * CH] as const;
 const pts = (...xy: (readonly [number, number])[]) => xy.map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`).join(" ");
-const FILL: Record<Tone, string> = { ink: "#171717", green: "#297a3a", ash: "#c9c9c9" };
+const FILL: Record<Tone, string> = { ink: "#171717", accent: "#2f7fe6", ash: "#c9c9c9" };
 
 export function Axo({ n = 6, plates = 1, gap = 70, labels = [], marks = [], className = "" }: AxoProps) {
   const pad = 24;

@@ -54,9 +54,9 @@ export function RoadmapScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-label="6 month roadmap">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-haze="0.16" data-label="6 month roadmap">
       <div className="stage rm">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>09 — 6 month roadmap</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_09 6 month roadmap</p>
         <div className="rm__timeline" aria-hidden="true">
           <span className="eyebrow">Now</span>
           <div className="rm__track">
