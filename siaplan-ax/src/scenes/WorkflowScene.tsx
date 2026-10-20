@@ -2,13 +2,14 @@ import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { all, useScrollScene } from "../lib/motion";
 
+// SIAPLAN AI/AX 6단계 AI 워크플로우 (개발일지 정의)
 const STEPS = [
-  { t: "Define", q: "What is the real problem?", cmd: "siaplan define --brief", out: "목표·제약·산출물 정의" },
-  { t: "Decompose", q: "Break it into tasks.", cmd: "siaplan decompose", out: "Task 분해 · AI 개입 지점 표시" },
-  { t: "Context", q: "Data, rules, project, knowledge.", cmd: "siaplan context --rules --project", out: "법규·지침·사내 지식 연결" },
-  { t: "Generate", q: "Let AI produce options.", cmd: "siaplan generate --options 3", out: "대안 3안 생성" },
-  { t: "Evaluate", q: "Judge against criteria.", cmd: "siaplan evaluate --law --yield", out: "법규·사업성 기준으로 비교" },
-  { t: "Iterate", q: "Refine. Repeat. Systematize.", cmd: "siaplan iterate --save", out: "워크플로우 라이브러리에 저장" }
+  { t: "Define", q: "What is the real problem?", k: "문제 정의 — 무엇을 풀어야 하는가" },
+  { t: "Decompose", q: "Break it into tasks.", k: "설계 업무를 Task로 분해 — AI 개입 지점 정의" },
+  { t: "Context", q: "Data · Rules · Project · Knowledge.", k: "데이터 · 법규 · 프로젝트 · 사내 지식" },
+  { t: "Generate", q: "Ideas · Options · Alternatives.", k: "AI로 아이디어와 대안 생성" },
+  { t: "Evaluate", q: "Analyze · Check · Compare.", k: "기준에 비추어 분석 · 검토 · 비교" },
+  { t: "Iterate", q: "Refine · Improve · Repeat.", k: "다듬고 개선하고 반복 — 시스템으로" }
 ];
 const STEP = 1.3;
 
@@ -63,13 +64,13 @@ export function WorkflowScene() {
 
         <div className="card cli" data-reveal>
           <div className="cli__bar">
-            <span className="eyebrow eyebrow--muted">siaplan — workflow</span>
+            <span className="eyebrow eyebrow--muted">workflow.log</span>
             <span className="cli__dots" aria-hidden="true"><i /><i /><i /></span>
           </div>
           <ul className="cli__body">
             {STEPS.flatMap((s) => [
-              <li key={`${s.t}c`} className="cli__line"><span className="glyph">×</span> {s.cmd}</li>,
-              <li key={`${s.t}o`} className="cli__line cli__line--out"><span className="ok">✓</span> {s.out}</li>
+              <li key={`${s.t}c`} className="cli__line"><span className="glyph">×</span> {s.t.toLowerCase()}</li>,
+              <li key={`${s.t}o`} className="cli__line cli__line--out"><span className="ok">✓</span> {s.k}</li>
             ])}
           </ul>
         </div>

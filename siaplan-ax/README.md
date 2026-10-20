@@ -12,7 +12,8 @@ npm run dev        # 로컬 개발
 npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages 경로에서도 동작)
 ```
 
-배포: Actions → "Deploy SIAPLAN AI/AX page" 수동 실행 (Settings → Pages → Source 를 GitHub Actions 로 먼저 설정).
+배포: `main` 에 `siaplan-ax/**` 변경이 푸시되면 `.github/workflows/siaplan-ax-pages.yml` 이 빌드해 Pages 사이트 루트로 배포한다.
+수동 재배포는 Actions → "Deploy SIAPLAN AI/AX page" → Run workflow. (Settings → Pages → Source = GitHub Actions)
 
 ## 구성
 

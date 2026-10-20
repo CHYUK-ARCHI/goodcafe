@@ -3,13 +3,13 @@ import { Axo } from "../lib/Axo";
 import { all, useScrollScene } from "../lib/motion";
 
 const ITEMS = [
-  { t: "Design Automation", d: "반복되는 설계 업무를 자동화합니다.", tags: ["Massing", "Area", "Layout"], cells: [[1, 1], [2, 1], [3, 1], [1, 2], [2, 2], [3, 2]] },
-  { t: "Regulation", d: "법규 검토와 해석을 구조화합니다.", tags: ["건축법", "주차장법", "조례"], cells: [[5, 0], [6, 0], [7, 0], [7, 1], [7, 2]] },
-  { t: "CAD / BIM", d: "도면·모델과 직접 연결되는 도구를 만듭니다.", tags: ["CAD MCP", "BIM", "Rhino"], cells: [[0, 4], [1, 4], [0, 5], [1, 5], [2, 5]] },
-  { t: "Knowledge", d: "프로젝트와 사내 지식을 쌓고 꺼내 씁니다.", tags: ["Project", "Standard", "Archive"], cells: [[4, 3], [5, 3], [4, 4]] },
-  { t: "Agents", d: "Task를 수행하는 에이전트를 설계합니다.", tags: ["Task", "Tool use", "Review"], cells: [[6, 5], [6, 6], [5, 6]] },
-  { t: "Visualization", d: "이미지와 프레젠테이션을 빠르게 만듭니다.", tags: ["Render", "Diagram", "Deck"], cells: [[2, 7], [3, 7], [3, 6], [2, 6]] },
-  { t: "Workflow", d: "모든 것을 하나의 흐름으로 잇습니다.", tags: ["Connect", "Standardize", "Scale"], cells: [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]] }
+  { t: "Design Automation", d: "반복되는 설계 Task를 자동화합니다.", tags: ["Task", "Automation"], cells: [[1, 1], [2, 1], [3, 1], [1, 2], [2, 2], [3, 2]] },
+  { t: "Regulation", d: "법규 검토를 도면 작업과 연결합니다.", tags: ["Legal CAD"], cells: [[5, 0], [6, 0], [7, 0], [7, 1], [7, 2]] },
+  { t: "CAD / BIM", d: "AI가 CAD·BIM 도구를 직접 다루게 합니다.", tags: ["CAD MCP"], cells: [[0, 4], [1, 4], [0, 5], [1, 5], [2, 5]] },
+  { t: "Knowledge", d: "사내 지식을 쌓고 새 구성원에게 전달합니다.", tags: ["Onboarding"], cells: [[4, 3], [5, 3], [4, 4]] },
+  { t: "Agents", d: "건축가가 조율하는 AI·Agent를 설계합니다.", tags: ["AI", "Agent"], cells: [[6, 5], [6, 6], [5, 6]] },
+  { t: "Visualization", d: "렌더링과 스타일 스터디를 빠르게 만듭니다.", tags: ["Rendering Prompt", "Style Lab"], cells: [[2, 7], [3, 7], [3, 6], [2, 6]] },
+  { t: "Workflow", d: "개별 서비스를 하나의 흐름으로 잇습니다.", tags: ["Connect", "Standardize", "Scale"], cells: [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]] }
 ];
 const STEP = 1.2;
 
