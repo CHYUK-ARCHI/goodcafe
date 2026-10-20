@@ -5,7 +5,7 @@
      JS 의 DESKTOP_MOTION 과 같은 조건을 유지할 것.
    ===================================================================== */
 
-.scene { padding: 96px var(--pad); }
+.scene { padding: 96px var(--pad) 96px var(--pad-l); }
 .scene:first-child { padding-top: calc(var(--nav-h) + 48px); }
 .stage { position: relative; display: flex; flex-direction: column; gap: 24px; }
 .stage__eyebrow { margin-bottom: 8px; }
@@ -205,11 +205,11 @@
   .scene, .scene:first-child { height: calc(var(--len) * 100vh); padding: 0; }
   .stage {
     position: sticky; top: 0; height: 100vh; overflow: hidden;
-    display: block; padding: var(--nav-h) var(--pad) 0;
+    display: block; padding: var(--nav-h) var(--pad) 0 var(--pad-l);
   }
   .stage--center { display: grid; place-items: center; }
   .stage--center > * { grid-area: 1 / 1; }
-  .stage__eyebrow { position: absolute; top: calc(var(--nav-h) + 16px); left: var(--pad); margin: 0; z-index: 3; }
+  .stage__eyebrow { position: absolute; top: calc(var(--nav-h) + 16px); left: var(--pad-l); margin: 0; z-index: 3; }
 
   .pin {
     position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; margin: 0;
@@ -219,7 +219,7 @@
 
   /* 00 Hero — 비대칭 3구역: 헤드라인(좌하) · 글리프(중) · 메타(우상) */
   .hero { min-height: 0; }
-  .hero__head { position: absolute; left: var(--pad); bottom: 9vh; gap: 20px; max-width: 64vw; margin: 0; padding: 0; }
+  .hero__head { position: absolute; left: var(--pad-l); bottom: 9vh; gap: 20px; max-width: 64vw; margin: 0; padding: 0; }
   .hero__title { font-size: var(--t-display); }
   .hero__spectrum { width: min(560px, 36vw); }
   .hero__mark { display: block; position: absolute; width: 30vh; height: 30vh; left: calc(70vw - 15vh); top: calc(46vh - 15vh); }
@@ -235,7 +235,7 @@
   .hero__manifest > .manifest { grid-area: 1 / 1; text-align: center; font-size: clamp(40px, 5.4vw, 96px); }
 
   /* 01 Problem — 큰 문장 하나씩 */
-  .prob { display: grid; align-items: center; padding-left: calc(var(--pad) + 4vw); }
+  .prob { display: grid; align-items: center; padding-left: calc(var(--pad-l) + 3vw); }
   .prob__list { display: grid; gap: 0; }
   .prob__list > .prob__item { grid-area: 1 / 1; gap: 2.4vh; }
   .prob__text { font-size: clamp(56px, 7vw, 132px); }
@@ -254,7 +254,7 @@
 
   /* 02 Break the work */
   .break__core { z-index: 1; }
-  .break__field { position: absolute; inset: calc(var(--nav-h) + 48px) var(--pad) 14vh; display: block; }
+  .break__field { position: absolute; inset: calc(var(--nav-h) + 48px) var(--pad) 14vh var(--pad-l); display: block; }
   .break__crit line { stroke: var(--obsidian); stroke-width: 1.5; }
   .break__cap { position: absolute; left: 0; right: 0; bottom: 5vh; margin: 0 auto; text-align: center; align-self: end; }
 
@@ -277,10 +277,10 @@
   .wf__q { color: var(--charcoal); }
 
   /* 04 Orchestrator */
-  .orch__oldbox { position: absolute; left: var(--pad); top: 30vh; width: 15vw; }
+  .orch__oldbox { position: absolute; left: var(--pad-l); top: 30vh; width: 15vw; }
   .orch__net { position: absolute; left: 26vw; right: calc(var(--pad) + 4vw); top: calc(var(--nav-h) + 72px); bottom: 32vh; display: block; }
   .orch__newtag { position: absolute; left: 0; top: -40px; margin: 0; width: auto; }
-  .orch__headbox { position: absolute; left: var(--pad); bottom: 8vh; }
+  .orch__headbox { position: absolute; left: var(--pad-l); bottom: 8vh; }
   .orch__head { font-size: clamp(40px, 5vw, 88px); }
 
   /* 06 Platform — 좌: 리스트 / 우: 레이어 스택 + 카드 */
@@ -327,7 +327,7 @@
   .apply__info { position: absolute; right: 10vw; bottom: 7vh; margin: 0; padding: 0; align-items: flex-start; text-align: left; }
   .apply__block { font-size: clamp(28px, 2.6vw, 46px); }
   .apply__ctas { justify-content: flex-start; }
-  .apply__spirit { position: absolute; left: var(--pad); bottom: 7vh; width: min(20vw, 300px); max-width: none; }
+  .apply__spirit { position: absolute; left: var(--pad-l); bottom: 7vh; width: min(20vw, 300px); max-width: none; }
 
   /* 10 Join */
   .join { display: flex; flex-direction: column; justify-content: center; gap: 4vh; }

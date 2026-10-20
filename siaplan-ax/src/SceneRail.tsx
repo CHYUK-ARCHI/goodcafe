@@ -92,10 +92,13 @@ export function SceneRail() {
         {scenes.map((s, i) => {
           const center = i * GAP + GAP / 2;
           const f = probe === null ? 0 : Math.max(0, 1 - Math.abs(center - probe) / REACH);
-          const width = 12 + f * 30 + (i === active ? 8 : 0);
           const state = i === active ? "is-active" : i < active ? "is-past" : "";
           return (
-            <li key={s.label} className={`rail__item ${state}${i === focus ? " is-focus" : ""}`} style={{ top: i * GAP }}>
+            <li
+              key={s.label}
+              className={`rail__item ${state}${i === focus ? " is-focus" : ""}`}
+              style={{ top: i * GAP, ["--f" as string]: f.toFixed(3), ["--a" as string]: i === active ? 1 : 0 }}
+            >
               <button
                 type="button"
                 className="rail__hit"
@@ -103,9 +106,9 @@ export function SceneRail() {
                 aria-current={i === active ? "step" : undefined}
                 onClick={() => go(i)}
               >
-                <span className="rail__bar" style={{ width }} />
+                <span className="rail__bar" />
                 {/* 이름은 가장 가까운 바 하나만 보여 준다 (겹침 방지) */}
-                <span className="rail__label" style={{ opacity: i === focus ? 1 : 0, left: width + 12 }}>
+                <span className="rail__label" style={{ opacity: i === focus ? 1 : 0 }}>
                   <span className="rail__num">{String(i).padStart(2, "0")}</span> {s.label}
                 </span>
               </button>

@@ -28,8 +28,27 @@ export function scrollToY(y: number, duration = 1.4) {
  */
 export function initSmoothScroll(): () => void {
   gsap.registerPlugin(ScrollTrigger);
-  if (!window.matchMedia(DESKTOP_MOTION).matches) return () => {};
+  // 창 크기가 바뀌어 데스크톱 ↔ 모바일 레이아웃이 바뀌면 스텝 스크롤도 함께 켜고 끈다.
+  // (모바일 레이아웃에는 멈춤 지점이 없어서, 켜 둔 채로 두면 한 번 스크롤에 페이지 끝까지 내려간다)
+  const mq = window.matchMedia(DESKTOP_MOTION);
+  let stop: (() => void) | null = null;
+  const apply = () => {
+    if (mq.matches && !stop) stop = start();
+    else if (!mq.matches && stop) {
+      stop();
+      stop = null;
+    }
+  };
+  apply();
+  mq.addEventListener("change", apply);
+  return () => {
+    mq.removeEventListener("change", apply);
+    if (stop) stop();
+    stop = null;
+  };
+}
 
+function start(): () => void {
   const lenis = new Lenis({ lerp: 0.1, smoothWheel: false });
   active = lenis;
   lenis.on("scroll", ScrollTrigger.update);
