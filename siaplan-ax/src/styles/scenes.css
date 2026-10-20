@@ -146,6 +146,24 @@
 .card--inverted .join__desc { color: #d6d6d6; }
 .join__cta { margin-top: 8px; }
 
+.join__mail { color: var(--obsidian); text-decoration: underline; text-underline-offset: 3px; text-transform: none; }
+
+/* ---- 12 Apply ---- */
+.apply__body { display: flex; flex-direction: column; gap: 28px; }
+.apply__head { font-size: clamp(48px, 13vw, 156px); }
+.apply__meta { display: grid; gap: 16px; }
+.apply__deadline, .apply__how { display: flex; flex-direction: column; gap: 10px; padding: 20px; }
+.apply__date { font-size: clamp(36px, 4vw, 64px); }
+.apply__dow { color: var(--graphite); font-weight: 400; }
+.apply__dday { text-transform: none; }
+.apply__email {
+  display: inline-block; font-size: clamp(28px, 8vw, 96px); font-weight: 450; letter-spacing: -0.05em; line-height: 1.05;
+  word-break: break-all;
+}
+.apply__email:hover { text-decoration: underline; text-underline-offset: 0.12em; text-decoration-thickness: 2px; }
+.apply__spectrum { width: min(640px, 80%); margin: 18px 0 20px; }
+.apply__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
 /* ---- 11 Final ---- */
 .final__lines { display: flex; flex-direction: column; gap: 32px; }
 .final__end { margin-top: 64px; }
@@ -255,6 +273,14 @@
   .goal__unit { margin-top: 8px; font-size: 13px; }
   .goal__cards { display: grid; gap: 0; }
   .goal__cards > .goal__info { grid-area: 1 / 1; }
+
+  /* 12 Apply */
+  .apply { display: flex; flex-direction: column; justify-content: center; }
+  .apply__body { display: grid; grid-template-columns: 1.15fr 0.85fr; grid-template-areas: "head meta" "mail mail"; gap: 5vh 4vw; align-items: end; }
+  .apply__head { grid-area: head; font-size: clamp(64px, 7.6vw, 140px); }
+  .apply__meta { grid-area: meta; }
+  .apply__mailbox { grid-area: mail; }
+  .apply__email { font-size: clamp(48px, 6.4vw, 112px); }
 
   /* 10 Join */
   .join { display: flex; flex-direction: column; justify-content: center; gap: 4vh; }

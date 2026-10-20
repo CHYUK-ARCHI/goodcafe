@@ -38,7 +38,7 @@ export function FinalScene() {
           <span className="spectrum final__spectrum" data-spec />
           <p className="eyebrow final__foot" data-end>Start small. One task. One workflow. One system.</p>
           <div className="final__ctas" data-end>
-            <a className="btn btn--fill" href="#top">처음부터 다시 보기 ↑</a>
+            <a className="btn btn--fill" href="#apply">지원하기 ↓</a>
             <span className="eyebrow eyebrow--muted">Don’t learn AI. Build with AI.</span>
           </div>
         </div>

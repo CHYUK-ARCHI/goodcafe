@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { all, useScrollScene } from "../lib/motion";
+import { APPLY_EMAIL, APPLY_MAILTO } from "./ApplyScene";
 
 const PERKS = [
   {
@@ -62,7 +63,7 @@ export function JoinScene() {
           ))}
         </ol>
         <p className="eyebrow join__cta" data-cta data-reveal>
-          지원 · 문의 — SIAPLAN AI/AX TF
+          지원 · 문의 — <a className="join__mail" href={APPLY_MAILTO}>{APPLY_EMAIL}</a> · 10월 31일까지
         </p>
       </div>
     </section>

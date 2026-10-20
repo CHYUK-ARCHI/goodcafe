@@ -11,6 +11,7 @@ import { PlatformScene } from "./scenes/PlatformScene";
 import { PhaseToolsScene } from "./scenes/PhaseToolsScene";
 import { GoalsScene } from "./scenes/GoalsScene";
 import { JoinScene } from "./scenes/JoinScene";
+import { ApplyScene } from "./scenes/ApplyScene";
 import { ShowreelScene } from "./scenes/ShowreelScene";
 import { RoadmapScene } from "./scenes/RoadmapScene";
 import { FinalScene } from "./scenes/FinalScene";
@@ -43,6 +44,7 @@ export default function App() {
         <RoadmapScene />
         <JoinScene />
         <FinalScene />
+        <ApplyScene />
       </main>
     </>
   );
