@@ -10,11 +10,11 @@ const STEPS = [
   { t: "System", d: "흐름을 조직의 체계로 만든다" }
 ];
 // 판마다 강조 셀 — 위로 갈수록 연결된 영역이 넓어진다
-const MARKS: [number, number, ("ink" | "green" | "ash")?][][] = [
+const MARKS: [number, number, ("ink" | "accent" | "ash")?][][] = [
   [[2, 2]],
   [[1, 1], [2, 2, "ash"], [4, 3, "ash"]],
   [[1, 1, "ash"], [2, 1, "ash"], [2, 2], [3, 2, "ash"], [4, 3]],
-  [[1, 1], [2, 1], [3, 1], [1, 2], [2, 2], [3, 2, "green"], [4, 3], [4, 4]]
+  [[1, 1], [2, 1], [3, 1], [1, 2], [2, 2], [3, 2, "accent"], [4, 3], [4, 4]]
 ];
 const GAP = 62;
 
@@ -46,9 +46,9 @@ export function FromAIToAX() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-label="From AI to AX">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.3" data-label="From AI to AX">
       <div className="stage split">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>01 — From AI to AX</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_01 From AI to AX</p>
 
         <div className="split__left">
           <ol className="chain" data-reveal>

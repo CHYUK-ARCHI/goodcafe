@@ -37,12 +37,19 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 - 장면 DOM 기본값은 "완성된 상태". 데스크톱+모션 허용일 때만 sticky 스테이지와 초기 상태를 적용하므로, 모바일·`prefers-reduced-motion` 에서는 정적 세로 레이아웃이 그대로 보인다.
 - 스태거가 걸린 `fromTo` 를 쓰는 타임라인에는 `invalidateOnRefresh` 를 쓰지 않는다 (refresh 시 시작 상태가 사라짐).
 
-## 디자인 규칙 (DESIGN.md 기반)
+## 디자인 규칙
 
-- 캔버스 `#fafafa`, 텍스트 `#171717 / #4d4d4d / #666`, 테두리 hairline ring. 그림자 없음, radius 6px.
-- 헤드라인 Geist 400–450 · tracking -0.06em · line-height 1.0. 라벨·메타는 항상 Geist Mono 11–12px 대문자.
-- 유채색은 두 곳뿐: ✓ 확인 표시의 Terminal Green `#297a3a`, 선언 순간의 Spectrum hairline.
-- 브랜드 글리프는 `×` (Architecture × Intelligence). 순수 `#000` 은 글리프에만.
+DESIGN.md(무채색 · hairline · Geist)를 바탕으로, 지원 포스터(poster_final_V02)의 톤을 곳곳에 얹었다.
+
+- 캔버스 쿨 그레이 `#eceef1`, 텍스트 `#171717 / #4d4d4d / #666`, 카드는 흰색 + hairline ring. 그림자 없음, radius 6px.
+- **블루 헤이즈** (`lib/Haze.tsx`): 페이지 뒤에 고정된 두 덩어리의 번진 블루(`#2f7fe6`)가 스크롤에 따라 흐른다.
+  세기는 장면마다 `section[data-haze]`(0–1)로 정한다 — 선언·Final·Apply 1, Goals·Join 0.5–0.6, 정보 장면 0.15–0.3.
+- **포스터 타입** (`.poster`, `.poster-sm`): 800 weight · 자간 -0.065em · 행간 0.88. Hero 타이틀, 선언문, AX, 목표 숫자, Final, Apply 에만 쓴다.
+- **언더스코어 문장** (`.underscore`, `lib/posterCopy.ts`): `_업무방식을 개선하는 사람으로` 등 포스터 문구. Hero 와 Apply 에 쓴다. 장면 번호도 `_01` 형식.
+- 태그라인 `AI makes things possible. …` 은 Final 과 Apply 에.
+- 유채색은 블루 하나 (✓ 표시, 강조 셀, 목표 태그, 진행선). 라벨·메타는 항상 Geist Mono 11–12px 대문자.
+- 브랜드 글리프는 `×`. 순수 `#000` 은 글리프에만.
+- 모바일도 같은 헤이즈와 포스터 구도(Hero·Final·Apply)를 쓴다.
 
 ## 영상
 
