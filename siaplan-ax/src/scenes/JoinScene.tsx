@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 import { APPLY_EMAIL, APPLY_MAILTO } from "./ApplyScene";
 
 const PERKS = [
@@ -33,6 +33,7 @@ export function JoinScene() {
       .fromTo(all(el, ".join__card"), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.35, ease: "power3.out" }, 1.4)
       .fromTo(el.querySelector("[data-cta]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6 }, 2.9)
       .to({}, { duration: 1.4 }, 3.5);
+    steps(tl, [4.9]);
   });
 
   return (

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { POSTER_LINES } from "../lib/posterCopy";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 export function HeroScene() {
   const ref = useRef<HTMLElement>(null);
@@ -23,6 +23,7 @@ export function HeroScene() {
       .to(all(el, ".manifest--1 .mask__in"), { yPercent: -110, duration: 0.8, stagger: 0.12, ease: "power3.in" }, 7.1)
       .fromTo(all(el, ".manifest--2 .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, 7.9)
       .to({}, { duration: 1.2 }, 9.1);
+    steps(tl, [0, 3.3, 6.2, 10.3]);
   });
 
   return (

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 export const GOALS = [
   {
@@ -67,6 +67,7 @@ export function GoalsScene() {
       }
     });
     tl.to({}, { duration: 0.8 }, n * STEP);
+    steps(tl, [0, 2.0, 3.4, 4.8, 7.8]);
   });
 
   return (

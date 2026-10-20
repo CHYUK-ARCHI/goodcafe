@@ -1,6 +1,7 @@
 import { useLayoutEffect, type RefObject } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { registerSnaps } from "./stepper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +40,14 @@ export function useScrollScene(ref: RefObject<HTMLElement>, build: SceneBuilder)
       // 끝까지 한 번 렌더했다가 되돌린다. 스태거가 걸린 fromTo 는 첫 요소만 시작 상태가
       // 즉시 적용되므로, 이렇게 모든 트윈의 시작 값을 기록·적용해 둔다.
       tl.progress(1, true).progress(0, true);
-      return cleanup || undefined;
+      // step 라벨 = 스텝 스크롤의 멈춤 지점. 라벨이 없으면 장면 시작점에 멈춘다.
+      const st = tl.scrollTrigger!;
+      const labels = Object.keys(tl.labels).filter((l) => l.startsWith("step"));
+      const unregister = registerSnaps(() => (labels.length ? labels.map((l) => st.labelToScroll(l)) : [st.start]));
+      return () => {
+        unregister();
+        if (cleanup) cleanup();
+      };
     });
 
     mm.add(MOBILE_MOTION, () => {
@@ -63,3 +71,8 @@ export function useScrollScene(ref: RefObject<HTMLElement>, build: SceneBuilder)
 
 /** NodeList 대신 배열로 돌려준다 (GSAP 스태거 대상으로 안전). */
 export const all = (root: ParentNode, selector: string) => Array.from(root.querySelectorAll<HTMLElement>(selector));
+
+/** 타임라인 시간들에 step 라벨을 붙인다 (스텝 스크롤이 멈추는 "완성된 구도"). */
+export function steps(tl: gsap.core.Timeline, times: number[]) {
+  times.forEach((t, i) => tl.addLabel(`step${i}`, t));
+}

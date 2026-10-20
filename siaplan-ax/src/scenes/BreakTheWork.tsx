@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Mask } from "../lib/Mask";
 import { NetLines, type NetLine } from "../lib/NetLines";
 import { Pin } from "../lib/Pin";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // [라벨, x%, y%] — 스테이지 기준
 const WORDS: [string, number, number][] = [
@@ -42,6 +42,7 @@ export function BreakTheWork() {
       .to(PATH.map((i) => pins[i].firstElementChild), { backgroundColor: "#171717", color: "#ffffff", boxShadow: "0 0 0 0px rgba(0,0,0,0)", duration: 0.3, stagger: 0.35 }, 6.4)
       .fromTo(el.querySelector("[data-cap]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7 }, 8)
       .to({}, { duration: 1 }, 8.7);
+    steps(tl, [0, 6.5, 9.7]);
   });
 
   return (

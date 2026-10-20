@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Mask } from "../lib/Mask";
-import { all, useScrollScene } from "../lib/motion";
+import { all, steps, useScrollScene } from "../lib/motion";
 
 // SIAPLAN AI/AX 6단계 AI 워크플로우 (개발일지 정의)
 const STEPS = [
@@ -38,6 +38,7 @@ export function WorkflowScene() {
       }
     });
     tl.to({}, { duration: 0.8 }, STEPS.length * STEP);
+    steps(tl, [0, 1.9, 3.2, 4.5, 5.8, 8.6]);
   });
 
   return (
