@@ -94,7 +94,7 @@ export function WorkflowScene() {
   return (
     <section ref={ref} className="scene" style={{ ["--len" as string]: 6 }} data-haze="0.2" data-tone="0.25" data-label="The new workflow">
       <div className="stage wf">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_04 The new workflow</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_06 The new workflow</p>
 
         <ol className="wf__list" data-reveal>
           {STEPS.map((s, i) => (

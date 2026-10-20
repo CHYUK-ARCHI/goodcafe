@@ -75,7 +75,7 @@ export function ShowreelScene() {
   return (
     <section ref={ref} className="scene" style={{ ["--len" as string]: 2 }} data-haze="0.36" data-tone="0.6" data-label="Showreel">
       <div className="stage stage--center reel">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_06 Showreel</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_08 Showreel</p>
         <figure className="card reel__win" data-frame data-reveal>
           <figcaption className="reel__bar">
             <span className="eyebrow">siaplan-ax-teaser.mp4</span>

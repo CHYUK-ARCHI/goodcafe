@@ -53,7 +53,7 @@ export function PhaseToolsScene() {
   return (
     <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="0.28" data-tone="0.9" data-label="Tools by phase × PMS">
       <div className="stage ph">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_08 Tools by phase × PMS</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_10 Tools by phase × PMS</p>
         <h2 className="heading ph__lede" data-reveal>
           설계 단계마다 쓰는 툴은 그대로, <b>그 위에 SIA AI를 얹고 PMS로 묶습니다.</b>
         </h2>

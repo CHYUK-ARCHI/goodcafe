@@ -3,6 +3,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Chrome } from "./Chrome";
 import { SceneRail } from "./SceneRail";
 import { ProblemScene } from "./scenes/ProblemScene";
+import { CasesScene } from "./scenes/CasesScene";
+import { OurMoveScene } from "./scenes/OurMoveScene";
 import { Haze } from "./lib/Haze";
 import { initSmoothScroll } from "./lib/smooth";
 import { HeroScene } from "./scenes/HeroScene";
@@ -39,6 +41,8 @@ export default function App() {
       <main>
         <HeroScene />
         <ProblemScene />
+        <CasesScene />
+        <OurMoveScene />
         <FromAIToAX />
         <BreakTheWork />
         <WorkflowScene />
