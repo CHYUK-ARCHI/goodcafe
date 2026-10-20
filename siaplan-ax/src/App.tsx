@@ -7,7 +7,10 @@ import { FromAIToAX } from "./scenes/FromAIToAX";
 import { BreakTheWork } from "./scenes/BreakTheWork";
 import { WorkflowScene } from "./scenes/WorkflowScene";
 import { OrchestratorScene } from "./scenes/OrchestratorScene";
-import { BuildScene } from "./scenes/BuildScene";
+import { PlatformScene } from "./scenes/PlatformScene";
+import { PhaseToolsScene } from "./scenes/PhaseToolsScene";
+import { GoalsScene } from "./scenes/GoalsScene";
+import { JoinScene } from "./scenes/JoinScene";
 import { ShowreelScene } from "./scenes/ShowreelScene";
 import { RoadmapScene } from "./scenes/RoadmapScene";
 import { FinalScene } from "./scenes/FinalScene";
@@ -33,9 +36,12 @@ export default function App() {
         <BreakTheWork />
         <WorkflowScene />
         <OrchestratorScene />
-        <BuildScene />
         <ShowreelScene />
+        <PlatformScene />
+        <PhaseToolsScene />
+        <GoalsScene />
         <RoadmapScene />
+        <JoinScene />
         <FinalScene />
       </main>
     </>
