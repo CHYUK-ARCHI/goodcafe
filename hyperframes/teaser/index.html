@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="./gsap.min.js"></script>
+    <style>
+      /* DESIGN.md 팔레트: #fafafa 캔버스 · #171717 잉크 · hairline · Geist / Geist Mono. 유채색은 ✓ 초록 하나. */
+      @font-face { font-family: "Geist"; src: url("./fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; }
+      @font-face { font-family: "Geist Mono"; src: url("./fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px; overflow: hidden; background: #fafafa;
+        font-family: "Geist", sans-serif;
+        color: #171717;
+      }
+      #root { position: relative; width: 1920px; height: 1080px; background: #fafafa; overflow: hidden; }
+      .scene { position: absolute; inset: 0; }
+      .abs { position: absolute; white-space: nowrap; }
+      .c { left: 0; width: 1920px; text-align: center; }
+      .meta { font-family: "Geist Mono", monospace; font-size: 20px; letter-spacing: 0.071em; font-weight: 400; color: #666666; text-transform: uppercase; }
+      .display { font-size: 148px; line-height: 1; letter-spacing: -0.06em; font-weight: 500; }
+      .thin { font-weight: 300; }
+      .title { font-size: 96px; line-height: 1; letter-spacing: -0.06em; font-weight: 450; }
+      .line { position: absolute; height: 2px; background: #171717; transform-origin: 0 50%; }
+      .line.hair { height: 1px; background: #d4d4d4; }
+      .tag { position: absolute; font-family: "Geist Mono", monospace; font-size: 26px; font-weight: 400; letter-spacing: 0.071em; text-transform: uppercase; white-space: nowrap; color: #a8a8a8; background: #fafafa; padding: 2px 10px; }
+      .lime { background: #171717; color: #ffffff; border-radius: 6px; }
+      .violet { color: #171717; }
+      .node {
+        position: absolute; padding: 14px 24px; border: 0; border-radius: 6px; background: #ffffff;
+        box-shadow: 0 0 0 2px #e4e4e4;
+        font-family: "Geist Mono", monospace; font-size: 26px; font-weight: 400; letter-spacing: 0.071em; text-transform: uppercase; white-space: nowrap;
+      }
+      .node.fill { background: #171717; color: #ffffff; box-shadow: none; }
+      .node.lime { background: #171717; color: #ffffff; box-shadow: none; }
+      .node.violet-fill { background: #297a3a; color: #ffffff; box-shadow: none; }
+      .grid-v { position: absolute; top: 0; width: 1px; height: 1080px; background: #efefef; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="27" data-width="1920" data-height="1080">
+      <!-- 12-column hairline grid -->
+      <div id="grid"></div>
+
+      <!-- SCENE 1: ARCHITECTURE x INTELLIGENCE -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="5" data-track-index="0">
+        <div class="abs meta c" id="s1-top" style="top:96px">SIAPLAN &nbsp;/&nbsp; AI · AX TEAM</div>
+        <div class="abs display" id="s1-a" style="top:418px;left:0;width:1920px;text-align:center">Architecture</div>
+        <div class="abs display thin" id="s1-x" style="top:418px;left:0;width:1920px;text-align:center;color:#000000">×</div>
+        <div class="abs display thin" id="s1-b" style="top:418px;left:0;width:1920px;text-align:center">Intelligence</div>
+        <div class="abs title lime" id="s1-mid" style="top:456px;left:775px;width:370px;text-align:center;padding:6px 0;font-size:84px">AI / AX</div>
+        <div class="abs meta c" id="s1-bot" style="top:930px">Re-designing the way we design.</div>
+      </div>
+
+      <!-- SCENE 2: FROM AI TO AX -->
+      <div id="s2" class="scene clip" data-start="5" data-duration="5" data-track-index="0">
+        <div class="abs meta" style="top:96px;left:120px">01 — From AI to AX</div>
+        <div class="abs title c" id="s2-ai" style="top:130px;font-size:120px">AI</div>
+        <div class="abs title c thin" id="s2-task" style="top:310px;font-size:120px">Task</div>
+        <div class="abs title c thin" id="s2-flow" style="top:490px;font-size:120px">Workflow</div>
+        <div class="abs title c thin" id="s2-sys" style="top:670px;font-size:120px">System</div>
+        <div class="abs meta c" id="s2-ar1" style="top:262px;font-size:36px">↓</div>
+        <div class="abs meta c" id="s2-ar2" style="top:442px;font-size:36px">↓</div>
+        <div class="abs meta c" id="s2-ar3" style="top:622px;font-size:36px">↓</div>
+        <div class="abs display" id="s2-ax" style="top:340px;left:0;width:1920px;text-align:center;font-size:360px;letter-spacing:-0.06em">AX</div>
+        <div class="abs meta" id="s2-w" style="top:800px;left:560px">Workflow</div>
+        <div class="abs meta" id="s2-s" style="top:800px;left:900px">System</div>
+        <div class="abs meta" id="s2-p" style="top:800px;left:1230px">People</div>
+        <div class="abs title c" id="s2-line" style="top:880px;font-size:44px;font-weight:300">
+          Not one tool. <b style="font-weight:500">The whole flow of work.</b>
+        </div>
+      </div>
+
+      <!-- SCENE 3: BREAK THE WORK -->
+      <div id="s3" class="scene clip" data-start="10" data-duration="5" data-track-index="0">
+        <div class="abs meta" style="top:96px;left:120px">02 — Break the work</div>
+        <div class="abs display" id="s3-core" style="top:430px;left:0;width:1920px;text-align:center;font-size:140px">Architecture</div>
+      </div>
+
+      <!-- SCENE 4: ORCHESTRATOR -->
+      <div id="s4" class="scene clip" data-start="15" data-duration="6.5" data-track-index="0">
+        <div class="abs meta" style="top:96px;left:120px">03 — The architect as orchestrator</div>
+        <div class="abs title c" id="s4-big" style="top:860px;font-size:92px;font-weight:450">The architect as orchestrator.</div>
+      </div>
+
+      <!-- SCENE 5: FINAL -->
+      <div id="s5" class="scene clip" data-start="21.5" data-duration="5.5" data-track-index="0">
+        <div class="abs title c" id="s5-a" style="top:420px;font-size:112px"><span style="color:#a8a8a8">AI doesn’t<br />design for us.</span></div>
+        <div class="abs title c" id="s5-b" style="top:420px;font-size:112px">It changes<br />how we design.</div>
+        <div class="abs display c" id="s5-brand" style="top:400px;font-size:200px">SIAPLAN</div>
+        <div class="abs title c lime" id="s5-ax" style="top:640px;left:810px;width:300px;font-size:84px;padding:6px 0">AI / AX</div>
+        <div class="abs meta c" id="s5-foot" style="top:900px">Start small. One task. One workflow. One system.</div>
+      </div>
+    </div>
+
+    <script>
+      const W = 1920, H = 1080;
+      const root = document.getElementById("root");
+      const tl = gsap.timeline({ paused: true });
+
+      // hairline 12-column grid
+      const grid = document.getElementById("grid");
+      for (let i = 0; i <= 12; i++) {
+        const g = document.createElement("div");
+        g.className = "grid-v";
+        g.style.left = 120 + i * 140 + "px";
+        grid.appendChild(g);
+      }
+
+      // helper: a 2px line from (x1,y1) to (x2,y2), drawn with scaleX
+      let lineId = 0;
+      function mkLine(parent, x1, y1, x2, y2, cls) {
+        const d = document.createElement("div");
+        d.className = "line " + (cls || "");
+        const len = Math.hypot(x2 - x1, y2 - y1);
+        const ang = (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI;
+        d.id = "ln" + lineId++;
+        d.style.left = x1 + "px";
+        d.style.top = y1 + "px";
+        d.style.width = len + "px";
+        parent.appendChild(d);
+        gsap.set(d, { rotation: ang, scaleX: 0 });
+        return d;
+      }
+      function mkNode(parent, text, cx, cy, cls) {
+        const n = document.createElement("div");
+        n.className = "node " + (cls || "");
+        n.textContent = text;
+        n.id = "nd" + lineId++;
+        parent.appendChild(n);
+        const w = n.offsetWidth, h = n.offsetHeight;
+        n.style.left = cx - w / 2 + "px";
+        n.style.top = cy - h / 2 + "px";
+        return n;
+      }
+
+      /* ---------------- SCENE 1 (0–5s) ---------------- */
+      gsap.set("#s1-x", { opacity: 1 });
+      gsap.set(["#s1-mid"], { opacity: 0, scale: 0.6, transformOrigin: "50% 50%" });
+      gsap.set("#s1-bot", { opacity: 0 });
+      gsap.set("#s1-a", { fontWeight: 500 });
+      // ARCHITECTURE and INTELLIGENCE stacked on same baseline at start, separated by ×
+      gsap.set("#s1-a", { x: -480, scale: 0.78 });
+      gsap.set("#s1-b", { x: 480, scale: 0.78 });
+      tl.from("#s1-top", { opacity: 0, duration: 0.6 }, 0.2)
+        .from("#s1-a", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.3)
+        .from("#s1-b", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.5)
+        .from("#s1-x", { scale: 0, rotation: -90, duration: 0.7, ease: "back.out(2)" }, 0.8)
+        .to("#s1-x", { scale: 0, duration: 0.5, ease: "power2.in" }, 2.2)
+        .to("#s1-a", { x: -610, scale: 0.62, duration: 1.1, ease: "power3.inOut" }, 2.1)
+        .to("#s1-b", { x: 610, scale: 0.62, duration: 1.1, ease: "power3.inOut" }, 2.1)
+        .to("#s1-mid", { opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }, 2.7)
+        .to("#s1-bot", { opacity: 1, duration: 0.6 }, 3.2)
+        .to(["#s1-a", "#s1-b", "#s1-mid", "#s1-bot", "#s1-top"], { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 4.4);
+
+      /* ---------------- SCENE 2 (5–10s => local t 5..10) ---------------- */
+      const S2 = 5;
+      gsap.set(["#s2-ar1", "#s2-ar2", "#s2-ar3", "#s2-task", "#s2-flow", "#s2-sys", "#s2-ax", "#s2-w", "#s2-s", "#s2-p", "#s2-line"], { opacity: 0 });
+      gsap.set("#s2-ai", { opacity: 0, y: 30 });
+      gsap.set(["#s2-task", "#s2-flow", "#s2-sys"], { y: 30 });
+            tl.to("#s2-ai", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S2 + 0.1)
+        .to("#s2-ar1", { opacity: 1, duration: 0.3 }, S2 + 0.6)
+        .to("#s2-task", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S2 + 0.8)
+        .to("#s2-ar2", { opacity: 1, duration: 0.3 }, S2 + 1.2)
+        .to("#s2-flow", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S2 + 1.4)
+        .to("#s2-ar3", { opacity: 1, duration: 0.3 }, S2 + 1.8)
+        .to("#s2-sys", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S2 + 2.0)
+        .to(["#s2-ar1", "#s2-ar2", "#s2-ar3"], { opacity: 0, duration: 0.3 }, S2 + 2.7)
+        .to(["#s2-ai", "#s2-task", "#s2-flow", "#s2-sys"], { scale: 0.08, x: 0, y: 0, opacity: 0, transformOrigin: "50% 50%", duration: 0.8, ease: "power3.in", stagger: 0.04 }, S2 + 2.9)
+        .fromTo("#s2-ax", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }, S2 + 3.5)
+        .to(["#s2-w", "#s2-s", "#s2-p"], { opacity: 1, duration: 0.4, stagger: 0.15 }, S2 + 3.9)
+        .to("#s2-line", { opacity: 1, duration: 0.5 }, S2 + 4.1)
+        .to(["#s2-ax", "#s2-w", "#s2-s", "#s2-p", "#s2-line"], { opacity: 0, duration: 0.4 }, S2 + 4.6);
+
+      /* ---------------- SCENE 3 (10–15) ---------------- */
+      const S3 = 10;
+      const s3 = document.getElementById("s3");
+      const words = [
+        ["SITE", 300, 260], ["PROGRAM", 300, 520], ["REGULATION", 760, 220], ["CIRCULATION", 760, 440],
+        ["MASSING", 1180, 260], ["FACADE", 1180, 520], ["STRUCTURE", 1600, 300], ["ENVIRONMENT", 1560, 520],
+        ["VISUALIZATION", 560, 820], ["PRESENTATION", 1300, 820],
+      ];
+      const links = [[0,2],[0,1],[2,4],[1,3],[3,5],[4,5],[4,6],[5,7],[1,8],[5,9],[8,9],[2,3],[6,7]];
+      const wordEls = words.map(([t, x, y], i) => {
+        const e = document.createElement("div");
+        e.className = "tag";
+        e.textContent = t;
+        e.id = "w" + i;
+        s3.appendChild(e);
+        const w = e.offsetWidth;
+        e.style.left = x - w / 2 + "px";
+        e.style.top = y - 20 + "px";
+        return e;
+      });
+      const linkEls = links.map(([a, b]) => mkLine(s3, words[a][1], words[a][2], words[b][1], words[b][2], "hair"));
+      gsap.set("#s3-core", { opacity: 0 });
+      gsap.set(wordEls, { opacity: 0, x: 0, y: 0 });
+      // words start at center
+      wordEls.forEach((e, i) => {
+        gsap.set(e, { x: W / 2 - words[i][1], y: H / 2 - words[i][2] + 20, scale: 0.6 });
+      });
+      tl.to("#s3-core", { opacity: 1, duration: 0.5 }, S3 + 0.1)
+        .to("#s3-core", { opacity: 0, scale: 0.8, duration: 0.5, ease: "power2.in", transformOrigin: "50% 50%" }, S3 + 0.9)
+        .to(wordEls, { opacity: 1, x: 0, y: 0, scale: 1, duration: 1.1, ease: "expo.out", stagger: 0.06 }, S3 + 1.0)
+        .to(linkEls, { scaleX: 1, duration: 0.7, ease: "power2.out", stagger: 0.08 }, S3 + 1.9)
+        .to(wordEls, { color: "#171717", duration: 0.4, stagger: 0.05 }, S3 + 3.0)
+        .to([...wordEls, ...linkEls], { opacity: 0, duration: 0.4 }, S3 + 4.55);
+
+      /* ---------------- SCENE 4 (15–20.5) ---------------- */
+      const S4 = 15;
+      const s4 = document.getElementById("s4");
+      gsap.set("#s4-big", { opacity: 0, y: 30 });
+      // old linear workflow
+      const CY = 430;
+      const oA = mkNode(s4, "ARCHITECT", 420, CY, "");
+      const oT = mkNode(s4, "TOOL", 960, CY, "");
+      const oO = mkNode(s4, "OUTPUT", 1500, CY, "");
+      const oL1 = mkLine(s4, 540, CY, 880, CY);
+      const oL2 = mkLine(s4, 1020, CY, 1380, CY);
+      const oldTag = document.createElement("div");
+      oldTag.className = "abs meta"; oldTag.textContent = "OLD";
+      oldTag.style.left = "120px"; oldTag.style.top = (CY - 110) + "px"; s4.appendChild(oldTag);
+      // new network
+      const nA = mkNode(s4, "ARCHITECT", 280, CY, "fill");
+      const nG = mkNode(s4, "AI / AGENT", 760, CY, "lime");
+      const toolDefs = [["CAD", 1210, 180], ["BIM", 1210, 280], ["RHINO", 1210, 380], ["DATA", 1210, 480], ["REGULATION", 1210, 580], ["VISUALIZATION", 1210, 680]];
+      const toolEls = toolDefs.map(([t, x, y]) => mkNode(s4, t, x, y, ""));
+      const nO = mkNode(s4, "OUTPUT", 1700, CY, "violet-fill");
+      const edge = (el) => ({ l: el.offsetLeft, r: el.offsetLeft + el.offsetWidth, y: el.offsetTop + el.offsetHeight / 2 });
+      const eA = edge(nA), eG = edge(nG), eO = edge(nO);
+      const nL0 = mkLine(s4, eA.r, CY, eG.l, CY);
+      const toolLines = toolEls.map((el) => { const e = edge(el); return mkLine(s4, eG.r, CY, e.l, e.y); });
+      const outLines = toolEls.map((el) => { const e = edge(el); return mkLine(s4, e.r, e.y, eO.l, CY, "hair"); });
+      gsap.set([nA, nG, nO, ...toolEls], { opacity: 0 });
+      tl.from([oA, oT, oO], { opacity: 0, y: 24, duration: 0.5, stagger: 0.12, ease: "power3.out" }, S4 + 0.1)
+        .from(oldTag, { opacity: 0, duration: 0.4 }, S4 + 0.2)
+        .to([oL1, oL2], { scaleX: 1, duration: 0.5, stagger: 0.15 }, S4 + 0.6)
+        // deconstruct old
+        .to([oT, oL1, oL2, oldTag], { opacity: 0, y: 40, duration: 0.5, ease: "power2.in" }, S4 + 1.6)
+        .to(oO, { x: 200, duration: 0.8, ease: "power3.inOut" }, S4 + 1.6)
+        .to(oA, { x: -140, duration: 0.8, ease: "power3.inOut" }, S4 + 1.6)
+        .set([oA, oO], { opacity: 0 }, S4 + 2.4)
+        .set([nA, nO], { opacity: 1 }, S4 + 2.4)
+        .to(nG, { opacity: 1, duration: 0.5 }, S4 + 2.5)
+        .to(nL0, { scaleX: 1, duration: 0.5, ease: "power2.out" }, S4 + 2.7)
+        .to(toolLines, { scaleX: 1, duration: 0.6, stagger: 0.08, ease: "power2.out" }, S4 + 3.0)
+        .to(toolEls, { opacity: 1, duration: 0.4, stagger: 0.08 }, S4 + 3.2)
+        .to(outLines, { scaleX: 1, duration: 0.6, stagger: 0.06, ease: "power2.out" }, S4 + 3.9)
+        .to("#s4-big", { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, S4 + 4.4)
+        .to(s4.children, { opacity: 0, duration: 0.4 }, S4 + 6.05);
+      // the above fades everything including nodes at the end of the scene
+
+      /* ---------------- SCENE 5 (20.5–26) ---------------- */
+      const S5 = 21.5;
+      gsap.set(["#s5-a", "#s5-b", "#s5-brand", "#s5-ax", "#s5-foot"], { opacity: 0 });
+      tl.fromTo("#s5-a", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, S5 + 0.1)
+        .to("#s5-a", { opacity: 0, y: -40, duration: 0.5, ease: "power2.in" }, S5 + 1.8)
+        .fromTo("#s5-b", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, S5 + 2.2)
+        .to("#s5-b", { opacity: 0, y: -40, duration: 0.5, ease: "power2.in" }, S5 + 3.5)
+        .fromTo("#s5-brand", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.7, ease: "expo.out", transformOrigin: "50% 50%" }, S5 + 3.8)
+        .fromTo("#s5-ax", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S5 + 4.1)
+        .fromTo("#s5-foot", { opacity: 0 }, { opacity: 1, duration: 0.6 }, S5 + 4.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

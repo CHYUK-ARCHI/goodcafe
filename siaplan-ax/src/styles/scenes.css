@@ -1,0 +1,207 @@
+/* =====================================================================
+   장면 레이아웃
+   - 기본(정적): 모바일·reduced-motion. 모든 요소가 완성된 상태로 세로로 흐른다.
+   - 데스크톱 + 모션 허용: 아래 @media 블록에서 sticky 스테이지 + 겹침 레이아웃으로 전환.
+     JS 의 DESKTOP_MOTION 과 같은 조건을 유지할 것.
+   ===================================================================== */
+
+.scene { padding: 96px var(--pad); }
+.scene:first-child { padding-top: calc(var(--nav-h) + 48px); }
+.stage { position: relative; display: flex; flex-direction: column; gap: 24px; }
+.stage__eyebrow { margin-bottom: 8px; }
+
+/* 핀: 정적 모드에서는 인라인 칩 */
+.pin { display: inline-block; margin: 0 6px 8px 0; }
+.net__svg { display: none; }
+.net__svg line { stroke: #d4d4d4; stroke-width: 1; fill: none; }
+.net__svg line:not(.hair) { stroke: var(--obsidian); }
+
+/* ---- Axonometric plates ---- */
+.axo { display: block; width: 100%; height: auto; overflow: visible; }
+.axo__top { fill: var(--white); }
+.axo__side { fill: #f2f2f2; stroke: var(--ash); stroke-width: 0.75; }
+.axo__cell { fill: rgba(23, 23, 23, 0); stroke: var(--hairline); stroke-width: 0.75; }
+.axo__mark { stroke: none; }
+.axo__edge { fill: none; stroke: var(--smoke); stroke-width: 1; }
+.axo__label line { stroke: var(--smoke); stroke-width: 0.75; }
+.axo__label text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.071em; fill: var(--stone); }
+
+/* ---- 00 Hero ---- */
+.hero__head { display: flex; flex-direction: column; gap: 16px; }
+.hero__title { font-size: clamp(48px, 13vw, 156px); }
+.hero__times { font-weight: 300; }
+.hero__spectrum { width: min(560px, 70%); }
+.hero__mark { display: none; }
+.hero__meta { display: grid; gap: 4px; margin-top: 8px; }
+.hero__cue { display: none; }
+.hero__manifest { display: flex; flex-direction: column; gap: 32px; margin-top: 48px; }
+
+/* ---- 01 From AI to AX ---- */
+.chain { display: grid; gap: 4px; }
+.chain__row { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 8px 0; box-shadow: 0 -1px 0 var(--hairline); }
+.chain__desc { grid-column: 2; }
+.chain__word { font-size: clamp(36px, 10vw, 72px); }
+.ax-block { margin-top: 32px; }
+.ax-word { font-size: clamp(120px, 40vw, 300px); font-weight: 450; line-height: 0.9; letter-spacing: -0.07em; }
+[data-ax], [data-key] { display: inline-block; }
+.ax-keys { display: flex; gap: 24px; margin-top: 16px; }
+.ax-note { margin-top: 24px; max-width: 44ch; }
+.split__right { max-width: 420px; }
+
+/* ---- 02 Break the work ---- */
+.break__field { display: flex; flex-wrap: wrap; }
+.break__cap { max-width: 64ch; }
+
+/* ---- 03 Workflow ---- */
+.wf__item { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; padding: 10px 0; box-shadow: 0 -1px 0 var(--hairline); position: relative; }
+.wf__tick { display: none; }
+.wf__stage { display: none; }
+.cli { padding: 0; overflow: hidden; }
+.cli__bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; box-shadow: 0 1px 0 var(--hairline); }
+.cli__dots { display: flex; gap: 6px; }
+.cli__dots i { width: 8px; height: 8px; border-radius: 2px; background: var(--hairline); }
+.cli__body { padding: 14px; font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: var(--obsidian); }
+.cli__line--out { color: var(--charcoal); margin-bottom: 6px; }
+
+/* ---- 04 Orchestrator ---- */
+.orch__oldbox { position: relative; max-width: 220px; }
+.orch__old { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; color: var(--obsidian); }
+.orch__arrow { color: var(--ash); }
+.orch__strike { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.orch__strike line { stroke: var(--obsidian); stroke-width: 1.25; stroke-dashoffset: 0; }
+.orch__net { display: flex; flex-wrap: wrap; align-items: center; }
+.orch__newtag { width: 100%; margin-bottom: 8px; }
+.orch__sub { margin-top: 16px; max-width: 44ch; }
+
+/* ---- 05 Build ---- */
+.build__row { display: grid; grid-template-columns: 40px 1fr 24px; align-items: baseline; padding: 8px 0; box-shadow: 0 -1px 0 var(--hairline); }
+.build__word { font-size: clamp(28px, 8vw, 56px); }
+.build__arrow { opacity: 0; }
+.build__side { display: grid; gap: 16px; }
+.build__axo { max-width: 420px; }
+.build__card { display: none; }
+.build__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.build__tags .chip { font-size: 11px; padding: 4px 8px; }
+
+/* ---- 06 Showreel ---- */
+.reel__win { padding: 0; overflow: hidden; width: 100%; }
+.reel__bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; box-shadow: 0 1px 0 var(--hairline); }
+.reel__screen { aspect-ratio: 16 / 9; background: var(--paper); }
+.reel__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel__scrub { display: block; height: 1px; background: var(--obsidian); transform-origin: 0 50%; transform: scaleX(0); }
+
+/* ---- 07 Roadmap ---- */
+.rm__timeline { display: none; }
+.rm__grid { display: grid; gap: 16px; }
+.rm__card { display: flex; flex-direction: column; gap: 8px; }
+.rm__n { display: flex; justify-content: space-between; color: inherit; }
+.rm__here { color: inherit; }
+.rm__keys { font-family: var(--mono); font-size: 12px; letter-spacing: 0.071em; text-transform: uppercase; color: var(--stone); line-height: 1.7; }
+.card--inverted .rm__keys { color: var(--smoke); }
+
+/* ---- 08 Final ---- */
+.final__lines { display: flex; flex-direction: column; gap: 32px; }
+.final__end { margin-top: 64px; }
+.final__ax { font-weight: 300; }
+.final__spectrum { width: min(560px, 80%); margin: 28px 0 20px; }
+.final__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 24px; }
+
+/* =====================================================================
+   데스크톱 + 모션 허용 : sticky 스테이지 + scrub 타임라인
+   ===================================================================== */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .scene, .scene:first-child { height: calc(var(--len) * 100vh); padding: 0; }
+  .stage {
+    position: sticky; top: 0; height: 100vh; overflow: hidden;
+    display: block; padding: var(--nav-h) var(--pad) 0;
+  }
+  .stage--center { display: grid; place-items: center; }
+  .stage--center > * { grid-area: 1 / 1; }
+  .stage__eyebrow { position: absolute; top: calc(var(--nav-h) + 16px); left: var(--pad); margin: 0; z-index: 3; }
+
+  .pin {
+    position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; margin: 0;
+    display: flex; align-items: center; justify-content: center; z-index: 2;
+  }
+  .net__svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+  /* 00 Hero — 비대칭 3구역: 헤드라인(좌하) · 글리프(중) · 메타(우상) */
+  .hero__head { position: absolute; left: var(--pad); bottom: 10vh; gap: 20px; max-width: 62vw; }
+  .hero__title { font-size: var(--t-display); }
+  .hero__spectrum { width: min(560px, 36vw); }
+  .hero__mark { display: block; position: absolute; width: 30vh; height: 30vh; left: calc(70vw - 15vh); top: calc(44vh - 15vh); }
+  .hero__armwrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .hero__armwrap--1 { transform: rotate(45deg); }
+  .hero__armwrap--2 { transform: rotate(-45deg); }
+  .hero__arm { display: block; width: 100%; height: 9%; background: var(--carbon); }
+  .hero__ax { position: absolute; inset: 0; margin: auto; width: max-content; height: max-content; z-index: 2; }
+  .hero__meta { position: absolute; right: var(--pad); top: calc(var(--nav-h) + 16px); text-align: right; margin: 0; }
+  .hero__cue { display: block; margin-top: 12px; }
+  .hero__manifest { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; pointer-events: none; }
+  .hero__manifest > .manifest { grid-area: 1 / 1; text-align: center; font-size: clamp(40px, 5.6vw, 100px); }
+
+  /* 01 From AI to AX — 좌: 체인 / 우: 레이어 */
+  .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4vw; }
+  .split__left { display: grid; align-items: center; }
+  .split__left > * { grid-area: 1 / 1; }
+  .chain__word { font-size: clamp(40px, 5.4vw, 88px); }
+  .chain__row { color: var(--ash); }
+  .ax-block { margin: 0; }
+  .ax-word { font-size: clamp(140px, 17vw, 300px); }
+  .split__right { max-width: none; justify-self: center; width: min(42vw, 74vh); }
+
+  /* 02 Break the work */
+  .break__core { z-index: 1; }
+  .break__field { position: absolute; inset: calc(var(--nav-h) + 48px) var(--pad) 14vh; display: block; }
+  .break__crit line { stroke: var(--obsidian); stroke-width: 1.5; }
+  .break__cap { position: absolute; left: 0; right: 0; bottom: 5vh; margin: 0 auto; text-align: center; align-self: end; }
+
+  /* 03 Workflow — 리스트 · 타이틀 · CLI */
+  .wf { display: grid; grid-template-columns: minmax(200px, 19vw) 1fr minmax(320px, 30vw); gap: 3vw; align-items: center; }
+  .wf__list { align-self: center; }
+  .wf__item { color: var(--ash); }
+  .wf__tick { display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--obsidian); transform-origin: 0 50%; transform: scaleX(0); }
+  .wf__stage { display: grid; }
+  .wf__stage > .wf__title { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 12px; }
+  .wf__title .display { font-size: clamp(56px, 6.6vw, 116px); }
+  .wf__q { color: var(--charcoal); }
+
+  /* 04 Orchestrator */
+  .orch__oldbox { position: absolute; left: var(--pad); top: 30vh; width: 15vw; }
+  .orch__net { position: absolute; left: 26vw; right: calc(var(--pad) + 4vw); top: calc(var(--nav-h) + 72px); bottom: 32vh; display: block; }
+  .orch__newtag { position: absolute; left: 0; top: -40px; margin: 0; width: auto; }
+  .orch__headbox { position: absolute; left: var(--pad); bottom: 8vh; }
+  .orch__head { font-size: clamp(40px, 5vw, 88px); }
+
+  /* 05 Build — 좌: 리스트 / 우: 판 + 카드 */
+  .build { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4vw; align-items: center; }
+  .build__row { color: var(--ash); }
+  .build__word { font-size: clamp(28px, 3.6vw, 60px); }
+  .build__side { justify-items: center; }
+  .build__axo { width: min(36vw, 50vh); max-width: none; }
+  .build__card { display: grid; width: min(100%, 440px); min-height: 132px; }
+  .build__card > .build__desc { grid-area: 1 / 1; }
+  .build__one { max-width: 440px; }
+
+  /* 06 Showreel */
+  .reel__win { width: min(80vw, calc(66vh * 16 / 9)); }
+  .reel__cap { align-self: end; margin-bottom: 4vh; }
+
+  /* 07 Roadmap */
+  .rm { display: flex; flex-direction: column; justify-content: center; gap: 5vh; }
+  .rm__timeline { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; }
+  .rm__track { position: relative; height: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .rm__track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--hairline); }
+  .rm__rail { position: absolute; left: 0; right: 0; top: 50%; height: 1px; margin-top: 0; background: var(--obsidian); transform-origin: 0 50%; }
+  .rm__node { position: relative; z-index: 1; width: 10px; height: 10px; border-radius: 2px; background: var(--paper); box-shadow: 0 0 0 1px var(--obsidian); }
+  .rm__grid { grid-template-columns: repeat(3, 1fr); }
+  .rm__card { min-height: 21vh; padding: 20px; }
+
+  /* 08 Final */
+  .final__lines { display: grid; gap: 0; }
+  .final__lines > * { grid-area: 1 / 1; text-align: center; }
+  .final__lines .heading-lg { font-size: clamp(44px, 6vw, 108px); }
+  .final__end { margin: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .final__brand .display { font-size: clamp(72px, 11vw, 200px); }
+  .final__spectrum { width: min(640px, 44vw); }
+}
