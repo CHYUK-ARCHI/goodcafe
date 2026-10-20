@@ -1,0 +1,51 @@
+# SIAPLAN AI/AX 온보딩 페이지(siaplan-ax/)를 GitHub Pages 사이트 루트로 배포한다.
+# Settings → Pages → Source 가 "GitHub Actions" 여야 한다.
+# (루트의 기존 goodcafe 정적 파일은 저장소에 남지만 더 이상 서비스되지 않는다)
+name: Deploy SIAPLAN AI/AX page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "siaplan-ax/**"
+      - ".github/workflows/siaplan-ax-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: siaplan-ax
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: siaplan-ax/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: siaplan-ax/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,166 @@
+/* =====================================================================
+   SIAPLAN AI/AX — Design tokens
+   "Typeset terminal on white paper" (DESIGN.md) 기반.
+   무채색이 기본. 유채색은 Terminal Green(확인 표시)과 Spectrum hairline(선언 순간) 두 곳뿐.
+   ===================================================================== */
+
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fafafa;
+  --white: #ffffff;
+  --hairline: #ebebeb;
+  --ash: #c9c9c9;
+  --smoke: #a8a8a8;
+  --graphite: #8f8f8f;
+  --stone: #666666;
+  --charcoal: #4d4d4d;
+  --obsidian: #171717;
+  --carbon: #000000;
+  --green: #297a3a;
+  --spectrum: linear-gradient(90deg, #00ff95 0%, #ffd000 25%, #ff1744 50%, #9500ff 75%, #00e5ff 100%);
+
+  /* 한글은 Geist 에 없으므로 Pretendard 로 떨어진다 */
+  --sans: "Geist", "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Pretendard Variable", monospace;
+
+  --t-eyebrow: 11px;
+  --t-caption: 13px;
+  --t-body: 16px;
+  --t-heading: clamp(24px, 2.2vw, 30px);
+  --t-heading-lg: clamp(40px, 4.4vw, 64px);
+  --t-display: clamp(56px, 8.6vw, 156px);
+
+  --radius: 6px;
+  --ring: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 0 2px var(--paper);
+  --ring-soft: 0 0 0 1px var(--hairline);
+
+  --pad: clamp(20px, 3.4vw, 48px);
+  --nav-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  background: var(--paper);
+  color: var(--obsidian);
+  font-family: var(--sans);
+  font-size: var(--t-body);
+  line-height: 1.5;
+  font-feature-settings: "calt" 0, "rlig", "ss11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* ---- Typography ---- */
+.display {
+  font-size: var(--t-display);
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+.heading-lg { font-size: var(--t-heading-lg); font-weight: 450; line-height: 1; letter-spacing: -0.06em; }
+.heading { font-size: var(--t-heading); font-weight: 400; line-height: 1.1; letter-spacing: -0.05em; }
+.body { font-size: var(--t-body); color: var(--charcoal); line-height: 1.5; }
+.caption { font-size: var(--t-caption); color: var(--stone); line-height: 1.54; }
+
+/* 라벨·메타는 언제나 Mono · 대문자 · 작게 */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--t-eyebrow);
+  font-weight: 400;
+  letter-spacing: 0.071em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  line-height: 1.5;
+}
+.eyebrow--muted { color: var(--graphite); }
+.ash { color: var(--ash); }
+.ok { color: var(--green); }
+.glyph { color: var(--carbon); }
+
+/* 줄 마스크 */
+.mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.mask__in { display: block; will-change: transform; }
+
+/* ---- Surfaces ---- */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--ring);
+  padding: 16px;
+}
+.card--inverted { background: var(--obsidian); color: var(--white); box-shadow: none; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.071em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: var(--white);
+  color: var(--obsidian);
+  border-radius: var(--radius);
+  box-shadow: var(--ring);
+  padding: 8px 12px;
+}
+.chip--ink { background: var(--obsidian); color: var(--white); box-shadow: none; }
+.chip--ghost { background: transparent; color: var(--graphite); box-shadow: var(--ring-soft); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding: 0 16px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 400;
+}
+.btn--fill { background: var(--obsidian); color: var(--white); }
+.btn--ghost { color: var(--charcoal); box-shadow: var(--ring-soft); }
+
+.spectrum { display: block; height: 2px; background: var(--spectrum); transform-origin: 0 50%; }
+
+/* ---- Nav ---- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  background: rgba(250, 250, 250, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav__brand { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
+.nav__brand .glyph { font-size: 18px; line-height: 1; transform: translateY(-1px); }
+.nav__brand span:last-child { color: var(--stone); font-weight: 400; }
+.nav__right { display: flex; align-items: center; gap: 16px; }
+.nav__count { color: var(--graphite); }
+.progress { position: fixed; inset: 0 0 auto 0; height: 1px; z-index: 60; }
+.progress__bar { height: 100%; background: var(--obsidian); transform: scaleX(0); transform-origin: 0 50%; }
+
+@media (max-width: 899px) {
+  .nav__label { display: none; }
+}
+
+:focus-visible { outline: 2px solid var(--obsidian); outline-offset: 3px; border-radius: 2px; }
