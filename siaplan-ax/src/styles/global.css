@@ -49,6 +49,11 @@
   --ring-soft: 0 0 0 1px var(--hairline);
 
   --pad: clamp(20px, 3.4vw, 48px);
+  /* 왼쪽은 장면 바 자리를 비워 둔다 */
+  --pad-l: max(var(--pad), 76px);
+  --rail-base: 12px;
+  --rail-grow: 22px;
+  --rail-active: 8px;
   --nav-h: 64px;
 }
 
@@ -185,7 +190,7 @@ main { position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--pad);
+  padding: 0 var(--pad) 0 var(--pad-l);
   background: rgba(236, 238, 241, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -209,13 +214,15 @@ main { position: relative; z-index: 1; }
 .rail__hit { position: absolute; inset: 0; display: flex; align-items: center; width: 100%; padding: 0; text-align: left; cursor: pointer; }
 .rail__bar {
   display: block; height: 1.5px; border-radius: 1px; background: var(--ash);
+  width: calc(var(--rail-base) + var(--f, 0) * var(--rail-grow) + var(--a, 0) * var(--rail-active));
   transition: width 140ms cubic-bezier(0.2, 0.7, 0.2, 1), background-color 200ms, height 140ms;
 }
 .rail__item.is-past .rail__bar { background: var(--graphite); }
 .rail__item.is-active .rail__bar { background: var(--obsidian); height: 2px; }
 .rail__item.is-focus .rail__bar { background: var(--obsidian); height: 2px; }
 .rail__label {
-  position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; pointer-events: none;
+  position: absolute; top: 50%;
+  left: calc(var(--rail-base) + var(--f, 0) * var(--rail-grow) + var(--a, 0) * var(--rail-active) + 12px); transform: translateY(-50%); white-space: nowrap; pointer-events: none;
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--charcoal);
   padding: 5px 9px; border-radius: 6px; background: var(--white); box-shadow: var(--ring);
   transition: opacity 120ms, left 140ms cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -229,9 +236,9 @@ main { position: relative; z-index: 1; }
   background: rgba(236, 238, 241, 0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 @media (max-width: 899px) {
-  .rail { left: 4px; }
-  .rail__list { width: 28px; }
-  .rail__bar { height: 1.5px; }
+  :root { --pad-l: 34px; --rail-base: 8px; --rail-grow: 18px; --rail-active: 5px; }
+  .rail { left: 6px; }
+  .rail__list { width: 26px; }
 }
 
 :focus-visible { outline: 2px solid var(--obsidian); outline-offset: 3px; border-radius: 2px; }

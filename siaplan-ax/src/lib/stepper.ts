@@ -23,6 +23,11 @@ export function snapPoints(): number[] {
 }
 
 export function nextSnap(current: number, dir: 1 | -1): number | undefined {
+  // 안전장치: 등록된 멈춤 지점이 없으면(레이아웃 전환 직후 등) 한 화면만 이동한다
+  if (getters.size === 0) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    return Math.min(max, Math.max(0, current + dir * window.innerHeight * 0.9));
+  }
   const pts = snapPoints();
   return dir > 0 ? pts.find((p) => p > current + 4) : [...pts].reverse().find((p) => p < current - 4);
 }
