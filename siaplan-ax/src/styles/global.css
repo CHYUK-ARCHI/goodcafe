@@ -106,15 +106,33 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .underscore { display: grid; gap: 4px; font-size: clamp(16px, 1.5vw, 22px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.35; }
 .underscore li::before { content: "_"; }
 
-/* 헤이즈 — 포스터의 번진 블루 */
-.haze { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 1; }
-.haze__blob {
-  position: absolute; width: 78vmax; height: 62vmax; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(47, 127, 230, 0.92) 0%, rgba(47, 127, 230, 0.62) 34%, rgba(120, 170, 235, 0.28) 64%, rgba(236, 238, 241, 0) 100%);
-  will-change: transform;
+/* 헤이즈 — 포스터의 번진 블루, 중반에는 보색(살구)으로 */
+.haze { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 0.65; }
+.haze__drift { position: absolute; will-change: transform; animation: haze-drift-a 43s ease-in-out infinite alternate; }
+.haze__drift--a { width: 86vmax; height: 70vmax; left: -40vmax; top: -34vmax; }
+.haze__drift--b { width: 90vmax; height: 72vmax; right: -42vmax; bottom: -36vmax; animation-name: haze-drift-b; animation-duration: 57s; }
+.haze__drift--c { width: 46vmax; height: 38vmax; left: 38vw; top: 30vh; animation-name: haze-drift-c; animation-duration: 49s; opacity: 0.45; }
+.haze__blob { position: absolute; inset: 0; border-radius: 50%; }
+.haze__blob--blue {
+  background: radial-gradient(closest-side, rgba(47, 127, 230, 0.55) 0%, rgba(47, 127, 230, 0.36) 32%, rgba(120, 170, 235, 0.15) 64%, rgba(236, 238, 241, 0) 100%);
 }
-.haze__blob--a { left: -36vmax; top: -30vmax; }
-.haze__blob--b { right: -38vmax; bottom: -32vmax; }
+.haze__blob--warm {
+  opacity: 0;
+  background: radial-gradient(closest-side, rgba(242, 172, 108, 0.78) 0%, rgba(242, 180, 122, 0.52) 32%, rgba(246, 206, 168, 0.22) 64%, rgba(236, 238, 241, 0) 100%);
+}
+/* 스크롤과 무관한 아주 느린 흐름: 이동 3–5% · 크기 ±4% */
+@keyframes haze-drift-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(4vw, 3vh, 0) scale(1.04); } }
+@keyframes haze-drift-b { from { transform: translate3d(0, 0, 0) scale(1.02); } to { transform: translate3d(-5vw, -4vh, 0) scale(0.96); } }
+@keyframes haze-drift-c { from { transform: translate3d(0, 0, 0) scale(0.96); } to { transform: translate3d(-6vw, 5vh, 0) scale(1.04); } }
+@media (max-width: 899px) {
+  /* 모바일: 흐름 폭을 줄인다 */
+  @keyframes haze-drift-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(3vw, 2vh, 0) scale(1.03); } }
+  @keyframes haze-drift-b { from { transform: translate3d(0, 0, 0) scale(1.02); } to { transform: translate3d(-3vw, -2vh, 0) scale(0.97); } }
+  @keyframes haze-drift-c { from { transform: translate3d(0, 0, 0) scale(0.97); } to { transform: translate3d(-4vw, 3vh, 0) scale(1.03); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .haze__drift { animation: none; }
+}
 main { position: relative; z-index: 1; }
 
 /* 줄 마스크 */

@@ -4,11 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SPOTS = ["a", "b", "c"] as const;
+
 /**
- * 포스터의 번진 블루 헤이즈를 페이지 전체 뒤에 깐다.
- * - 두 덩어리(좌상·우하)가 스크롤에 따라 천천히 흘러간다.
- * - 장면마다 section[data-haze] 값(0–1)으로 세기를 바꾼다: 선언·지원 장면은 진하게, 정보 장면은 옅게.
- * filter 대신 radial-gradient 만 쓰고 transform/opacity 만 애니메이션해 모바일에서도 가볍다.
+ * 포스터의 번진 헤이즈를 페이지 전체 뒤에 깐다.
+ * - 움직임: 덩어리들이 스크롤과 무관하게 아주 느리게 흐른다 (CSS keyframes, 43·57·49초 주기).
+ * - 색: 같은 자리에 블루와 보색(살구)을 겹쳐 두고, 장면의 section[data-tone](0=블루, 1=살구)에 따라 교차 페이드한다.
+ *   페이지 중반(플랫폼·툴·목표)에서 살구가 가장 진하고, Final·Apply 에서 다시 블루로 돌아온다.
+ * - 세기: section[data-haze](0–1)로 전체 진하기를 정한다.
+ * filter 없이 radial-gradient + transform/opacity 만 쓰므로 모바일에서도 가볍다.
  */
 export function Haze() {
   const root = useRef<HTMLDivElement>(null);
@@ -17,32 +21,37 @@ export function Haze() {
     const el = root.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const blue = el.querySelectorAll(".haze__blob--blue");
+    const warm = el.querySelectorAll(".haze__blob--warm");
+    const fade = reduce ? 0 : 1.2;
 
-    const ctx = gsap.context(() => {
-      if (!reduce) {
-        const st = { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 1.2 };
-        gsap.fromTo("[data-blob='a']", { xPercent: 0, yPercent: 0, rotate: -8 }, { xPercent: 38, yPercent: 26, rotate: 24, ease: "none", scrollTrigger: st });
-        gsap.fromTo("[data-blob='b']", { xPercent: 0, yPercent: 0, rotate: 10 }, { xPercent: -42, yPercent: -30, rotate: -18, ease: "none", scrollTrigger: st });
-      }
-      // context 스코프(el) 밖의 섹션을 찾아야 하므로 문서 전체에서 직접 찾는다
-      document.querySelectorAll<HTMLElement>("section[data-haze]").forEach((s) => {
-        ScrollTrigger.create({
-          trigger: s,
-          start: "top 55%",
-          end: "bottom 45%",
-          onToggle: (self) => {
-            if (self.isActive) gsap.to(el, { opacity: Number(s.dataset.haze), duration: reduce ? 0 : 0.9, ease: "power2.out", overwrite: true });
-          }
-        });
-      });
-    }, el);
-    return () => ctx.revert();
+    const apply = (haze: number, tone: number) => {
+      gsap.to(el, { opacity: haze, duration: fade, ease: "power2.out", overwrite: true });
+      gsap.to(blue, { opacity: 1 - tone, duration: fade, ease: "power2.inOut", overwrite: true });
+      gsap.to(warm, { opacity: tone, duration: fade, ease: "power2.inOut", overwrite: true });
+    };
+
+    const triggers = Array.from(document.querySelectorAll<HTMLElement>("section[data-haze]")).map((s) =>
+      ScrollTrigger.create({
+        trigger: s,
+        start: "top 55%",
+        end: "bottom 45%",
+        onToggle: (self) => {
+          if (self.isActive) apply(Number(s.dataset.haze), Number(s.dataset.tone || 0));
+        }
+      })
+    );
+    return () => triggers.forEach((t) => t.kill());
   }, []);
 
   return (
     <div className="haze" ref={root} aria-hidden="true">
-      <span className="haze__blob haze__blob--a" data-blob="a" />
-      <span className="haze__blob haze__blob--b" data-blob="b" />
+      {SPOTS.map((k) => (
+        <span key={k} className={`haze__drift haze__drift--${k}`}>
+          <span className="haze__blob haze__blob--blue" />
+          <span className="haze__blob haze__blob--warm" />
+        </span>
+      ))}
     </div>
   );
 }

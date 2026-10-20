@@ -42,7 +42,7 @@ export function OrchestratorScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 6 }} data-haze="0.25" data-label="Human × Agent × Tool">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 6 }} data-haze="0.26" data-tone="0.45" data-label="Human × Agent × Tool">
       <div className="stage orch">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_04 Human × Agent × Tool</p>
 

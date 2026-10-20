@@ -45,7 +45,7 @@ export function BreakTheWork() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.22" data-label="Break the work">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.15" data-tone="0" data-label="Break the work">
       <div className="stage stage--center">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_02 Break the work</p>
         <Mask className="display break__core">Architecture</Mask>
