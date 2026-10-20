@@ -69,7 +69,7 @@ export function ShowreelScene() {
   }, []);
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.45" data-label="Showreel">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.36" data-tone="0.6" data-label="Showreel">
       <div className="stage stage--center reel">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_05 Showreel</p>
         <figure className="card reel__win" data-frame data-reveal>

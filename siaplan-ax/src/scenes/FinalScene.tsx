@@ -18,7 +18,7 @@ export function FinalScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="1" data-label="SIAPLAN AI/AX">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="0.65" data-tone="0" data-label="SIAPLAN AI/AX">
       <div className="stage stage--center final">
         <div className="final__lines" data-reveal>
           <h2 className="poster final__a">

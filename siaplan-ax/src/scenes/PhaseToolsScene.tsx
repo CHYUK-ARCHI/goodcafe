@@ -50,7 +50,7 @@ export function PhaseToolsScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="0.16" data-label="Tools by phase × PMS">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 4.5 }} data-haze="0.28" data-tone="0.9" data-label="Tools by phase × PMS">
       <div className="stage ph">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_07 Tools by phase × PMS</p>
         <h2 className="heading ph__lede" data-reveal>

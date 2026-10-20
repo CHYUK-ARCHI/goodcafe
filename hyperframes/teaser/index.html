@@ -16,9 +16,12 @@
       }
       #root { position: relative; width: 1920px; height: 1080px; background: #eceef1; overflow: hidden; }
       .haze { position: absolute; width: 1500px; height: 1180px; border-radius: 50%;
-        background: radial-gradient(closest-side, rgba(47,127,230,0.85) 0%, rgba(47,127,230,0.55) 34%, rgba(120,170,235,0.25) 64%, rgba(236,238,241,0) 100%); }
-      #haze-a { left: -760px; top: -640px; }
-      #haze-b { right: -800px; bottom: -660px; }
+        background: radial-gradient(closest-side, rgba(47,127,230,0.42) 0%, rgba(47,127,230,0.27) 32%, rgba(120,170,235,0.11) 64%, rgba(236,238,241,0) 100%); }
+      /* 중반(Break → Orchestrator)에는 보색 살구로 넘어갔다가 끝에서 블루로 돌아온다 */
+      .haze.warm { opacity: 0;
+        background: radial-gradient(closest-side, rgba(242,172,108,0.55) 0%, rgba(242,180,122,0.36) 32%, rgba(246,206,168,0.15) 64%, rgba(236,238,241,0) 100%); }
+      #haze-a, #warm-a { left: -760px; top: -640px; }
+      #haze-b, #warm-b { right: -800px; bottom: -660px; }
       .scene { position: absolute; inset: 0; }
       .abs { position: absolute; white-space: nowrap; }
       .c { left: 0; width: 1920px; text-align: center; }
@@ -46,6 +49,8 @@
     <div id="root" data-composition-id="main" data-start="0" data-duration="27" data-width="1920" data-height="1080">
       <div class="haze" id="haze-a"></div>
       <div class="haze" id="haze-b"></div>
+      <div class="haze warm" id="warm-a"></div>
+      <div class="haze warm" id="warm-b"></div>
       <!-- 12-column hairline grid -->
       <div id="grid"></div>
 
@@ -268,8 +273,13 @@
         .fromTo("#s5-ax", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, S5 + 4.1)
         .fromTo("#s5-foot", { opacity: 0 }, { opacity: 1, duration: 0.6 }, S5 + 4.5);
 
-      tl.fromTo("#haze-a", { x: 0, y: 0 }, { x: 520, y: 260, duration: 27, ease: "none" }, 0)
-        .fromTo("#haze-b", { x: 0, y: 0 }, { x: -560, y: -300, duration: 27, ease: "none" }, 0);
+      tl.fromTo(["#haze-a", "#warm-a"], { x: 0, y: 0 }, { x: 520, y: 260, duration: 27, ease: "none" }, 0)
+        .fromTo(["#haze-b", "#warm-b"], { x: 0, y: 0 }, { x: -560, y: -300, duration: 27, ease: "none" }, 0)
+        // 블루 → 살구 (10–15s) → 블루 (20–22.5s)
+        .fromTo([".warm"], { opacity: 0 }, { opacity: 1, duration: 5, ease: "sine.inOut" }, 10)
+        .fromTo(["#haze-a", "#haze-b"], { opacity: 1 }, { opacity: 0.15, duration: 5, ease: "sine.inOut" }, 10)
+        .to([".warm"], { opacity: 0, duration: 2.5, ease: "sine.inOut" }, 20)
+        .to(["#haze-a", "#haze-b"], { opacity: 1, duration: 2.5, ease: "sine.inOut" }, 20);
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
       tl.seek(0);

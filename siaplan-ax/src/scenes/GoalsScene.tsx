@@ -70,7 +70,7 @@ export function GoalsScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 6 }} data-haze="0.55" data-label="Goals">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 6 }} data-haze="0.52" data-tone="1" data-label="Goals">
       <div className="stage goal">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_08 Goals</p>
 

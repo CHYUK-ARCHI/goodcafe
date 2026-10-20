@@ -46,7 +46,7 @@ export function FromAIToAX() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.3" data-label="From AI to AX">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5 }} data-haze="0.2" data-tone="0" data-label="From AI to AX">
       <div className="stage split">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_01 From AI to AX</p>
 

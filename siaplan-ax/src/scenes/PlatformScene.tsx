@@ -69,7 +69,7 @@ export function PlatformScene() {
   });
 
   return (
-    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-haze="0.3" data-label="SIA Studio · SIA AI">
+    <section ref={ref} className="scene" style={{ ["--len" as string]: 5.5 }} data-haze="0.34" data-tone="0.75" data-label="SIA Studio · SIA AI">
       <div className="stage plat">
         <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_06 The platform we build</p>
 

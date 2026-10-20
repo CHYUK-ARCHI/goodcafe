@@ -42,8 +42,12 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 DESIGN.md(무채색 · hairline · Geist)를 바탕으로, 지원 포스터(poster_final_V02)의 톤을 곳곳에 얹었다.
 
 - 캔버스 쿨 그레이 `#eceef1`, 텍스트 `#171717 / #4d4d4d / #666`, 카드는 흰색 + hairline ring. 그림자 없음, radius 6px.
-- **블루 헤이즈** (`lib/Haze.tsx`): 페이지 뒤에 고정된 두 덩어리의 번진 블루(`#2f7fe6`)가 스크롤에 따라 흐른다.
-  세기는 장면마다 `section[data-haze]`(0–1)로 정한다 — 선언·Final·Apply 1, Goals·Join 0.5–0.6, 정보 장면 0.15–0.3.
+- **헤이즈** (`lib/Haze.tsx`): 페이지 뒤에 고정된 번진 블루(`#2f7fe6`). 옅은 톤(중심 알파 0.55)이 기본.
+  - 움직임: 스크롤과 무관하게 CSS keyframes 로 아주 느리게 흐른다 (43·57·49초 주기, 이동 3–5% · 크기 ±4%, 모바일은 더 작게, reduced-motion 이면 정지).
+  - 색: 같은 자리에 블루와 보색 살구(`#f2b47a`)를 겹쳐 두고 `section[data-tone]`(0=블루, 1=살구)로 교차 페이드한다.
+    흐름은 한 번의 큰 파도 — 00–02 블루 → 03–08 살구로 (Goals 에서 최대) → 09–10 복귀 → 11 Final · 12 Apply 원래 블루.
+  - 세기: `section[data-haze]`(0–1). 선언·Final·Apply 0.65, Goals·Join 0.4–0.5, 정보 장면 0.15–0.35.
+  - UI 강조색(✓, 강조 셀, 목표 태그)은 배경과 상관없이 블루로 고정.
 - **포스터 타입** (`.poster`, `.poster-sm`): 800 weight · 자간 -0.065em · 행간 0.88. Hero 타이틀, 선언문, AX, 목표 숫자, Final, Apply 에만 쓴다.
 - **언더스코어 문장** (`.underscore`, `lib/posterCopy.ts`): `_업무방식을 개선하는 사람으로` 등 포스터 문구. Hero 와 Apply 에 쓴다. 장면 번호도 `_01` 형식.
 - 태그라인 `AI makes things possible. …` 은 Final 과 Apply 에.

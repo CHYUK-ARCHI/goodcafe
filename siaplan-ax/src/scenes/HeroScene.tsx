@@ -26,7 +26,7 @@ export function HeroScene() {
   });
 
   return (
-    <section ref={ref} id="top" className="scene" style={{ ["--len" as string]: 4 }} data-haze="1" data-label="Declaration">
+    <section ref={ref} id="top" className="scene" style={{ ["--len" as string]: 4 }} data-haze="0.65" data-tone="0" data-label="Declaration">
       <div className="stage hero">
         <div className="hero__head" data-reveal>
           <Mask><span className="eyebrow">_SIAPLAN AI / AX TEAM</span></Mask>
