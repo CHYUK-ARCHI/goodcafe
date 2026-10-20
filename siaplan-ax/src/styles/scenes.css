@@ -164,6 +164,10 @@
 .apply__dday { text-transform: none; }
 .apply__ctas { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .apply__tag { margin-top: 8px; }
+.apply__spirit { display: grid; gap: 8px; max-width: 44ch; padding-top: 18px; box-shadow: 0 -1px 0 rgba(23, 23, 23, 0.12); }
+.apply__spiritko { font-size: 12.5px; line-height: 1.6; color: var(--charcoal); }
+.apply__quote p { font-size: 11.5px; line-height: 1.55; color: var(--stone); font-style: italic; }
+.apply__quote cite { display: block; margin-top: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; font-style: normal; color: var(--graphite); }
 
 /* ---- 11 Final ---- */
 .final__lines { display: flex; flex-direction: column; gap: 32px; }
@@ -290,6 +294,7 @@
   .apply__info { position: absolute; right: 10vw; bottom: 7vh; margin: 0; padding: 0; align-items: flex-start; text-align: left; }
   .apply__block { font-size: clamp(28px, 2.6vw, 46px); }
   .apply__ctas { justify-content: flex-start; }
+  .apply__spirit { position: absolute; left: var(--pad); bottom: 7vh; width: min(20vw, 300px); max-width: none; }
 
   /* 10 Join */
   .join { display: flex; flex-direction: column; justify-content: center; gap: 4vh; }

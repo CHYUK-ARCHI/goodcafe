@@ -31,11 +31,12 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
 | 09 Roadmap | `scenes/RoadmapScene.tsx` | 6개월 월별 중간 작업과 연결된 목표 |
 | 10 Join the team | `scenes/JoinScene.tsx` | 특전: AI 교육 · AI 계정 · 인센티브(예정) |
 | 11 SIAPLAN AI/AX | `scenes/FinalScene.tsx` | 마지막 문장 · 워드마크 · spectrum hairline |
-| 12 Apply | `scenes/ApplyScene.tsx` | 지원 페이지: career@siaplan.com · 마감 2026.10.31(토) 23:59 KST · D-day 자동 계산 |
+| 12 Apply | `scenes/ApplyScene.tsx` | 지원 포스터: career@siaplan.com · 마감 2026.10.31(토) 23:59 KST · D-day 자동 계산 · 하단 작은 글씨로 "건축가의 spirit" 문장과 Michael Graves(NYT, 2012) 발췌 |
 
 - 모든 장면은 `lib/motion.ts` 의 `useScrollScene` 으로 만든 scrub 타임라인 하나 (스크롤 위치 ↔ 진행도 1:1).
 - 장면 DOM 기본값은 "완성된 상태". 데스크톱+모션 허용일 때만 sticky 스테이지와 초기 상태를 적용하므로, 모바일·`prefers-reduced-motion` 에서는 정적 세로 레이아웃이 그대로 보인다.
 - 스태거가 걸린 `fromTo` 를 쓰는 타임라인에는 `invalidateOnRefresh` 를 쓰지 않는다 (refresh 시 시작 상태가 사라짐).
+- 마스크 안에서 숨겨 둘 때는 `yPercent: 130` 이상으로 내린다. 포스터 타입 마스크의 아래 여백(0.16em) 때문에 110 이면 글자 윗부분이 1px 선처럼 비친다.
 
 ## 디자인 규칙
 

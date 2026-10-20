@@ -36,7 +36,7 @@ export function OrchestratorScene() {
       .fromTo(all(el, "[data-node='agent']"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.15, ease: "back.out(1.7)" }, 3.2)
       .fromTo(all(el, "[data-node='tool']"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, 3.7)
       .fromTo(all(el, "[data-node='out']"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 5)
-      .fromTo(all(el, ".orch__head .mask__in"), { yPercent: 110 }, { yPercent: 0, duration: 0.9, stagger: 0.15, ease: "power3.out" }, 6)
+      .fromTo(all(el, ".orch__head .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 0.9, stagger: 0.15, ease: "power3.out" }, 6)
       .fromTo(el.querySelector("[data-sub]"), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 6.8)
       .to({}, { duration: 1.6 }, 7.4);
   });
