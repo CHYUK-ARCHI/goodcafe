@@ -28,7 +28,7 @@ export function WorkflowScene() {
       if (i > 0) {
         tl.fromTo(items[i], { color: "#c9c9c9" }, { color: "#171717", duration: 0.2 }, at)
           .fromTo(items[i].querySelector(".wf__tick"), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, at)
-          .fromTo(t, { yPercent: 110 }, { yPercent: 0, duration: 0.5, stagger: 0.08, ease: "power3.out" }, at)
+          .fromTo(t, { yPercent: 130 }, { yPercent: 0, duration: 0.5, stagger: 0.08, ease: "power3.out" }, at)
           .fromTo([lines[i * 2], lines[i * 2 + 1]], { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.25, stagger: 0.2 }, at + 0.15);
       }
       if (i < STEPS.length - 1) {

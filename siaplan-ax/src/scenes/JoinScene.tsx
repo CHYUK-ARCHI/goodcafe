@@ -28,7 +28,7 @@ export function JoinScene() {
   const ref = useRef<HTMLElement>(null);
 
   useScrollScene(ref, (tl, el) => {
-    tl.fromTo(all(el, ".join__head .mask__in"), { yPercent: 110 }, { yPercent: 0, duration: 0.9, stagger: 0.15, ease: "power3.out" }, 0.2)
+    tl.fromTo(all(el, ".join__head .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 0.9, stagger: 0.15, ease: "power3.out" }, 0.2)
       .fromTo(el.querySelector("[data-sub]"), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.9)
       .fromTo(all(el, ".join__card"), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.35, ease: "power3.out" }, 1.4)
       .fromTo(el.querySelector("[data-cta]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6 }, 2.9)

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Mask } from "../lib/Mask";
-import { POSTER_LINES, POSTER_TAGLINE } from "../lib/posterCopy";
+import { POSTER_LINES, POSTER_TAGLINE, SPIRIT } from "../lib/posterCopy";
 import { useScrollScene } from "../lib/motion";
 
 export const APPLY_EMAIL = "career@siaplan.com";
@@ -73,6 +73,15 @@ export function ApplyScene() {
             {POSTER_TAGLINE.map((t) => <span key={t}>{t}<br /></span>)}
           </p>
         </div>
+
+        <aside className="apply__spirit" data-reveal aria-label={SPIRIT.title}>
+          <p className="eyebrow">_{SPIRIT.title}</p>
+          <p className="apply__spiritko">{SPIRIT.ko}</p>
+          <blockquote className="apply__quote">
+            <p>“{SPIRIT.quote}”</p>
+            <cite>— {SPIRIT.cite}</cite>
+          </blockquote>
+        </aside>
       </div>
     </section>
   );

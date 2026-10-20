@@ -39,8 +39,8 @@ export function FromAIToAX() {
       // 번호·설명·구분선까지 함께 치워 AX 와 겹치지 않게 한다
       .to(rows, { opacity: 0, duration: 0.6, ease: "power2.in" }, 5.2)
       .to(all(el, ".axo__label"), { opacity: 0, duration: 0.5 }, 5)
-      .fromTo(el.querySelector("[data-ax]"), { yPercent: 110 }, { yPercent: 0, duration: 1, ease: "power3.out" }, 6)
-      .fromTo(all(el, "[data-key]"), { yPercent: 110 }, { yPercent: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" }, 6.6)
+      .fromTo(el.querySelector("[data-ax]"), { yPercent: 130 }, { yPercent: 0, duration: 1, ease: "power3.out" }, 6)
+      .fromTo(all(el, "[data-key]"), { yPercent: 130 }, { yPercent: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" }, 6.6)
       .fromTo(el.querySelector("[data-note]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7 }, 7.3)
       .to({}, { duration: 1.2 }, 8);
   });

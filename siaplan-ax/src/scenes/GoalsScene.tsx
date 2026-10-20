@@ -56,7 +56,7 @@ export function GoalsScene() {
       if (i > 0) {
         tl.fromTo(rows[i], { color: "#c9c9c9" }, { color: "#171717", duration: 0.2 }, at)
           .fromTo(rows[i].querySelector(".goal__tick"), { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, at)
-          .fromTo(big, { yPercent: 110 }, { yPercent: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, at)
+          .fromTo(big, { yPercent: 130 }, { yPercent: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, at)
           .fromTo(cards[i], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4 }, at + 0.15);
       }
       if (i < n - 1) {

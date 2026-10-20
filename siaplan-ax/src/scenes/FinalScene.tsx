@@ -7,11 +7,11 @@ export function FinalScene() {
   const ref = useRef<HTMLElement>(null);
 
   useScrollScene(ref, (tl, el) => {
-    tl.fromTo(all(el, ".final__a .mask__in"), { yPercent: 110 }, { yPercent: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, 0.3)
+    tl.fromTo(all(el, ".final__a .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, 0.3)
       .to(all(el, ".final__a .mask__in"), { yPercent: -110, duration: 0.7, stagger: 0.08, ease: "power3.in" }, 2.1)
-      .fromTo(all(el, ".final__b .mask__in"), { yPercent: 110 }, { yPercent: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, 2.8)
+      .fromTo(all(el, ".final__b .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, 2.8)
       .to(all(el, ".final__b .mask__in"), { yPercent: -110, duration: 0.8, stagger: 0.08, ease: "power3.in" }, 4.8)
-      .fromTo(all(el, ".final__brand .mask__in"), { yPercent: 110 }, { yPercent: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, 5.8)
+      .fromTo(all(el, ".final__brand .mask__in"), { yPercent: 130 }, { yPercent: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, 5.8)
       .fromTo(el.querySelector("[data-spec]"), { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 6.6)
       .fromTo(all(el, "[data-end]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, 7.4)
       .to({}, { duration: 1.2 }, 8.4);
