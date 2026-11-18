@@ -32,9 +32,6 @@
   --blue: #2f7fe6;
   --blue-soft: #9cc2f1;
   --spectrum: linear-gradient(90deg, var(--blue) 0%, var(--blue-soft) 55%, rgba(47, 127, 230, 0) 100%);
-  /* Vox 식 형광펜 — 강조 문구에만 쓴다 */
-  --hl: rgba(255, 228, 77, 0.92);
-  --hl-a: rgba(255, 228, 77, 0);
 
   /* 한글은 Geist 에 없으므로 Pretendard 로 떨어진다 */
   --sans: "Geist", "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, -apple-system, sans-serif;

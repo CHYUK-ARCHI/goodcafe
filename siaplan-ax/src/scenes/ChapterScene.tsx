@@ -7,14 +7,9 @@ const GROUP = 1; // 스텝 하나의 길이
 const FIRST = 0.3; // 첫 묶음이 들어오는 시점
 const pad = (n: number) => String(n).padStart(2, "0");
 
-// 형광펜을 왼쪽에서 오른쪽으로 긋는다
-const draw = (tl: gsap.core.Timeline, marks: Element[], at: number) => {
-  if (marks.length) tl.fromTo(marks, { backgroundSize: "0% 0.62em" }, { backgroundSize: "100% 0.62em", duration: 0.45, stagger: 0.1, ease: "power2.out" }, at);
-};
-
 /**
  * 장(chapter) 하나 = 제목 + 번호 붙은 줄 + 결론 한 줄.
- * 스크롤 한 번에 한 묶음씩 줄이 들어오고, 그 줄의 강조 문구에 형광펜이 그어진다.
+ * 스크롤 한 번에 한 묶음씩 줄이 들어온다.
  */
 export function ChapterScene({ ch }: { ch: Chapter }) {
   const ref = useRef<HTMLElement>(null);
@@ -22,7 +17,6 @@ export function ChapterScene({ ch }: { ch: Chapter }) {
 
   useScrollScene(ref, (tl, el) => {
     const items = all(el, ".ch__item");
-    draw(tl, all(el, ".ch__title .hl"), 0);
 
     let i = 0;
     const stops: number[] = [];
@@ -39,7 +33,6 @@ export function ChapterScene({ ch }: { ch: Chapter }) {
         tl.fromTo(line, { scaleX: reach(g - 1) }, { scaleX: reach(g), duration: 0.6, ease: "power2.inOut" }, at);
         tl.fromTo(el.querySelector(`.tl__phase[data-g="${g}"] .tl__bar`), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, at + 0.1);
       }
-      draw(tl, group.flatMap((it) => Array.from(it.querySelectorAll(".hl"))), at + 0.3);
       stops.push(at + 0.8);
     });
 
@@ -73,7 +66,7 @@ export function ChapterScene({ ch }: { ch: Chapter }) {
             <li key={it.head} className="ch__item" data-reveal>
               <span className="ch__n">{pad(k + 1)}</span>
               <div className="ch__head">
-                <p className="ch__h">{it.pick ? <mark className="hl">{it.head}</mark> : it.head}</p>
+                <p className="ch__h">{it.head}</p>
                 {it.meta && <p className="ch__meta">{it.meta}</p>}
               </div>
               {ch.layout === "pairs" && <span className="ch__arrow" aria-hidden="true">→</span>}
@@ -84,7 +77,7 @@ export function ChapterScene({ ch }: { ch: Chapter }) {
                 </div>
               ) : (
                 <>
-                  {it.big && <p className="ch__big">{it.pick ? <mark className="hl">{it.big}</mark> : it.big}</p>}
+                  {it.big && <p className="ch__big">{it.big}</p>}
                   <p className="ch__body"><Hl text={it.body} /></p>
                 </>
               )}

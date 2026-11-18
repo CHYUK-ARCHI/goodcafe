@@ -11,21 +11,11 @@
 .stage__eyebrow { margin-bottom: 8px; }
 
 /* =====================================================================
-   Vox 식 explainer — 텍스트만. 큰 헤드라인 + 형광펜 + 번호 붙은 줄.
+   Vox 식 explainer — 큰 헤드라인 + 번호 붙은 줄. 강조는 굵기로만.
    ===================================================================== */
 
-/* 형광펜: 아래쪽 2/3 에 칠하는 마커. 데스크톱에서는 background-size 로 그어진다 */
-.hl {
-  color: inherit;
-  background-image: linear-gradient(100deg, var(--hl-a) 0%, var(--hl) 6%, var(--hl) 94%, var(--hl-a) 100%);
-  background-repeat: no-repeat;
-  background-position: 0 72%;
-  background-size: 100% 0.62em;
-  padding: 0 0.08em;
-  margin: 0 -0.04em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
+/* 강조: 색 없이 굵기로만 */
+.em { font-weight: 800; color: var(--obsidian); }
 
 /* ---- 00 Cover ---- */
 .cover { min-height: calc(100svh - var(--nav-h) - 48px); gap: 28px; }
@@ -61,6 +51,35 @@
 .ch--statements .ch__body { font-size: clamp(22px, 6vw, 40px); font-weight: 700; letter-spacing: -0.05em; line-height: 1.3; color: var(--obsidian); }
 .ch--grid .ch__h { font-size: 20px; }
 .ch--pairs .ch__big { font-size: 26px; }
+
+/* ---- 03 How we share: 각자 만든 프로그램 → 공유 플랫폼 → 모든 팀 (움직이는 도면) ---- */
+.share__steps { display: flex; flex-wrap: wrap; gap: 8px 28px; list-style: none; font-size: clamp(16px, 1.3vw, 20px); font-weight: 700; letter-spacing: -0.04em; color: var(--obsidian); }
+.share__steps span { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--graphite); margin-right: 6px; }
+.share__d { display: block; width: 100%; height: auto; overflow: visible; }
+.share__d--wide { display: none; }
+.share text { font-family: var(--sans); fill: var(--obsidian); }
+.share__card { fill: var(--white); stroke: rgba(23, 23, 23, 0.16); stroke-width: 1; }
+.share__card--use { fill: rgba(255, 255, 255, 0.5); stroke: var(--obsidian); stroke-width: 1.25; }
+.share__name { font-size: 22px; font-weight: 700; letter-spacing: -0.04em; }
+.share__name--m { font-size: 17px; }
+.share__cat { font-size: 19px; fill: var(--stone) !important; }
+.share__hub { fill: var(--obsidian); }
+.share__pulse { fill: none; stroke: var(--obsidian); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: share-pulse 2.8s ease-out infinite; }
+.share__hubk { font-family: var(--mono) !important; font-size: 18px; letter-spacing: 0.1em; fill: #9a9a9a !important; }
+.share__hubt { font-size: 32px; font-weight: 800; letter-spacing: -0.05em; fill: var(--white) !important; }
+.share__d--tall .share__hubt { font-size: 26px; }
+.share__hubs { font-size: 19px; fill: #c9c9c9 !important; }
+.share__d--tall .share__hubs { font-size: 16px; }
+.share__wire { fill: none; stroke: rgba(23, 23, 23, 0.18); stroke-width: 1.5; }
+.share__flow { fill: none; stroke: var(--obsidian); stroke-width: 1.5; stroke-dasharray: 2 14; opacity: 0.45; animation: share-flow 1.2s linear infinite; }
+.share__dot { fill: var(--obsidian); }
+.share__label { font-family: var(--mono) !important; font-size: 17px; letter-spacing: 0.08em; fill: var(--graphite) !important; }
+@keyframes share-pulse { from { transform: scale(1); opacity: 0.5; } to { transform: scale(1.16); opacity: 0; } }
+@keyframes share-flow { to { stroke-dashoffset: -16; } }
+@media (prefers-reduced-motion: reduce) {
+  .share__dot { display: none; }
+  .share__flow, .share__pulse { animation: none; }
+}
 
 /* ---- 일정 타임라인: 데스크톱은 가로(.tl), 모바일은 같은 줄을 세로 타임라인으로 ---- */
 .tl { display: none; }
@@ -212,4 +231,9 @@
   .tl__month small { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--graphite); margin-top: -4px; }
   .tl__ev { grid-row: 3; list-style: none; display: grid; align-content: start; gap: 8px; padding: 2.6vh 1.2vw 0 0; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.4; color: var(--charcoal); }
   .tl__ev li { font-weight: 600; }
+}
+
+@media (min-width: 900px) {
+  .share__d--wide { display: block; max-height: 48vh; }
+  .share__d--tall { display: none; }
 }

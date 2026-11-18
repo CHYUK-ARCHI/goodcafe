@@ -35,7 +35,7 @@ export function FinalScene() {
         <div className="final__end" data-reveal>
           <div className="final__brand">
             <Mask className="poster final__word">SIAPLAN</Mask>
-            <Mask className="poster final__word final__ax"><mark className="hl hl--on">AI/AX</mark> TF</Mask>
+            <Mask className="poster final__word final__ax">AI/AX TF</Mask>
           </div>
           <span className="spectrum final__spectrum" data-spec />
           <p className="tagline final__tag" data-end>

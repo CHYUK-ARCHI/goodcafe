@@ -1,15 +1,14 @@
 /**
  * From AI to AX : SID_E STEP — 장(chapter) 데이터.
- * 「2611117_AIAX-2」 보고서를 축약한 것 (비용 · 문제점 · 다른 회사 사례 페이지는 넣지 않는다).
+ * 「2611117_AIAX-2」 보고서를 축약한 것 (비용 · 문제점 · 다른 회사 사례 · 인원 구성은 넣지 않는다).
  *
- * 문자열 안의 ==강조== 는 형광펜 표시, \n 은 줄바꿈 (lib/Hl.tsx).
+ * 문자열 안의 ==강조== 는 굵은 글씨, \n 은 줄바꿈 (lib/Hl.tsx).
  */
 export type Item = {
   head: string; // 굵은 머리말
   meta?: string; // 머리말 아래 작은 글씨
   big?: string; // 큰 숫자 · 키워드
   body: string; // 설명
-  pick?: boolean; // 형광펜으로 한 줄 전체 강조
 };
 
 /** 일정 타임라인: 월 칸 위에 단계 막대, 아래에 그 달의 일. at/to 는 months 의 인덱스. */
@@ -74,7 +73,7 @@ export const CHAPTERS: Chapter[] = [
   {
     id: "direction",
     label: "Our direction",
-    kicker: "_03 Our direction",
+    kicker: "_04 Our direction",
     title: "SIAPLAN 이 가는\n==세 가지 방향==",
     layout: "pairs",
     items: [
@@ -90,7 +89,7 @@ export const CHAPTERS: Chapter[] = [
   {
     id: "now",
     label: "In progress",
-    kicker: "_04 In progress",
+    kicker: "_05 In progress",
     title: "이미 ==시작한 것==들",
     lede: "지금 진행 중인 자동화 제작 현황과 진행형 프로젝트입니다.",
     layout: "rows",
@@ -110,7 +109,7 @@ export const CHAPTERS: Chapter[] = [
   {
     id: "schedule",
     label: "6 months",
-    kicker: "_05 Schedule",
+    kicker: "_06 Schedule",
     title: "6개월,\n==세미나와 공유 미팅==으로 갑니다",
     lede: "전사 세미나와 격주 리뷰로 피드백 시간을 확보합니다. 빠르게 바뀌는 기술에 바로 대응하고, 노하우의 축적을 우선합니다.",
     layout: "phases",
@@ -139,21 +138,5 @@ export const CHAPTERS: Chapter[] = [
     takeaway: "월별 세미나 · 매월 진행",
     haze: 0.32,
     tone: 0.15
-  },
-  {
-    id: "team",
-    label: "Team",
-    kicker: "_06 Team",
-    title: "작게 시작해,\n==전사로 넓힙니다==",
-    lede: "초기 테스트 베드에서 여러 프로젝트에 적용하고 효과를 검증한 뒤, 전사적으로 교육하고 확대합니다.",
-    layout: "pairs",
-    items: [
-      { head: "시범운영 단계", meta: "Pilot", big: "SID", body: "PL 2인 + SID 내 2–3인, ==최대 5인 체제==" },
-      { head: "확산 단계", meta: "Scale", big: "SIAPLAN", body: "==본부별 담당 리더== 지정 — SID · 1본부 · 2본부" }
-    ],
-    groups: [1, 1],
-    takeaway: "초기 TF 구성, 그리고 전사 확산",
-    haze: 0.45,
-    tone: 0
   }
 ];

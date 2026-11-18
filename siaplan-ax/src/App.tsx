@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Chrome } from "./Chrome";
 import { SceneRail } from "./SceneRail";
@@ -7,6 +7,7 @@ import { initSmoothScroll } from "./lib/smooth";
 import { CHAPTERS } from "./lib/chapters";
 import { HeroScene } from "./scenes/HeroScene";
 import { ChapterScene } from "./scenes/ChapterScene";
+import { SharingScene } from "./scenes/SharingScene";
 import { FinalScene } from "./scenes/FinalScene";
 import { ApplyScene } from "./scenes/ApplyScene";
 
@@ -29,7 +30,13 @@ export default function App() {
       <SceneRail />
       <main>
         <HeroScene />
-        {CHAPTERS.map((ch) => <ChapterScene key={ch.id} ch={ch} />)}
+        {CHAPTERS.map((ch) => (
+          <Fragment key={ch.id}>
+            <ChapterScene ch={ch} />
+            {/* 공유 분야 다음: 각자 만든 프로그램이 모두의 도구가 되는 그림 */}
+            {ch.id === "share" && <SharingScene />}
+          </Fragment>
+        ))}
         <FinalScene />
         <ApplyScene />
       </main>

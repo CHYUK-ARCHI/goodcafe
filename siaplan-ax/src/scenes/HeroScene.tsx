@@ -24,11 +24,11 @@ export function HeroScene() {
             <span className="eyebrow cover__kicker"><span className="cover__tri" aria-hidden="true">▲</span>SIAPLAN AI/AX TF · Explainer</span>
           </Mask>
           <h1 className="poster cover__title">
-            <Mask><span className="cover__small">From</span>AI <span className="cover__small">to</span><mark className="hl hl--on">AX</mark></Mask>
+            <Mask><span className="cover__small">From</span>AI <span className="cover__small">to</span>AX</Mask>
           </h1>
           <p className="poster cover__sub"><Mask>: SID_E STEP</Mask></p>
           <Mask>
-            <p className="cover__deck">개인의 AI 활용에서 조직의 AX 혁신으로. 무엇을, 어떻게, 언제 바꾸는지 {CHAPTERS.length}개의 장으로 정리했습니다.</p>
+            <p className="cover__deck">개인의 AI 활용에서 조직의 AX 혁신으로. 무엇을, 어떻게, 언제 바꾸는지 {CHAPTERS.length + 1}개의 장으로 정리했습니다.</p>
           </Mask>
           <Mask><p className="eyebrow cover__by">SID · 2026.11 · 읽는 데 3분 · Scroll ↓</p></Mask>
         </div>
