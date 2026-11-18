@@ -5,8 +5,8 @@ import { steps, useScrollScene } from "../lib/motion";
 
 export const APPLY_EMAIL = "career@siaplan.com";
 export const APPLY_MAILTO = `mailto:${APPLY_EMAIL}?subject=${encodeURIComponent("[SIAPLAN AI/AX] 팀 지원")}`;
-// 마감: 2026-10-31(토) 23:59 KST
-const DEADLINE = new Date("2026-10-31T23:59:59+09:00");
+// 마감: 2026-11-25(수) 23:59 KST — 모집 포스터(2026.10.15 판) 기준
+const DEADLINE = new Date("2026-11-25T23:59:59+09:00");
 const DAY = 24 * 60 * 60 * 1000;
 
 function useDday() {
@@ -39,7 +39,7 @@ export function ApplyScene() {
   return (
     <section ref={ref} id="apply" className="scene" style={{ ["--len" as string]: 1.4 }} data-haze="0.65" data-tone="0" data-label="Apply">
       <div className="stage apply">
-        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_15 Apply</p>
+        <p className="eyebrow eyebrow--muted stage__eyebrow" data-reveal>_07 Apply</p>
 
         <p className="poster-sm apply__corner" data-reveal>SIAPLAN<br />AI/AX TEAM TF<br />APPLY</p>
 
@@ -56,7 +56,7 @@ export function ApplyScene() {
 
         <div className="apply__info" data-reveal>
           <p className="poster-sm apply__block">
-            ~10/31
+            ~11/25
             <br />
             Siaplan
             <br />
@@ -64,7 +64,7 @@ export function ApplyScene() {
           </p>
           <p className="eyebrow apply__dday">
             <span className={dday.closed ? "" : "ok"}>●</span>{" "}
-            {dday.closed ? "지원이 마감되었습니다" : `${dday.label} · 2026.10.31 (토) 23:59 마감`}
+            {dday.closed ? "지원이 마감되었습니다" : `${dday.label} · 2026.11.25 (수) 23:59 마감`}
           </p>
           <div className="apply__ctas">
             <a className="btn btn--fill" href={APPLY_MAILTO}>메일로 지원하기 →</a>
