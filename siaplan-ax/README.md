@@ -32,6 +32,7 @@ npm run build      # dist/ 정적 빌드 (상대 경로라 어떤 GitHub Pages �
   `layout`(statements · grid · rows · pairs · phases)으로 줄 모양을, `groups` 로 스크롤 한 번에 들어올 줄 수를 정한다.
 - **Schedule** 은 `timeline`(달 · 단계 · 그 달의 일)으로 데스크톱에서 가로 타임라인을 그린다. 모바일 · reduced-motion 은 같은 단계를 세로 타임라인으로 보여준다.
 - 글씨 최소 크기: 본문 15px, 보조 14px, 라벨(모노) 13px.
+- 포인트 색은 `--accent`(#ff4f1f, global.css) 하나. 흑백 화면 사이 의외의 자리 몇 곳에만 쓴다 — 목록은 scenes.css 맨 아래.
 - 모든 장면은 `lib/motion.ts` 의 `useScrollScene` 으로 만든 scrub 타임라인 하나 (스크롤 위치 ↔ 진행도 1:1).
 - **장면 바** (`SceneRail.tsx`): 왼쪽에 장면마다 짧은 가로 바. 마우스를 대면 독처럼 확대되고 가장 가까운 장면 이름이 보이며, 클릭하면 그 장면의 첫 멈춤 지점으로 이동.
   터치는 누른 채 위아래로 끌면 확대·이름이 따라오고, 손을 떼면 이동.

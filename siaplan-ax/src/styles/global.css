@@ -32,6 +32,8 @@
   --blue: #2f7fe6;
   --blue-soft: #9cc2f1;
   --spectrum: linear-gradient(90deg, var(--blue) 0%, var(--blue-soft) 55%, rgba(47, 127, 230, 0) 100%);
+  /* 엇박자 포인트 색 — 흑백 화면의 의외의 자리 몇 곳에만 (scenes.css 맨 아래 목록) */
+  --accent: #ff4f1f;
 
   /* 한글은 Geist 에 없으므로 Pretendard 로 떨어진다 */
   --sans: "Geist", "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, -apple-system, sans-serif;
