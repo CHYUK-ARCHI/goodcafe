@@ -237,3 +237,30 @@
   .share__d--wide { display: block; max-height: 48vh; }
   .share__d--tall { display: none; }
 }
+
+/* =====================================================================
+   포인트 색 하나 (--accent). 일부러 규칙 없이, 흑백 사이의 의외의 자리에만.
+   ===================================================================== */
+.progress__bar { background: var(--accent); }
+.nav__brand .glyph, .cover__tri { color: var(--accent); }
+.rail__item.is-active .rail__bar { background: var(--accent); }
+/* 01 Why — 두 문장 사이 가운데 선 */
+.ch--statements .ch__item:first-child { border-bottom: 2px solid var(--accent); }
+/* 02 What we share — 다섯 번째 칸(자동화 프로그램) 밑줄 하나 */
+.ch--grid .ch__item:nth-child(5) { border-bottom: 2px solid var(--accent); }
+/* 03 How we share — 첫 번째 프로그램의 흐름과 플랫폼 맥박 */
+.share__d > g:first-child > :nth-child(2) { stroke: var(--accent); opacity: 0.9; }
+.share__d > g:first-child > :nth-child(3), .share__d > g:first-child > :nth-child(4) { fill: var(--accent); }
+.share__pulse { stroke: var(--accent); }
+/* 04 Our direction — 가운데 줄의 화살표만 */
+.ch--pairs .ch__item:nth-child(2) .ch__arrow { color: var(--accent); }
+/* 05 In progress — '초기 개발' */
+.ch--rows .ch__item:nth-child(5) .ch__big { color: var(--accent); }
+/* 06 Schedule — 가운데 단계 막대 + 3월 점 (모바일은 두 번째 점) */
+.tl__phase:nth-child(2) .tl__bar { background: var(--accent); }
+.tl > :nth-child(8) .tl__dot { background: var(--accent); border-color: var(--accent); }
+.ch--timeline .ch__item:nth-child(2) .ch__n { background: var(--accent); border-color: var(--accent); }
+/* 마무리 · 지원 */
+.final__spectrum { background: var(--accent); }
+.apply__dday .ok { color: var(--accent); }
+
