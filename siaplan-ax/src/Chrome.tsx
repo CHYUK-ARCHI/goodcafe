@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 /** 고정 내비: 워드마크 · 현재 장면 · 전체 진행 */
 export function Chrome() {
   const bar = useRef<HTMLDivElement>(null);
-  const [scene, setScene] = useState({ i: 0, label: "Declaration" });
+  const [scene, setScene] = useState({ i: 0, label: "From AI to AX" });
   const [total, setTotal] = useState(9);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function Chrome() {
       <div className="progress" aria-hidden="true"><div className="progress__bar" ref={bar} /></div>
       <header className="nav">
         <a className="nav__brand" href="#top" aria-label="SIAPLAN AI/AX 처음으로">
-          <span className="glyph">×</span>
+          <span className="glyph" aria-hidden="true">▲</span>
           <span>SIAPLAN</span>
           <span>AI / AX</span>
         </a>

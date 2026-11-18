@@ -1,30 +1,20 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Chrome } from "./Chrome";
 import { SceneRail } from "./SceneRail";
-import { ProblemScene } from "./scenes/ProblemScene";
-import { CasesScene } from "./scenes/CasesScene";
-import { OurMoveScene } from "./scenes/OurMoveScene";
 import { Haze } from "./lib/Haze";
 import { initSmoothScroll } from "./lib/smooth";
+import { CHAPTERS } from "./lib/chapters";
 import { HeroScene } from "./scenes/HeroScene";
-import { FromAIToAX } from "./scenes/FromAIToAX";
-import { BreakTheWork } from "./scenes/BreakTheWork";
-import { WorkflowScene } from "./scenes/WorkflowScene";
-import { OrchestratorScene } from "./scenes/OrchestratorScene";
-import { PlatformScene } from "./scenes/PlatformScene";
-import { PhaseToolsScene } from "./scenes/PhaseToolsScene";
-import { GoalsScene } from "./scenes/GoalsScene";
-import { JoinScene } from "./scenes/JoinScene";
-import { ApplyScene } from "./scenes/ApplyScene";
-import { ShowreelScene } from "./scenes/ShowreelScene";
-import { RoadmapScene } from "./scenes/RoadmapScene";
+import { ChapterScene } from "./scenes/ChapterScene";
+import { SharingScene } from "./scenes/SharingScene";
 import { FinalScene } from "./scenes/FinalScene";
+import { ApplyScene } from "./scenes/ApplyScene";
 
 export default function App() {
   useEffect(() => {
     const destroy = initSmoothScroll();
-    // 폰트·영상 메타데이터가 로드된 뒤 레이아웃이 바뀌므로 한 번 더 측정한다
+    // 폰트가 로드된 뒤 레이아웃이 바뀌므로 한 번 더 측정한다
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
     return () => {
@@ -40,19 +30,13 @@ export default function App() {
       <SceneRail />
       <main>
         <HeroScene />
-        <ProblemScene />
-        <CasesScene />
-        <OurMoveScene />
-        <FromAIToAX />
-        <BreakTheWork />
-        <WorkflowScene />
-        <OrchestratorScene />
-        <ShowreelScene />
-        <PlatformScene />
-        <PhaseToolsScene />
-        <GoalsScene />
-        <RoadmapScene />
-        <JoinScene />
+        {CHAPTERS.map((ch) => (
+          <Fragment key={ch.id}>
+            <ChapterScene ch={ch} />
+            {/* 공유 분야 다음: 각자 만든 프로그램이 모두의 도구가 되는 그림 */}
+            {ch.id === "share" && <SharingScene />}
+          </Fragment>
+        ))}
         <FinalScene />
         <ApplyScene />
       </main>
